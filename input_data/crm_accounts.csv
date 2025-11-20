@@ -1,0 +1,1001 @@
+account_id,company_name,domain,industry,employee_band,region,renewal_date,is_customer_bool
+ACC-XZT3P887,Apple,apple.com,Manufacturing,51-200,NA,,FALSE
+ACC-HJ7LL8BR,Microsoft,microsoft.com,Telecom,1001-5000,NA,,FALSE
+ACC-MHE7BVFJ,Google,google.com,Software,501-1000,EMEA,,FALSE
+ACC-7JORZ952,Amazon,amazon.com,Energy,51-200,APJ,,FALSE
+ACC-JVR09L5N,Meta,meta.com,Gaming,5001+,NA,2026-03-24,TRUE
+ACC-W3NTNI71,Netflix,netflix.com,Energy,1001-5000,NA,,FALSE
+ACC-D6JTOQSD,Adobe,adobe.com,Finance,1-50,NA,,FALSE
+ACC-6SYGL6XK,Salesforce,salesforce.com,Software,501-1000,NA,,FALSE
+ACC-1N4GCQBM,ServiceNow,servicenow.com,Manufacturing,201-500,NA,2027-04-11,FALSE
+ACC-9GHELTBL,Snowflake,snowflake.com,Manufacturing,501-1000,EMEA,,FALSE
+ACC-ARE7Y1CT,Nvidia,nvidia.com,Telecom,51-200,NA,2027-03-18,FALSE
+ACC-01PEEA1B,AMD,amd.com,Energy,1001-5000,NA,2026-07-30,FALSE
+ACC-E8YK5UW3,Intel,intel.com,Education,51-200,APJ,2026-07-30,FALSE
+ACC-7VETKZS1,Cisco,cisco.com,Manufacturing,501-1000,NA,2026-07-19,FALSE
+ACC-JOPRPAI7,Oracle,oracle.com,Gaming,201-500,NA,2026-12-25,FALSE
+ACC-ZWKFSDH9,Workday,workday.com,Education,5001+,APJ,2026-05-02,FALSE
+ACC-5TS15M9L,Atlassian,atlassian.com,Gaming,201-500,NA,2026-01-10,FALSE
+ACC-8T3RQURY,Shopify,shopify.com,Gaming,51-200,APJ,2027-01-22,FALSE
+ACC-PM3P0GTG,Block,block.com,Software,51-200,NA,,TRUE
+ACC-FLCIX4DI,Datadog,datadog.com,Manufacturing,1-50,NA,,FALSE
+ACC-LAUOU61G,Stripe,stripe.com,Software,201-500,NA,,FALSE
+ACC-BSMIACQ5,Cloudflare,cloudflare.com,Energy,201-500,NA,,FALSE
+ACC-46SBVH4P,Twilio,twilio.com,Finance,1001-5000,NA,,FALSE
+ACC-A2TWFLZN,Okta,okta.com,Finance,501-1000,APJ,2026-05-26,FALSE
+ACC-QAXOG37O,Zoom,zoom.com,Gaming,1001-5000,NA,2026-09-24,FALSE
+ACC-9NZ95MT7,MongoDB,mongodb.com,Software,501-1000,NA,2026-09-13,FALSE
+ACC-K4R6ZK8F,Palantir,palantir.com,Finance,1001-5000,NA,2026-09-10,FALSE
+ACC-YWU0IGRR,Uber,uber.com,Retail,201-500,NA,,FALSE
+ACC-J7CUX2NT,Airbnb,airbnb.com,Software,5001+,EMEA,,FALSE
+ACC-VOS360GB,Spotify,spotify.com,Energy,1-50,NA,2026-12-09,FALSE
+ACC-G3LA6F9E,Red Hat,red-hat.com,Manufacturing,501-1000,EMEA,,FALSE
+ACC-MUI378CT,Splunk,splunk.com,Media,201-500,NA,,FALSE
+ACC-UTP2JX8I,HashiCorp,hashicorp.com,Healthcare,501-1000,APJ,2025-12-23,FALSE
+ACC-Z0VPLF0A,Elastic,elastic.com,Healthcare,501-1000,EMEA,,FALSE
+ACC-IGRDOUXY,GitHub,github.com,Manufacturing,201-500,EMEA,,TRUE
+ACC-33JJF1YS,GitLab,gitlab.com,Energy,201-500,LATAM,,FALSE
+ACC-GBQ49JQI,DigitalOcean,digitalocean.com,Education,201-500,NA,,FALSE
+ACC-722OPO3H,Dropbox,dropbox.com,Education,201-500,EMEA,2025-12-31,FALSE
+ACC-WBQXYDW3,DocuSign,docusign.com,Retail,1001-5000,EMEA,2026-02-03,FALSE
+ACC-7Q4SDFI8,Slack,slack.com,Telecom,501-1000,NA,,FALSE
+ACC-NOKZHFT7,Tableau,tableau.com,Telecom,1-50,APJ,,FALSE
+ACC-F9FWQ3PI,Mulesoft,mulesoft.com,Manufacturing,1001-5000,NA,2027-02-27,FALSE
+ACC-AZXV79GY,Nutanix,nutanix.com,Manufacturing,51-200,EMEA,2026-01-29,FALSE
+ACC-Q3ZXXM74,Zscaler,zscaler.com,Gaming,51-200,EMEA,2026-09-16,FALSE
+ACC-9UJHHQ3Q,CrowdStrike,crowdstrike.com,Media,201-500,NA,,FALSE
+ACC-WLCVD23O,Tenable,tenable.com,Education,1001-5000,NA,2026-06-23,TRUE
+ACC-O4N85DZ7,Rapid7,rapid7.com,Education,501-1000,EMEA,,TRUE
+ACC-C0XPDBQC,Palo Alto Networks,palo-alto-networks.com,Education,501-1000,NA,,FALSE
+ACC-JYVGHTEK,Fortinet,fortinet.com,Healthcare,1001-5000,NA,,TRUE
+ACC-NU5YRZH9,IBM,ibm.com,Education,1-50,NA,2026-08-19,FALSE
+ACC-2UR34D9N,Accenture,accenture.com,Retail,51-200,APJ,2027-02-26,FALSE
+ACC-34C5LCSM,SAP,sap.com,Gaming,1-50,LATAM,,FALSE
+ACC-RZI1MQBW,Siemens,siemens.com,Media,501-1000,NA,2026-02-20,FALSE
+ACC-C7TUXEXA,Qualcomm,qualcomm.com,Healthcare,5001+,NA,,FALSE
+ACC-GNSWN5OS,Texas Instruments,texas-instruments.com,Gaming,201-500,APJ,,FALSE
+ACC-LSIWWDDC,PayPal,paypal.com,Healthcare,201-500,NA,,FALSE
+ACC-QR1IZP9E,Square Enix,square-enix.com,Finance,201-500,EMEA,2026-07-21,FALSE
+ACC-JGW2LO73,Electronic Arts,electronic-arts.com,Telecom,1-50,NA,2025-12-14,FALSE
+ACC-KSOCSBXS,Take-Two,take-two.com,Software,501-1000,APJ,2026-01-30,FALSE
+ACC-VZYA6KV0,Booking Holdings,booking-holdings.com,Education,201-500,NA,2026-04-24,FALSE
+ACC-046JN6CU,Expedia,expedia.com,Media,201-500,EMEA,,FALSE
+ACC-0P3DB1KO,Lyft,lyft.com,Gaming,51-200,EMEA,2026-07-05,FALSE
+ACC-A4SFFK1L,DoorDash,doordash.com,Healthcare,201-500,NA,,FALSE
+ACC-15BYCN1D,Instacart,instacart.com,Education,1-50,EMEA,2027-04-15,FALSE
+ACC-PSQQ1LXF,Target,target.com,Gaming,1001-5000,NA,,FALSE
+ACC-CAFZ06AL,Walmart,walmart.com,Finance,51-200,NA,,FALSE
+ACC-XT58JMVD,Best Buy,best-buy.com,Software,501-1000,NA,2027-03-02,FALSE
+ACC-RN7AL0WC,Costco,costco.com,Finance,501-1000,EMEA,,FALSE
+ACC-L3FCE5XE,Home Depot,home-depot.com,Gaming,1-50,NA,2026-11-04,FALSE
+ACC-AEQRTVPQ,Lowe's,lowe-s.com,Retail,201-500,NA,2026-02-24,FALSE
+ACC-1AP0QUWQ,FedEx,fedex.com,Manufacturing,1001-5000,EMEA,2026-02-19,FALSE
+ACC-GV034CG7,UPS,ups.com,Healthcare,51-200,NA,2026-06-30,TRUE
+ACC-I0ZKDKWW,American Express,american-express.com,Media,5001+,NA,,FALSE
+ACC-7JGCNUYW,JPMorgan Chase,jpmorgan-chase.com,Gaming,501-1000,NA,,FALSE
+ACC-5F5HJ33C,Goldman Sachs,goldman-sachs.com,Gaming,201-500,NA,2026-07-17,TRUE
+ACC-4XO5UIZM,Morgan Stanley,morgan-stanley.com,Finance,201-500,EMEA,,TRUE
+ACC-NYYQQ718,Bank of America,bank-of-america.com,Software,51-200,NA,,FALSE
+ACC-YZOUPDSP,Citigroup,citigroup.com,Media,5001+,NA,2026-08-07,FALSE
+ACC-TV1066HW,Visa,visa.com,Education,201-500,APJ,,TRUE
+ACC-DHC4RFDS,Mastercard,mastercard.com,Manufacturing,501-1000,NA,2027-01-09,FALSE
+ACC-QVCEJTI4,Capital One,capital-one.com,Gaming,501-1000,NA,2026-03-25,FALSE
+ACC-F71K230T,US Bank,us-bank.com,Finance,51-200,NA,,FALSE
+ACC-IB2396R6,Wells Fargo,wells-fargo.com,Software,1-50,EMEA,2027-03-19,FALSE
+ACC-AJQMEY0G,AIG,aig.com,Media,51-200,NA,,TRUE
+ACC-Z10RV5FO,Allstate,allstate.com,Education,201-500,NA,2026-02-18,TRUE
+ACC-WM7G6UJU,State Farm,state-farm.com,Finance,501-1000,NA,2026-11-27,FALSE
+ACC-SKTOVEYL,Progressive,progressive.com,Finance,201-500,EMEA,,FALSE
+ACC-KCQEIHC8,UnitedHealth,unitedhealth.com,Healthcare,201-500,NA,2026-12-17,FALSE
+ACC-B8PQTNPX,Anthem,anthem.com,Gaming,1-50,NA,,FALSE
+ACC-BK2SXTNT,Cigna,cigna.com,Retail,501-1000,NA,2026-01-04,TRUE
+ACC-PKU9Q13K,Pfizer,pfizer.com,Education,1001-5000,NA,,FALSE
+ACC-BU6P8A1N,Merck,merck.com,Retail,501-1000,NA,2026-04-27,FALSE
+ACC-XPI5QP9U,Johnson & Johnson,johnson---johnson.com,Energy,1-50,NA,2026-08-15,FALSE
+ACC-2GTCVUOC,GSK,gsk.com,Telecom,1001-5000,NA,2026-07-08,FALSE
+ACC-TUXDVYQF,AstraZeneca,astrazeneca.com,Software,51-200,APJ,,FALSE
+ACC-OUEG9PDC,Bayer,bayer.com,Manufacturing,51-200,NA,2026-11-23,TRUE
+ACC-P4I81D0G,Shell,shell.com,Telecom,1-50,APJ,,FALSE
+ACC-SXEGY85I,BP,bp.com,Healthcare,51-200,NA,2026-05-19,TRUE
+ACC-T7R2F8GJ,ExxonMobil,exxonmobil.com,Finance,51-200,NA,,FALSE
+ACC-5JTT8RAA,Chevron,chevron.com,Retail,1001-5000,NA,,FALSE
+ACC-9DV7IRFH,TotalEnergies,totalenergies.com,Media,501-1000,LATAM,,FALSE
+ACC-3IHSXHT8,Toyota,toyota.com,Media,201-500,NA,,FALSE
+ACC-W9PP46RF,Honda,honda.com,Finance,1001-5000,NA,,FALSE
+ACC-A31W0EBH,Ford,ford.com,Healthcare,201-500,NA,2026-10-27,FALSE
+ACC-69Q08EBL,GM,gm.com,Energy,1001-5000,NA,2026-08-11,FALSE
+ACC-GIXMGW10,BMW,bmw.com,Media,501-1000,NA,,FALSE
+ACC-6KXT8OL6,Mercedes-Benz,mercedes-benz.com,Media,51-200,NA,2025-12-01,FALSE
+ACC-RO2L8KDW,Volkswagen,volkswagen.com,Media,201-500,APJ,,FALSE
+ACC-0QZF6LUT,Hyundai,hyundai.com,Telecom,51-200,NA,2026-12-21,FALSE
+ACC-HG6GD86G,Kia,kia.com,Healthcare,51-200,EMEA,,FALSE
+ACC-8K9HVHAN,Boeing,boeing.com,Manufacturing,51-200,EMEA,2026-03-29,FALSE
+ACC-KJD62EGX,Airbus,airbus.com,Gaming,1-50,APJ,,FALSE
+ACC-2P8TLB0P,Lockheed Martin,lockheed-martin.com,Education,201-500,NA,2026-10-06,FALSE
+ACC-YA3IGYJ8,Northrop Grumman,northrop-grumman.com,Media,201-500,EMEA,2026-08-25,FALSE
+ACC-CU1IH9KD,Raytheon,raytheon.com,Energy,51-200,NA,,FALSE
+ACC-KU3ADBDP,RTX,rtx.com,Media,201-500,NA,,FALSE
+ACC-TBJXTCGF,3M,3m.com,Energy,51-200,NA,2026-11-11,FALSE
+ACC-SMLJLVBN,GE,ge.com,Media,201-500,APJ,,FALSE
+ACC-GN44QOX9,Philips,philips.com,Media,501-1000,NA,,FALSE
+ACC-VFCQKU5N,LG,lg.com,Media,51-200,NA,,FALSE
+ACC-85SSBB3B,Samsung,samsung.com,Healthcare,51-200,EMEA,2026-06-09,FALSE
+ACC-XDRX4D7L,Sony,sony.com,Manufacturing,51-200,APJ,2026-09-24,FALSE
+ACC-BKQG6MXE,Panasonic,panasonic.com,Software,201-500,LATAM,2027-03-22,FALSE
+ACC-B1LQYN1F,Xerox,xerox.com,Finance,51-200,NA,2026-07-13,TRUE
+ACC-QF72J1YO,Nokia,nokia.com,Manufacturing,201-500,NA,2026-07-18,FALSE
+ACC-ZC39L465,Ericsson,ericsson.com,Software,5001+,LATAM,,FALSE
+ACC-UF4W42V0,Lenovo,lenovo.com,Software,51-200,EMEA,,FALSE
+ACC-KU4ZXZKS,Dell,dell.com,Gaming,501-1000,EMEA,,FALSE
+ACC-RF346YZM,HPE,hpe.com,Software,201-500,NA,,FALSE
+ACC-JFV23PRN,Arista Networks,arista-networks.com,Telecom,201-500,NA,,FALSE
+ACC-62G9IJYQ,Juniper Networks,juniper-networks.com,Education,51-200,NA,2026-03-28,FALSE
+ACC-E69UH79B,ClearView Partners,clearview-partners.com,Gaming,1-50,NA,,FALSE
+ACC-LYBRN1T3,Horizon Materials,horizon-materials.com,Gaming,51-200,NA,,FALSE
+ACC-5IASSXQ3,PrimeGate Energy,primegate-energy.com,Media,51-200,NA,,FALSE
+ACC-OQ0Q5UDY,Everest Biotech,everest-biotech.com,Telecom,201-500,NA,,TRUE
+ACC-TFT2R407,Summit Studios,summit-studios.com,Energy,501-1000,NA,2027-01-29,FALSE
+ACC-HSSGU5IK,Sapphire Labs,sapphire-labs.com,Education,1-50,EMEA,2026-12-25,FALSE
+ACC-ZDUKGX3K,Sapphire Analytics,sapphire-analytics.com,Gaming,501-1000,EMEA,2026-05-09,FALSE
+ACC-IG5AZF63,GreenLeaf Consulting,greenleaf-consulting.com,Manufacturing,201-500,APJ,,FALSE
+ACC-3HZF6VNH,Silverline Insurance,silverline-insurance.com,Telecom,1001-5000,EMEA,2025-12-25,FALSE
+ACC-U2U7CSNW,Sapphire Capital,sapphire-capital.com,Manufacturing,201-500,NA,2027-03-30,FALSE
+ACC-JJF6UUD3,Horizon Partners,horizon-partners.com,Education,501-1000,APJ,,FALSE
+ACC-ZWYVPMBI,Onyx Partners,onyx-partners.com,Gaming,501-1000,NA,2027-04-09,TRUE
+ACC-FGIOVJ6P,Summit Retail,summit-retail.com,Gaming,1-50,APJ,,FALSE
+ACC-I3LD1TBX,BlueRiver Analytics,blueriver-analytics.com,Gaming,501-1000,NA,,FALSE
+ACC-082P3J8X,Lighthouse Foods,lighthouse-foods.com,Manufacturing,5001+,NA,,FALSE
+ACC-BXG4Z4BZ,Lighthouse Consulting,lighthouse-consulting.com,Telecom,501-1000,APJ,2026-03-25,FALSE
+ACC-GSL55JQA,Hyperion Hotels,hyperion-hotels.com,Gaming,501-1000,NA,2025-12-13,FALSE
+ACC-LI7FFZJX,Vertex AI,vertex-ai.com,Gaming,201-500,NA,,FALSE
+ACC-3T9LWFCC,Quantum Biotech,quantum-biotech.com,Media,201-500,NA,,FALSE
+ACC-NTDB07RX,Everest Labs,everest-labs.com,Manufacturing,501-1000,NA,2026-01-25,FALSE
+ACC-E8Y58LBJ,Everest Analytics,everest-analytics.com,Energy,201-500,NA,2027-03-19,FALSE
+ACC-131EB6KB,Onyx Retail,onyx-retail.com,Media,201-500,NA,2027-01-24,FALSE
+ACC-2VMWPFR3,Hyperion Logistics,hyperion-logistics.com,Gaming,1001-5000,NA,,FALSE
+ACC-BY72WFF0,Maple Energy,maple-energy.com,Finance,1001-5000,APJ,2027-04-02,FALSE
+ACC-TT1CQUDV,PrimeGate Retail,primegate-retail.com,Gaming,201-500,NA,2026-01-05,FALSE
+ACC-U05NFIO4,Ironclad Aerospace,ironclad-aerospace.com,Healthcare,51-200,APJ,,FALSE
+ACC-4O9754L5,Summit Logistics,summit-logistics.com,Software,1001-5000,NA,,FALSE
+ACC-PI6FCF0B,Maple Holdings,maple-holdings.com,Healthcare,201-500,APJ,,FALSE
+ACC-L5KU4NJ2,Sapphire Biotech,sapphire-biotech.com,Software,51-200,EMEA,2026-07-21,FALSE
+ACC-L86YMKJL,TrueNorth Industries,truenorth-industries.com,Telecom,501-1000,EMEA,,FALSE
+ACC-QCM2VGJP,Ironclad Ventures,ironclad-ventures.com,Healthcare,501-1000,EMEA,2026-01-05,FALSE
+ACC-NW1PQ3E8,Orion Analytics,orion-analytics.com,Media,201-500,EMEA,,FALSE
+ACC-NPWUXK5Q,Maple Analytics,maple-analytics.com,Energy,501-1000,EMEA,2027-02-27,FALSE
+ACC-LJKS35HE,Aurora Ventures,aurora-ventures.com,Media,51-200,NA,,FALSE
+ACC-IH2K3F62,Orion Industries,orion-industries.com,Education,51-200,EMEA,,FALSE
+ACC-CE6UKNNB,BlueRiver Telecom,blueriver-telecom.com,Media,51-200,NA,2026-07-17,FALSE
+ACC-7CSEON8W,PrimeGate Pharma,primegate-pharma.com,Media,1001-5000,NA,,FALSE
+ACC-RLAAZR9W,Hyperion AI,hyperion-ai.com,Finance,5001+,NA,,FALSE
+ACC-B35FB7MD,Sapphire Foods,sapphire-foods.com,Software,501-1000,NA,2026-07-30,FALSE
+ACC-1KF1BUAE,Sapphire Foods,sapphire-foods-1.com,Education,51-200,NA,2027-04-06,FALSE
+ACC-M733IKPX,BlueRiver Materials,blueriver-materials.com,Education,201-500,LATAM,,FALSE
+ACC-XZRLQEKA,TrueNorth Pharma,truenorth-pharma.com,Finance,1001-5000,NA,,FALSE
+ACC-F8DCRPEQ,Redwood Pharma,redwood-pharma.com,Finance,1001-5000,NA,,FALSE
+ACC-CC4THF42,Vertex Foods,vertex-foods.com,Media,51-200,EMEA,,FALSE
+ACC-T28OX7ST,Zenith Bank,zenith-bank.com,Software,5001+,EMEA,2026-06-01,TRUE
+ACC-DIGASG30,Crescent Studios,crescent-studios.com,Manufacturing,1-50,EMEA,,FALSE
+ACC-PKRVMW82,PrimeGate Industries,primegate-industries.com,Retail,1-50,APJ,2026-05-15,FALSE
+ACC-74104Y6K,Aurora Systems,aurora-systems.com,Energy,501-1000,APJ,2026-08-23,TRUE
+ACC-PQS0OQFD,Redwood Motors,redwood-motors.com,Energy,1001-5000,NA,2026-01-24,FALSE
+ACC-OBHJ663L,BlueRiver Pharma,blueriver-pharma.com,Retail,1-50,LATAM,,TRUE
+ACC-SM2IRWBB,Horizon Telecom,horizon-telecom.com,Finance,1001-5000,APJ,2026-10-08,FALSE
+ACC-0D7SCKZC,Horizon Telecom,horizon-telecom-1.com,Media,1001-5000,NA,2026-11-15,FALSE
+ACC-BYXBCXED,Redwood Pharma,redwood-pharma-1.com,Gaming,1-50,APJ,2026-06-20,FALSE
+ACC-67RBOUFJ,Maple Insurance,maple-insurance.com,Healthcare,51-200,NA,,FALSE
+ACC-4QPPWJHN,Sequoia Motors,sequoia-motors.com,Gaming,1001-5000,NA,,TRUE
+ACC-N6F269OY,Orion Bank,orion-bank.com,Healthcare,1001-5000,NA,2026-04-27,FALSE
+ACC-N5HPDZSD,ClearView Ventures,clearview-ventures.com,Telecom,201-500,NA,2026-12-15,FALSE
+ACC-S7XUUL19,Crescent Pharma,crescent-pharma.com,Software,201-500,NA,,FALSE
+ACC-FAZP8ORX,Zenith Foods,zenith-foods.com,Education,5001+,NA,,FALSE
+ACC-RO1JYK6L,Summit Pharma,summit-pharma.com,Finance,1001-5000,EMEA,2026-09-30,FALSE
+ACC-CCGS4DKK,Onyx Labs,onyx-labs.com,Retail,1-50,EMEA,2026-12-17,FALSE
+ACC-7UN0BVK2,Onyx Energy,onyx-energy.com,Software,201-500,NA,,FALSE
+ACC-DJTBSTN8,Oakridge Capital,oakridge-capital.com,Retail,201-500,NA,2027-03-14,FALSE
+ACC-S88DEU4Y,Sapphire Materials,sapphire-materials.com,Education,201-500,LATAM,,TRUE
+ACC-T6SL9689,Vertex AI,vertex-ai-1.com,Retail,501-1000,NA,2026-11-20,FALSE
+ACC-MI22VH28,Zenith Insurance,zenith-insurance.com,Retail,201-500,NA,,FALSE
+ACC-A7P4SLMI,Aurora Capital,aurora-capital.com,Retail,51-200,NA,2026-06-22,FALSE
+ACC-5TU0FDZ1,Redwood Holdings,redwood-holdings.com,Media,51-200,LATAM,2026-10-19,FALSE
+ACC-5Z9BYBS7,Lighthouse Partners,lighthouse-partners.com,Education,51-200,EMEA,,FALSE
+ACC-S1KODDNT,Horizon Labs,horizon-labs.com,Energy,501-1000,NA,,FALSE
+ACC-STT8A8QI,Summit Systems,summit-systems.com,Retail,201-500,APJ,2026-02-25,FALSE
+ACC-NOCO1FO6,Onyx AI,onyx-ai.com,Gaming,201-500,EMEA,,FALSE
+ACC-20DD6MFY,GreenLeaf Motors,greenleaf-motors.com,Retail,1001-5000,NA,,FALSE
+ACC-B11OIYHG,Vertex Retail,vertex-retail.com,Retail,5001+,APJ,,FALSE
+ACC-ET2X21VW,Zenith Partners,zenith-partners.com,Finance,501-1000,EMEA,,FALSE
+ACC-K87U3VCU,Everest Capital,everest-capital.com,Telecom,1001-5000,NA,2026-06-24,FALSE
+ACC-90COOSUT,Crescent AI,crescent-ai.com,Education,5001+,NA,,FALSE
+ACC-MXDL1DR3,TrueNorth Materials,truenorth-materials.com,Energy,51-200,EMEA,,FALSE
+ACC-2RPWASF1,Horizon Aerospace,horizon-aerospace.com,Retail,51-200,NA,2027-02-12,FALSE
+ACC-5BD3SNL1,Orion Foods,orion-foods.com,Media,51-200,EMEA,2026-10-06,FALSE
+ACC-O82AS3F1,Lighthouse Logistics,lighthouse-logistics.com,Media,201-500,NA,2027-02-20,FALSE
+ACC-XWFXJU4J,BlueRiver Insurance,blueriver-insurance.com,Healthcare,1-50,EMEA,,FALSE
+ACC-M65EA0VB,Summit Insurance,summit-insurance.com,Energy,501-1000,NA,,FALSE
+ACC-Q523A78D,Hyperion Consulting,hyperion-consulting.com,Gaming,201-500,NA,,FALSE
+ACC-U7PJJ1AF,GreenLeaf Partners,greenleaf-partners.com,Gaming,1-50,NA,,FALSE
+ACC-1PAGBFQ5,Hyperion Industries,hyperion-industries.com,Gaming,201-500,NA,2027-02-21,FALSE
+ACC-GI290WA0,GreenLeaf Industries,greenleaf-industries.com,Gaming,201-500,LATAM,,FALSE
+ACC-H91RN387,Sequoia Logistics,sequoia-logistics.com,Telecom,501-1000,APJ,2026-04-13,FALSE
+ACC-PQNDVK7U,BlueRiver Labs,blueriver-labs.com,Software,501-1000,NA,,FALSE
+ACC-FG0J8OV3,Ironclad AI,ironclad-ai.com,Media,1-50,NA,2026-09-18,FALSE
+ACC-4WN8GBWI,Summit Biotech,summit-biotech.com,Energy,501-1000,EMEA,2026-10-27,FALSE
+ACC-RFIUXZBU,ClearView Motors,clearview-motors.com,Media,501-1000,EMEA,,FALSE
+ACC-C2X0XXH3,Lighthouse Holdings,lighthouse-holdings.com,Healthcare,51-200,NA,,FALSE
+ACC-XW193QU8,Summit Motors,summit-motors.com,Manufacturing,51-200,NA,,FALSE
+ACC-VH7OD3AY,Redwood Consulting,redwood-consulting.com,Finance,201-500,EMEA,2026-10-05,FALSE
+ACC-YQ2CY905,TrueNorth Energy,truenorth-energy.com,Media,201-500,NA,,FALSE
+ACC-T9WUY0HC,GreenLeaf Ventures,greenleaf-ventures.com,Energy,51-200,NA,,FALSE
+ACC-A0CU0873,BlueRiver Capital,blueriver-capital.com,Software,201-500,EMEA,,FALSE
+ACC-7THE04Q0,Vertex Biotech,vertex-biotech.com,Education,5001+,NA,,FALSE
+ACC-NNSX04ON,Onyx Energy,onyx-energy-1.com,Healthcare,1-50,NA,2026-03-20,FALSE
+ACC-I8VM49OU,Lighthouse Systems,lighthouse-systems.com,Retail,201-500,EMEA,,FALSE
+ACC-A10QET7W,Silverline Aerospace,silverline-aerospace.com,Telecom,501-1000,NA,2026-09-03,FALSE
+ACC-6C0A393Q,PrimeGate Materials,primegate-materials.com,Media,201-500,EMEA,2026-05-22,FALSE
+ACC-4K1430IX,ClearView Analytics,clearview-analytics.com,Finance,5001+,NA,,FALSE
+ACC-SGMIUFL7,Silverline Mining,silverline-mining.com,Education,51-200,EMEA,2026-01-15,FALSE
+ACC-M6SJYLIS,Silverline Biotech,silverline-biotech.com,Media,201-500,EMEA,,FALSE
+ACC-2KOIXTA1,Silverline Partners,silverline-partners.com,Retail,501-1000,LATAM,2025-12-23,FALSE
+ACC-X2O8PJ9B,Horizon Hotels,horizon-hotels.com,Education,51-200,NA,2026-10-28,FALSE
+ACC-GBQM9V1Z,Sapphire Systems,sapphire-systems.com,Media,1-50,NA,,FALSE
+ACC-ED3LY1HF,Everest AI,everest-ai.com,Media,501-1000,NA,2026-02-15,FALSE
+ACC-86R4U6EK,Redwood Energy,redwood-energy.com,Retail,51-200,NA,,FALSE
+ACC-9VGBKRGM,Summit Partners,summit-partners.com,Gaming,1-50,NA,2026-03-15,FALSE
+ACC-P8GH7JHV,GreenLeaf Retail,greenleaf-retail.com,Gaming,1-50,LATAM,2027-03-09,FALSE
+ACC-CXYF9JEJ,ClearView Insurance,clearview-insurance.com,Telecom,5001+,NA,,FALSE
+ACC-JD6B4UA7,Vertex Insurance,vertex-insurance.com,Gaming,51-200,NA,,FALSE
+ACC-0P5NZP5S,Vertex Logistics,vertex-logistics.com,Finance,5001+,NA,2026-09-11,FALSE
+ACC-8OZYPUJE,Sapphire Capital,sapphire-capital-1.com,Finance,201-500,NA,,FALSE
+ACC-QCAD3XK8,Aurora Studios,aurora-studios.com,Energy,501-1000,EMEA,,FALSE
+ACC-RGNNF2TX,Hyperion Foods,hyperion-foods.com,Finance,201-500,NA,2027-03-15,TRUE
+ACC-SY1CHPXA,Silverline Motors,silverline-motors.com,Healthcare,201-500,NA,2027-02-17,FALSE
+ACC-ARUP20Y8,Ironclad Biotech,ironclad-biotech.com,Retail,1001-5000,NA,2027-01-09,TRUE
+ACC-K15S0UNX,Hyperion Aerospace,hyperion-aerospace.com,Energy,501-1000,NA,,FALSE
+ACC-YPO32KK4,Quantum Telecom,quantum-telecom.com,Software,1-50,NA,,FALSE
+ACC-85KWJPRI,Summit AI,summit-ai.com,Software,1001-5000,APJ,2026-11-10,FALSE
+ACC-G7QTN6FG,Northstar AI,northstar-ai.com,Healthcare,501-1000,NA,2026-09-21,TRUE
+ACC-KFZTR0Y9,ClearView Telecom,clearview-telecom.com,Energy,201-500,APJ,2026-10-10,FALSE
+ACC-D35J3VRA,GreenLeaf Bank,greenleaf-bank.com,Media,201-500,NA,,FALSE
+ACC-U0XUKNS8,Everest Industries,everest-industries.com,Retail,51-200,EMEA,2026-07-07,FALSE
+ACC-EOJV40OI,Northstar Partners,northstar-partners.com,Healthcare,501-1000,APJ,,FALSE
+ACC-Y04NKMMQ,Oakridge Capital,oakridge-capital-1.com,Education,51-200,NA,2026-09-24,FALSE
+ACC-ZTH77YEX,Vertex Foods,vertex-foods-1.com,Gaming,1001-5000,APJ,2026-09-12,TRUE
+ACC-GVNKDOGK,GreenLeaf Materials,greenleaf-materials.com,Telecom,201-500,NA,,FALSE
+ACC-OJDY9NI2,Horizon Retail,horizon-retail.com,Gaming,1001-5000,NA,2026-09-28,FALSE
+ACC-1AOILP7R,Sequoia Mining,sequoia-mining.com,Gaming,1001-5000,NA,,FALSE
+ACC-A8N95I9X,Sequoia Ventures,sequoia-ventures.com,Gaming,51-200,NA,2027-01-25,FALSE
+ACC-IF5GNVZ3,Horizon Pharma,horizon-pharma.com,Energy,5001+,NA,,FALSE
+ACC-6AMYOL5T,PrimeGate Partners,primegate-partners.com,Media,1001-5000,EMEA,2027-04-05,FALSE
+ACC-AO4FZK06,Hyperion Hotels,hyperion-hotels-1.com,Energy,1001-5000,EMEA,,FALSE
+ACC-E6OIN5IQ,Redwood Biotech,redwood-biotech.com,Retail,1001-5000,NA,2027-02-09,FALSE
+ACC-7RNPP0MX,Onyx Systems,onyx-systems.com,Gaming,51-200,NA,2026-08-17,FALSE
+ACC-NCLLCK56,Sequoia AI,sequoia-ai.com,Energy,501-1000,NA,,FALSE
+ACC-8VR5TI98,Hyperion Studios,hyperion-studios.com,Telecom,201-500,NA,2027-02-17,FALSE
+ACC-2B43GE6E,TrueNorth Industries,truenorth-industries-1.com,Media,1001-5000,NA,2026-10-31,FALSE
+ACC-P3BFMBK7,Quantum Partners,quantum-partners.com,Manufacturing,5001+,APJ,2025-11-22,FALSE
+ACC-4CSR2FHK,TrueNorth Motors,truenorth-motors.com,Gaming,1-50,EMEA,,FALSE
+ACC-Z9YVGAEF,Aurora Biotech,aurora-biotech.com,Manufacturing,51-200,NA,,FALSE
+ACC-USDAKURS,Orion Motors,orion-motors.com,Telecom,1001-5000,NA,2026-03-09,TRUE
+ACC-TEXRC1RN,Hyperion Pharma,hyperion-pharma.com,Energy,501-1000,NA,,FALSE
+ACC-69X28FPO,ClearView Aerospace,clearview-aerospace.com,Manufacturing,201-500,EMEA,2025-11-29,FALSE
+ACC-S3KYIQKB,Onyx Labs,onyx-labs-1.com,Healthcare,1001-5000,EMEA,,FALSE
+ACC-HG0U9IR6,Vertex Biotech,vertex-biotech-1.com,Energy,5001+,EMEA,2026-10-07,TRUE
+ACC-C18DFLHW,ClearView Hotels,clearview-hotels.com,Finance,201-500,NA,,FALSE
+ACC-RXF3AOXY,BlueRiver Consulting,blueriver-consulting.com,Telecom,201-500,EMEA,2026-06-13,FALSE
+ACC-DD2YPM9W,Sapphire Insurance,sapphire-insurance.com,Media,1001-5000,NA,,FALSE
+ACC-F8VGXYD2,Silverline AI,silverline-ai.com,Telecom,501-1000,EMEA,,FALSE
+ACC-J1FT131N,Horizon Retail,horizon-retail-1.com,Media,1001-5000,NA,2026-11-25,FALSE
+ACC-4Y0OP3RF,Horizon Insurance,horizon-insurance.com,Telecom,201-500,NA,,FALSE
+ACC-N64EMOX9,Orion Biotech,orion-biotech.com,Media,501-1000,NA,,FALSE
+ACC-TLUE88I5,Vertex Logistics,vertex-logistics-1.com,Energy,501-1000,EMEA,2026-09-04,FALSE
+ACC-YA9WDU71,TrueNorth AI,truenorth-ai.com,Healthcare,51-200,LATAM,,FALSE
+ACC-DC9I59MM,Quantum Retail,quantum-retail.com,Manufacturing,501-1000,LATAM,2025-12-01,FALSE
+ACC-MK2XI5PU,Sapphire Logistics,sapphire-logistics.com,Retail,51-200,LATAM,2026-10-05,FALSE
+ACC-4TG3NZ1W,Sapphire Retail,sapphire-retail.com,Healthcare,51-200,NA,,FALSE
+ACC-U2O04PQE,GreenLeaf Analytics,greenleaf-analytics.com,Telecom,201-500,APJ,2026-11-26,FALSE
+ACC-4L247KVS,Hyperion Industries,hyperion-industries-1.com,Manufacturing,201-500,NA,,FALSE
+ACC-W3V88F6R,Oakridge Insurance,oakridge-insurance.com,Education,1001-5000,EMEA,,FALSE
+ACC-X57WWGM7,Orion Consulting,orion-consulting.com,Manufacturing,51-200,EMEA,,FALSE
+ACC-0M46675T,Aurora AI,aurora-ai.com,Media,1001-5000,NA,2026-10-20,FALSE
+ACC-RHP059QG,Horizon Labs,horizon-labs-1.com,Education,201-500,NA,,FALSE
+ACC-4W1N64MS,Orion Consulting,orion-consulting-1.com,Retail,1-50,NA,2026-03-09,FALSE
+ACC-ABBY38E6,Northstar Telecom,northstar-telecom.com,Energy,1-50,NA,2026-01-03,FALSE
+ACC-PHQJJ3CF,PrimeGate Capital,primegate-capital.com,Telecom,51-200,NA,2026-03-03,FALSE
+ACC-0CIUKF0C,Summit Biotech,summit-biotech-1.com,Software,201-500,APJ,2027-02-07,TRUE
+ACC-MK4NMV72,Onyx Partners,onyx-partners-1.com,Education,201-500,NA,,FALSE
+ACC-6TGF11LB,Sequoia Insurance,sequoia-insurance.com,Education,201-500,NA,2026-10-11,FALSE
+ACC-2YECVB52,Summit Industries,summit-industries.com,Media,1-50,NA,2025-11-26,FALSE
+ACC-9A6YQ71X,BlueRiver Analytics,blueriver-analytics-1.com,Software,201-500,EMEA,2026-03-26,FALSE
+ACC-1NNMI28W,Orion Studios,orion-studios.com,Retail,201-500,EMEA,2026-02-25,FALSE
+ACC-XR1ORI8D,Aurora Hotels,aurora-hotels.com,Education,1001-5000,EMEA,,FALSE
+ACC-O2CAPOB7,Horizon Bank,horizon-bank.com,Energy,1001-5000,NA,2026-02-02,FALSE
+ACC-K3CQXKVL,Northstar Studios,northstar-studios.com,Energy,51-200,NA,2027-01-12,FALSE
+ACC-DG48TF1F,Sapphire Ventures,sapphire-ventures.com,Finance,5001+,NA,2026-11-03,FALSE
+ACC-K5KY61NA,BlueRiver Bank,blueriver-bank.com,Finance,51-200,LATAM,2026-10-04,FALSE
+ACC-03SR7WW0,Redwood Systems,redwood-systems.com,Telecom,1001-5000,EMEA,,FALSE
+ACC-H783QL76,Vertex Foods,vertex-foods-2.com,Telecom,51-200,NA,2026-07-31,FALSE
+ACC-AYPZDGTT,TrueNorth Foods,truenorth-foods.com,Retail,1-50,NA,,FALSE
+ACC-0RCHF496,Redwood AI,redwood-ai.com,Manufacturing,201-500,APJ,,FALSE
+ACC-7U1A0LJR,Orion Energy,orion-energy.com,Media,1001-5000,NA,2026-09-03,FALSE
+ACC-9JBJSC89,Aurora Hotels,aurora-hotels-1.com,Manufacturing,1-50,NA,,FALSE
+ACC-BW0X7HUB,Northstar Studios,northstar-studios-1.com,Energy,5001+,NA,2026-10-23,TRUE
+ACC-CM80C501,Crescent Holdings,crescent-holdings.com,Software,201-500,APJ,,FALSE
+ACC-0XVR4791,BlueRiver Foods,blueriver-foods.com,Energy,501-1000,APJ,2026-08-02,FALSE
+ACC-07RJTAD1,TrueNorth Motors,truenorth-motors-1.com,Retail,5001+,LATAM,2026-06-29,FALSE
+ACC-0HNOLE3C,GreenLeaf Bank,greenleaf-bank-1.com,Telecom,51-200,EMEA,,FALSE
+ACC-3LUHGD81,Zenith Motors,zenith-motors.com,Software,501-1000,NA,2026-03-19,FALSE
+ACC-W2TUZBFY,Zenith Retail,zenith-retail.com,Energy,1001-5000,APJ,2027-04-12,TRUE
+ACC-P1BIN7O9,Horizon Consulting,horizon-consulting.com,Manufacturing,501-1000,NA,2027-01-24,FALSE
+ACC-B66JX1KC,Orion Motors,orion-motors-1.com,Healthcare,5001+,NA,2027-03-02,FALSE
+ACC-FQXSNI1E,Summit AI,summit-ai-1.com,Gaming,1001-5000,NA,,TRUE
+ACC-X16R92E5,Sapphire Telecom,sapphire-telecom.com,Software,1001-5000,NA,,FALSE
+ACC-2J2MK6NV,Summit Retail,summit-retail-1.com,Retail,51-200,NA,2026-10-16,TRUE
+ACC-V8854UN3,Sequoia Retail,sequoia-retail.com,Energy,51-200,NA,2026-03-16,FALSE
+ACC-SII1ZHA1,BlueRiver Foods,blueriver-foods-1.com,Education,1001-5000,APJ,2027-03-11,FALSE
+ACC-9NG9GIF8,Redwood Labs,redwood-labs.com,Healthcare,201-500,NA,2026-08-22,FALSE
+ACC-9XN8FS3W,TrueNorth Industries,truenorth-industries-2.com,Energy,501-1000,NA,2026-08-20,FALSE
+ACC-6BX99F9H,TrueNorth Capital,truenorth-capital.com,Retail,501-1000,NA,2026-05-19,FALSE
+ACC-Z4DCT2RK,Horizon Materials,horizon-materials-1.com,Software,501-1000,NA,2026-10-28,FALSE
+ACC-M75PDB83,Zenith Pharma,zenith-pharma.com,Finance,1-50,NA,,FALSE
+ACC-95ADRQDP,Zenith Holdings,zenith-holdings.com,Gaming,1-50,NA,2026-08-18,FALSE
+ACC-Y19CMPOL,Horizon AI,horizon-ai.com,Education,51-200,NA,2027-03-28,TRUE
+ACC-B1EW1CMG,Vertex Retail,vertex-retail-1.com,Media,201-500,EMEA,,FALSE
+ACC-QERUNA0Q,Zenith Biotech,zenith-biotech.com,Education,201-500,NA,,FALSE
+ACC-8BGI3XGH,Oakridge Pharma,oakridge-pharma.com,Retail,1001-5000,APJ,2026-05-14,FALSE
+ACC-AWCI6OR7,Vertex AI,vertex-ai-2.com,Gaming,51-200,NA,,FALSE
+ACC-JD4HW5B0,BlueRiver Materials,blueriver-materials-1.com,Finance,51-200,EMEA,2026-09-03,FALSE
+ACC-G6BMZ4RH,GreenLeaf Aerospace,greenleaf-aerospace.com,Finance,1-50,NA,,FALSE
+ACC-ZFTR26HG,TrueNorth Ventures,truenorth-ventures.com,Healthcare,5001+,NA,,FALSE
+ACC-CKDT6NQV,Sapphire Retail,sapphire-retail-1.com,Finance,1001-5000,NA,,FALSE
+ACC-ETNSMWXS,Ironclad Hotels,ironclad-hotels.com,Energy,1001-5000,EMEA,,FALSE
+ACC-BE3MZ6Z8,ClearView AI,clearview-ai.com,Software,51-200,EMEA,,FALSE
+ACC-EHHCGII3,Northstar Telecom,northstar-telecom-1.com,Media,51-200,EMEA,2026-08-06,FALSE
+ACC-L8MJG1JW,Aurora Bank,aurora-bank.com,Telecom,201-500,NA,,FALSE
+ACC-49R954TG,Northstar Hotels,northstar-hotels.com,Telecom,201-500,NA,,FALSE
+ACC-0MLBUX1F,Summit Insurance,summit-insurance-1.com,Gaming,201-500,NA,2026-08-16,TRUE
+ACC-W7FUMKNQ,Hyperion Ventures,hyperion-ventures.com,Finance,201-500,NA,2026-04-23,FALSE
+ACC-UPXJKCKU,ClearView Hotels,clearview-hotels-1.com,Education,201-500,EMEA,2026-03-17,FALSE
+ACC-JILRCB8E,Ironclad Studios,ironclad-studios.com,Software,501-1000,NA,,TRUE
+ACC-CCPVWC51,Orion Consulting,orion-consulting-2.com,Education,1001-5000,EMEA,2027-03-19,FALSE
+ACC-28YF037P,Quantum Logistics,quantum-logistics.com,Energy,51-200,NA,,FALSE
+ACC-IVGZ86TN,Maple Capital,maple-capital.com,Energy,201-500,EMEA,,FALSE
+ACC-QZ51Z7JT,GreenLeaf Logistics,greenleaf-logistics.com,Healthcare,51-200,NA,,FALSE
+ACC-0CHN09H9,Sapphire Foods,sapphire-foods-2.com,Education,201-500,NA,,FALSE
+ACC-BTJ0Y1RF,Silverline Materials,silverline-materials.com,Media,51-200,NA,,FALSE
+ACC-HTVLP9A1,TrueNorth Biotech,truenorth-biotech.com,Software,501-1000,NA,2025-12-13,FALSE
+ACC-N7HMVT4J,ClearView Ventures,clearview-ventures-1.com,Gaming,201-500,EMEA,,FALSE
+ACC-U7KTV41M,BlueRiver Materials,blueriver-materials-2.com,Energy,51-200,EMEA,2026-01-24,FALSE
+ACC-OLV5GUR8,Ironclad Capital,ironclad-capital.com,Manufacturing,51-200,NA,2026-08-30,FALSE
+ACC-MVX9BCDV,Hyperion Bank,hyperion-bank.com,Software,5001+,NA,2026-05-26,FALSE
+ACC-SJWJRQ3E,Orion Labs,orion-labs.com,Gaming,201-500,NA,2026-07-25,FALSE
+ACC-RZOT7L03,Aurora Holdings,aurora-holdings.com,Telecom,201-500,APJ,2027-03-25,TRUE
+ACC-0DYA3H8I,PrimeGate Pharma,primegate-pharma-1.com,Retail,5001+,NA,2026-06-21,TRUE
+ACC-FTA0HONR,Silverline Biotech,silverline-biotech-1.com,Retail,501-1000,NA,,FALSE
+ACC-ILVWYP71,Lighthouse Hotels,lighthouse-hotels.com,Manufacturing,201-500,NA,,FALSE
+ACC-8RZ1I3XB,Aurora Logistics,aurora-logistics.com,Finance,5001+,EMEA,2026-08-16,FALSE
+ACC-2R1NRC67,Onyx Ventures,onyx-ventures.com,Software,1-50,EMEA,,FALSE
+ACC-3FT8QEWO,Crescent Telecom,crescent-telecom.com,Energy,5001+,APJ,,FALSE
+ACC-05R4E5GK,Redwood AI,redwood-ai-1.com,Manufacturing,501-1000,EMEA,2026-01-14,FALSE
+ACC-IKXNOXHJ,Hyperion Telecom,hyperion-telecom.com,Media,501-1000,NA,2027-03-22,FALSE
+ACC-N1QAPPRW,BlueRiver Mining,blueriver-mining.com,Energy,501-1000,APJ,2026-10-30,FALSE
+ACC-XEQH65KX,Quantum Energy,quantum-energy.com,Gaming,201-500,LATAM,,FALSE
+ACC-TWHZHZ7F,Hyperion Labs,hyperion-labs.com,Media,201-500,APJ,2026-12-15,FALSE
+ACC-JEH42ODR,Northstar Bank,northstar-bank.com,Finance,201-500,LATAM,2025-11-24,FALSE
+ACC-BUH957JU,Maple Systems,maple-systems.com,Education,51-200,NA,2027-03-06,FALSE
+ACC-D2XKWL0C,Sapphire Bank,sapphire-bank.com,Finance,501-1000,NA,2026-08-08,TRUE
+ACC-6BS762DA,Crescent Logistics,crescent-logistics.com,Gaming,1-50,EMEA,2026-12-09,FALSE
+ACC-LW4IRX75,Vertex Analytics,vertex-analytics.com,Healthcare,201-500,NA,2027-01-07,FALSE
+ACC-5X2L7FUB,ClearView Mining,clearview-mining.com,Gaming,201-500,APJ,,FALSE
+ACC-S7PPYV4J,Northstar Foods,northstar-foods.com,Energy,201-500,NA,2027-03-20,FALSE
+ACC-UFO0K66R,Quantum Analytics,quantum-analytics.com,Finance,501-1000,EMEA,,FALSE
+ACC-00HHAS0U,Zenith Pharma,zenith-pharma-1.com,Telecom,501-1000,EMEA,,FALSE
+ACC-KRSQ9XH8,Orion Studios,orion-studios-1.com,Education,501-1000,NA,2026-02-09,FALSE
+ACC-3FGRWW8U,Everest Bank,everest-bank.com,Energy,51-200,NA,2026-10-18,FALSE
+ACC-0CK0CSQV,Onyx Industries,onyx-industries.com,Gaming,1-50,NA,2025-11-29,FALSE
+ACC-4HXOQ9GB,Orion Ventures,orion-ventures.com,Media,1001-5000,NA,,FALSE
+ACC-F51BI9A9,Vertex Studios,vertex-studios.com,Software,501-1000,NA,,TRUE
+ACC-2CTZUOP9,ClearView Systems,clearview-systems.com,Education,501-1000,EMEA,2026-04-29,FALSE
+ACC-4E3BYTHJ,Lighthouse Capital,lighthouse-capital.com,Gaming,501-1000,APJ,,FALSE
+ACC-IMCN1XXE,GreenLeaf Materials,greenleaf-materials-1.com,Software,51-200,NA,2027-04-08,FALSE
+ACC-6KH6BQD0,Zenith Logistics,zenith-logistics.com,Media,501-1000,NA,,FALSE
+ACC-DX5M9Q0C,Orion Biotech,orion-biotech-1.com,Media,201-500,EMEA,2026-03-12,TRUE
+ACC-9NPQUKHN,Oakridge Capital,oakridge-capital-2.com,Retail,51-200,NA,,FALSE
+ACC-NVK0HD82,Quantum Logistics,quantum-logistics-1.com,Energy,1001-5000,APJ,2026-12-20,FALSE
+ACC-Q2ABH01C,Summit Studios,summit-studios-1.com,Telecom,51-200,NA,2026-03-18,FALSE
+ACC-7NQAHZDR,Zenith Pharma,zenith-pharma-2.com,Software,201-500,NA,2026-09-11,FALSE
+ACC-Z0YRMF2C,Summit Retail,summit-retail-2.com,Telecom,201-500,EMEA,2026-10-23,FALSE
+ACC-DHQKPF2D,Silverline Labs,silverline-labs.com,Media,501-1000,EMEA,,FALSE
+ACC-9EJ0PWOJ,BlueRiver Mining,blueriver-mining-1.com,Finance,51-200,EMEA,,TRUE
+ACC-BFJPDX7K,ClearView Foods,clearview-foods.com,Telecom,501-1000,NA,2026-03-27,FALSE
+ACC-QI9PJN29,Ironclad Motors,ironclad-motors.com,Energy,1-50,LATAM,,FALSE
+ACC-AGXREZEZ,Hyperion AI,hyperion-ai-1.com,Finance,501-1000,NA,2026-01-02,FALSE
+ACC-I4E88RVM,Orion Industries,orion-industries-1.com,Telecom,1-50,EMEA,,TRUE
+ACC-J96XS145,Sapphire Bank,sapphire-bank-1.com,Gaming,501-1000,NA,,TRUE
+ACC-280YDCA2,Ironclad Systems,ironclad-systems.com,Media,51-200,NA,,TRUE
+ACC-5XZRUFMA,GreenLeaf Materials,greenleaf-materials-2.com,Manufacturing,501-1000,APJ,,FALSE
+ACC-VNN30IPV,Northstar Mining,northstar-mining.com,Healthcare,201-500,NA,,FALSE
+ACC-JHRKXUR1,Oakridge Ventures,oakridge-ventures.com,Healthcare,5001+,NA,,FALSE
+ACC-JIVFC1V5,Summit Insurance,summit-insurance-2.com,Manufacturing,501-1000,NA,2026-08-24,FALSE
+ACC-ZYWXK0KX,Silverline Systems,silverline-systems.com,Media,201-500,NA,2026-01-08,FALSE
+ACC-820RFY9Q,Sequoia Pharma,sequoia-pharma.com,Finance,201-500,EMEA,,FALSE
+ACC-JRCQAC35,Quantum Holdings,quantum-holdings.com,Retail,1-50,NA,,TRUE
+ACC-598Y5XYH,Sequoia Energy,sequoia-energy.com,Education,1001-5000,NA,2026-07-17,FALSE
+ACC-1HZ5LS6M,BlueRiver Hotels,blueriver-hotels.com,Education,1-50,NA,2026-12-16,FALSE
+ACC-RJ6EU6ZH,Horizon AI,horizon-ai-1.com,Retail,5001+,NA,2026-02-20,FALSE
+ACC-N92JH0LI,Redwood Bank,redwood-bank.com,Gaming,1-50,EMEA,,TRUE
+ACC-ILGUS45O,Everest Biotech,everest-biotech-1.com,Telecom,201-500,EMEA,2026-02-11,TRUE
+ACC-7DH4I0U7,BlueRiver Biotech,blueriver-biotech.com,Software,201-500,NA,2026-12-18,FALSE
+ACC-VVHRJX2E,Sequoia Analytics,sequoia-analytics.com,Gaming,1-50,NA,2026-06-25,FALSE
+ACC-8ESRL0HK,Aurora Pharma,aurora-pharma.com,Manufacturing,201-500,NA,2026-02-08,FALSE
+ACC-8RIY8JXJ,Everest Ventures,everest-ventures.com,Education,1-50,APJ,,FALSE
+ACC-JL00FQ3U,Ironclad Energy,ironclad-energy.com,Retail,501-1000,NA,2027-02-04,FALSE
+ACC-8HMPFHJN,Silverline Systems,silverline-systems-1.com,Education,501-1000,APJ,2026-08-14,TRUE
+ACC-AN1RSLVG,Oakridge AI,oakridge-ai.com,Energy,1001-5000,NA,2027-02-22,FALSE
+ACC-QZ4E07QO,Zenith Materials,zenith-materials.com,Finance,5001+,NA,,FALSE
+ACC-CX39U62K,Onyx Insurance,onyx-insurance.com,Manufacturing,501-1000,APJ,2026-03-21,FALSE
+ACC-BSUHF6L6,Horizon Consulting,horizon-consulting-1.com,Retail,51-200,NA,,TRUE
+ACC-0HC8CNVZ,BlueRiver Capital,blueriver-capital-1.com,Gaming,1001-5000,NA,,FALSE
+ACC-19XJWMVL,Horizon Labs,horizon-labs-2.com,Telecom,201-500,EMEA,2026-01-03,FALSE
+ACC-77YO5SUE,Quantum Biotech,quantum-biotech-1.com,Manufacturing,5001+,NA,2026-02-04,FALSE
+ACC-DCSF7QZA,BlueRiver Biotech,blueriver-biotech-1.com,Healthcare,5001+,NA,,FALSE
+ACC-A77JLKKQ,Vertex Capital,vertex-capital.com,Manufacturing,201-500,NA,,FALSE
+ACC-YGGRHSRQ,ClearView AI,clearview-ai-1.com,Education,5001+,NA,,TRUE
+ACC-MUMLUGZI,Summit Foods,summit-foods.com,Retail,1-50,NA,2026-09-17,TRUE
+ACC-KMQPAO0F,Ironclad Bank,ironclad-bank.com,Software,5001+,EMEA,2026-04-02,FALSE
+ACC-9C326MFA,BlueRiver AI,blueriver-ai.com,Telecom,201-500,NA,,FALSE
+ACC-WJGKMF6U,Lighthouse Energy,lighthouse-energy.com,Healthcare,201-500,NA,2027-02-03,FALSE
+ACC-48QSGMB5,Everest Pharma,everest-pharma.com,Media,51-200,EMEA,2026-12-26,FALSE
+ACC-VHCA5EWS,Horizon Holdings,horizon-holdings.com,Gaming,1-50,APJ,,FALSE
+ACC-J4X83UNC,Lighthouse Motors,lighthouse-motors.com,Education,201-500,NA,,FALSE
+ACC-LBZXZIAP,Zenith Labs,zenith-labs.com,Finance,501-1000,NA,,FALSE
+ACC-5K2865JF,Aurora Foods,aurora-foods.com,Telecom,201-500,NA,,FALSE
+ACC-DVR3CRMD,GreenLeaf Materials,greenleaf-materials-3.com,Energy,51-200,NA,,FALSE
+ACC-OFRWVC0Q,Redwood Retail,redwood-retail.com,Energy,51-200,NA,,FALSE
+ACC-A4ZOIXO3,Hyperion Ventures,hyperion-ventures-1.com,Retail,201-500,NA,2026-11-09,FALSE
+ACC-DK9RW8XF,Onyx Retail,onyx-retail-1.com,Software,501-1000,NA,2026-11-14,FALSE
+ACC-51EVJEKT,Redwood Foods,redwood-foods.com,Retail,501-1000,EMEA,2026-08-01,FALSE
+ACC-K6CZRS5M,GreenLeaf Systems,greenleaf-systems.com,Manufacturing,201-500,NA,2026-10-25,FALSE
+ACC-QMVLOL5J,Aurora Hotels,aurora-hotels-2.com,Healthcare,51-200,EMEA,,FALSE
+ACC-GNHZI55S,Maple Telecom,maple-telecom.com,Manufacturing,51-200,EMEA,,FALSE
+ACC-GWPJMKRT,BlueRiver Capital,blueriver-capital-2.com,Telecom,1-50,NA,,FALSE
+ACC-SO0BIM8P,Horizon Partners,horizon-partners-1.com,Software,201-500,EMEA,,FALSE
+ACC-KGC7U60A,Orion Biotech,orion-biotech-2.com,Energy,1001-5000,NA,,FALSE
+ACC-XIROON11,Summit AI,summit-ai-2.com,Software,5001+,NA,2026-02-10,FALSE
+ACC-4SM409F2,TrueNorth Hotels,truenorth-hotels.com,Gaming,501-1000,LATAM,,FALSE
+ACC-TXP31OJW,Aurora Telecom,aurora-telecom.com,Finance,501-1000,NA,2027-04-04,FALSE
+ACC-B0HOLCUK,Quantum Partners,quantum-partners-1.com,Telecom,51-200,APJ,,FALSE
+ACC-HM1KGDJF,Sapphire Systems,sapphire-systems-1.com,Energy,201-500,LATAM,,FALSE
+ACC-OEZN3V3N,Ironclad Partners,ironclad-partners.com,Software,501-1000,APJ,2026-06-11,TRUE
+ACC-7XX1DXNI,Aurora Hotels,aurora-hotels-3.com,Telecom,51-200,APJ,,FALSE
+ACC-5FRLE6G9,Sapphire Biotech,sapphire-biotech-1.com,Telecom,51-200,NA,2027-01-13,TRUE
+ACC-C158FOH6,Lighthouse Capital,lighthouse-capital-1.com,Energy,501-1000,APJ,2026-05-24,FALSE
+ACC-CP4W855A,Zenith Mining,zenith-mining.com,Retail,201-500,NA,2026-03-03,FALSE
+ACC-RN4KBAS9,Summit Retail,summit-retail-3.com,Education,51-200,EMEA,2026-05-16,FALSE
+ACC-4K98VUNX,Hyperion Consulting,hyperion-consulting-1.com,Retail,51-200,APJ,2026-11-08,FALSE
+ACC-OQ1KMG59,TrueNorth Hotels,truenorth-hotels-1.com,Healthcare,51-200,NA,,FALSE
+ACC-63Z51NK2,Horizon Biotech,horizon-biotech.com,Media,51-200,APJ,,FALSE
+ACC-4X6A58NC,TrueNorth Aerospace,truenorth-aerospace.com,Healthcare,1-50,NA,,FALSE
+ACC-TDQJECUV,Hyperion Studios,hyperion-studios-1.com,Software,201-500,NA,,FALSE
+ACC-Z8957E2U,ClearView Ventures,clearview-ventures-2.com,Manufacturing,501-1000,NA,,FALSE
+ACC-QOI0G5YV,Horizon Logistics,horizon-logistics.com,Telecom,5001+,NA,,FALSE
+ACC-4LGODWL3,BlueRiver Mining,blueriver-mining-2.com,Education,51-200,NA,2027-01-06,FALSE
+ACC-QZIFO006,Sapphire Holdings,sapphire-holdings.com,Healthcare,1001-5000,EMEA,2026-01-25,FALSE
+ACC-FN8IFKYP,Quantum Capital,quantum-capital.com,Software,5001+,NA,,FALSE
+ACC-GJFYHD27,Horizon Analytics,horizon-analytics.com,Gaming,201-500,NA,2026-02-19,FALSE
+ACC-C3RLSOST,Sequoia Mining,sequoia-mining-1.com,Retail,201-500,EMEA,2026-03-04,TRUE
+ACC-EYW46NOO,Onyx Industries,onyx-industries-1.com,Healthcare,201-500,NA,,FALSE
+ACC-CDO9Z9DM,Zenith Consulting,zenith-consulting.com,Telecom,501-1000,NA,,FALSE
+ACC-9NVEVCV9,Everest Systems,everest-systems.com,Media,5001+,EMEA,2026-08-26,FALSE
+ACC-140JV874,BlueRiver Systems,blueriver-systems.com,Energy,51-200,APJ,2026-01-16,FALSE
+ACC-JX1HCY9N,Summit Industries,summit-industries-1.com,Energy,1001-5000,NA,,FALSE
+ACC-1X1B9W0K,Summit Ventures,summit-ventures.com,Energy,201-500,NA,2026-09-26,TRUE
+ACC-2FPFL3AA,Everest Industries,everest-industries-1.com,Retail,1-50,NA,,TRUE
+ACC-R6IOVZ3D,Vertex Retail,vertex-retail-2.com,Healthcare,1001-5000,NA,,FALSE
+ACC-GV29JLTC,Hyperion Motors,hyperion-motors.com,Finance,501-1000,NA,2026-02-27,FALSE
+ACC-0HET128C,Everest Logistics,everest-logistics.com,Energy,1-50,NA,2027-01-20,FALSE
+ACC-PRY076ED,ClearView AI,clearview-ai-2.com,Telecom,501-1000,APJ,,FALSE
+ACC-CXYD4T70,Ironclad Materials,ironclad-materials.com,Education,501-1000,APJ,,FALSE
+ACC-RG1QBQAG,BlueRiver Aerospace,blueriver-aerospace.com,Energy,201-500,NA,2027-02-22,FALSE
+ACC-JPVVLCV8,Quantum Systems,quantum-systems.com,Healthcare,51-200,EMEA,,TRUE
+ACC-6JVJSZ82,Everest Aerospace,everest-aerospace.com,Finance,201-500,NA,2027-02-19,FALSE
+ACC-T9Q2TCZI,Hyperion Analytics,hyperion-analytics.com,Healthcare,201-500,NA,,FALSE
+ACC-RI3P6HZ5,Redwood Telecom,redwood-telecom.com,Finance,501-1000,NA,,FALSE
+ACC-K0MDIOTE,Sequoia Bank,sequoia-bank.com,Telecom,51-200,EMEA,,FALSE
+ACC-3MYIFFKU,Orion Aerospace,orion-aerospace.com,Energy,501-1000,NA,2026-09-11,FALSE
+ACC-37E4VRWI,Ironclad Systems,ironclad-systems-1.com,Energy,1001-5000,NA,,FALSE
+ACC-8HZ2EEJU,Sapphire Energy,sapphire-energy.com,Finance,501-1000,APJ,,FALSE
+ACC-L8214CL0,Lighthouse Materials,lighthouse-materials.com,Software,1-50,NA,2027-02-25,FALSE
+ACC-D4D2XGSG,Everest Bank,everest-bank-1.com,Media,201-500,APJ,2026-02-07,FALSE
+ACC-JJC6JHSN,Silverline Foods,silverline-foods.com,Education,201-500,NA,2026-06-07,FALSE
+ACC-0DE17YZR,Ironclad Motors,ironclad-motors-1.com,Media,201-500,APJ,2026-05-12,FALSE
+ACC-NAL7Z3RR,Everest Materials,everest-materials.com,Finance,201-500,NA,,FALSE
+ACC-CWB7ZP9E,Oakridge Aerospace,oakridge-aerospace.com,Finance,1001-5000,NA,2026-10-08,FALSE
+ACC-H7F04MHH,Redwood Consulting,redwood-consulting-1.com,Gaming,51-200,EMEA,2026-10-22,FALSE
+ACC-OGOZUFJM,TrueNorth Holdings,truenorth-holdings.com,Healthcare,501-1000,NA,,FALSE
+ACC-NMCT9VAA,Northstar Biotech,northstar-biotech.com,Media,501-1000,NA,,FALSE
+ACC-YP2HIRIQ,Maple Logistics,maple-logistics.com,Finance,1-50,APJ,,FALSE
+ACC-1AHFYSXX,TrueNorth Energy,truenorth-energy-1.com,Software,1001-5000,APJ,,FALSE
+ACC-7DF6IXPZ,Sequoia Telecom,sequoia-telecom.com,Finance,51-200,APJ,2025-12-12,FALSE
+ACC-SNM7YPGQ,ClearView Energy,clearview-energy.com,Media,51-200,NA,2026-06-13,FALSE
+ACC-N25X7V7T,Hyperion Logistics,hyperion-logistics-1.com,Software,201-500,NA,,FALSE
+ACC-0P37RX0L,Lighthouse Materials,lighthouse-materials-1.com,Manufacturing,5001+,NA,2026-04-12,FALSE
+ACC-RYKGFJUA,Orion Hotels,orion-hotels.com,Manufacturing,201-500,NA,,FALSE
+ACC-KZ73Q2HZ,Northstar Labs,northstar-labs.com,Retail,1-50,NA,,FALSE
+ACC-FTWCPZ7I,Maple Capital,maple-capital-1.com,Media,5001+,EMEA,,TRUE
+ACC-LF7HD1XK,Sequoia Foods,sequoia-foods.com,Media,51-200,APJ,2026-07-19,FALSE
+ACC-VHJVQUYF,Oakridge Hotels,oakridge-hotels.com,Software,1001-5000,NA,,FALSE
+ACC-KGQ95KXQ,Onyx Industries,onyx-industries-2.com,Education,51-200,NA,2026-10-01,FALSE
+ACC-X0R748EI,PrimeGate Capital,primegate-capital-1.com,Healthcare,5001+,EMEA,2026-04-14,FALSE
+ACC-5QP7FYBM,Quantum Studios,quantum-studios.com,Gaming,501-1000,NA,2026-02-16,FALSE
+ACC-CVCU449R,Ironclad Hotels,ironclad-hotels-1.com,Education,501-1000,APJ,,FALSE
+ACC-K3BW719F,Lighthouse Labs,lighthouse-labs.com,Telecom,5001+,NA,2027-03-14,TRUE
+ACC-9G4RQORN,Sapphire Labs,sapphire-labs-1.com,Education,51-200,NA,,FALSE
+ACC-GQXQWVTX,GreenLeaf Labs,greenleaf-labs.com,Finance,201-500,NA,,FALSE
+ACC-FEGLDWNY,Silverline Partners,silverline-partners-1.com,Energy,501-1000,EMEA,,FALSE
+ACC-1J69W2KH,Redwood Labs,redwood-labs-1.com,Media,501-1000,NA,,TRUE
+ACC-75JH9LP7,Crescent Aerospace,crescent-aerospace.com,Media,1001-5000,EMEA,,FALSE
+ACC-PM75NVWG,Aurora Ventures,aurora-ventures-1.com,Telecom,51-200,EMEA,,FALSE
+ACC-GF166OMA,Horizon Energy,horizon-energy.com,Retail,51-200,EMEA,,FALSE
+ACC-P2W1AJSI,Crescent Labs,crescent-labs.com,Education,1001-5000,LATAM,,FALSE
+ACC-OULHP4R9,ClearView Aerospace,clearview-aerospace-1.com,Manufacturing,1-50,NA,,TRUE
+ACC-I7W153G0,ClearView Insurance,clearview-insurance-1.com,Finance,201-500,NA,2027-02-02,FALSE
+ACC-AKY9NLZ1,Sapphire Biotech,sapphire-biotech-2.com,Education,1001-5000,APJ,2026-09-11,FALSE
+ACC-IBIX9UI6,Aurora Studios,aurora-studios-1.com,Healthcare,51-200,EMEA,,FALSE
+ACC-D2F6OET6,Everest Ventures,everest-ventures-1.com,Gaming,201-500,EMEA,2026-05-02,FALSE
+ACC-CPCQOJJS,Maple Telecom,maple-telecom-1.com,Healthcare,5001+,LATAM,2026-09-21,FALSE
+ACC-TBMXRU3K,Redwood Foods,redwood-foods-1.com,Software,5001+,LATAM,2026-08-11,FALSE
+ACC-FL6E8L48,Horizon Foods,horizon-foods.com,Retail,1-50,NA,2026-08-03,FALSE
+ACC-NLMVR85F,Sequoia Logistics,sequoia-logistics-1.com,Manufacturing,51-200,NA,,FALSE
+ACC-9CR5SETA,Quantum Pharma,quantum-pharma.com,Software,1-50,APJ,2026-08-23,FALSE
+ACC-DYEZLIMN,TrueNorth Foods,truenorth-foods-1.com,Telecom,5001+,NA,,FALSE
+ACC-8XR6I467,Maple Partners,maple-partners.com,Retail,201-500,NA,2027-04-12,TRUE
+ACC-0B0PBCHB,Sapphire Systems,sapphire-systems-2.com,Education,51-200,LATAM,,TRUE
+ACC-G31VH6SO,Lighthouse Ventures,lighthouse-ventures.com,Energy,1001-5000,EMEA,2026-07-09,FALSE
+ACC-MIVXF1TR,Sequoia Foods,sequoia-foods-1.com,Retail,5001+,APJ,2026-04-19,FALSE
+ACC-HIZ0CX7J,Redwood Bank,redwood-bank-1.com,Telecom,5001+,NA,2025-12-19,FALSE
+ACC-3F7KX8IR,Quantum Partners,quantum-partners-2.com,Media,201-500,APJ,,FALSE
+ACC-E1F8RPOH,GreenLeaf Retail,greenleaf-retail-1.com,Energy,1-50,NA,2026-10-29,FALSE
+ACC-45B0QJNC,Crescent Industries,crescent-industries.com,Finance,201-500,EMEA,,FALSE
+ACC-6K4JJARU,Redwood Motors,redwood-motors-1.com,Energy,201-500,NA,,FALSE
+ACC-P0SJBOYX,Silverline Studios,silverline-studios.com,Manufacturing,501-1000,NA,,FALSE
+ACC-NBXWJRG7,Northstar Retail,northstar-retail.com,Manufacturing,5001+,LATAM,,FALSE
+ACC-M36YSY95,Lighthouse Consulting,lighthouse-consulting-1.com,Retail,1-50,NA,,FALSE
+ACC-6VJACYGX,Aurora Aerospace,aurora-aerospace.com,Retail,201-500,NA,,FALSE
+ACC-DOLIBS2Z,Sequoia Consulting,sequoia-consulting.com,Healthcare,5001+,NA,,FALSE
+ACC-BLLAJNHD,Vertex Foods,vertex-foods-3.com,Energy,501-1000,APJ,,FALSE
+ACC-XHCR6LYI,Horizon Industries,horizon-industries.com,Finance,51-200,NA,2026-12-21,FALSE
+ACC-I6NPM82K,Crescent Materials,crescent-materials.com,Education,51-200,NA,2026-11-11,FALSE
+ACC-6Q8E8IRE,Summit Industries,summit-industries-2.com,Software,1001-5000,NA,,FALSE
+ACC-HLH9G3SR,Silverline Telecom,silverline-telecom.com,Gaming,5001+,NA,2027-04-10,TRUE
+ACC-15G6VFBS,Sapphire Industries,sapphire-industries.com,Telecom,1001-5000,NA,2026-01-25,FALSE
+ACC-KVKIX0PF,Zenith Industries,zenith-industries.com,Retail,501-1000,NA,,FALSE
+ACC-DG4QR3BM,BlueRiver Telecom,blueriver-telecom-1.com,Energy,201-500,NA,2027-04-01,FALSE
+ACC-UQCG4IJB,Everest Labs,everest-labs-1.com,Finance,501-1000,NA,,TRUE
+ACC-VIJRL98Y,Ironclad Systems,ironclad-systems-2.com,Education,1001-5000,NA,2026-12-19,FALSE
+ACC-9ZNTU1BK,Summit Pharma,summit-pharma-1.com,Software,1-50,APJ,,FALSE
+ACC-M7TZHVQS,Everest Industries,everest-industries-2.com,Energy,1-50,NA,,FALSE
+ACC-4DI3EZX2,Northstar Telecom,northstar-telecom-2.com,Gaming,51-200,NA,,FALSE
+ACC-QZZO0X9O,Quantum Materials,quantum-materials.com,Energy,501-1000,EMEA,,FALSE
+ACC-M88GE42M,Maple Aerospace,maple-aerospace.com,Software,51-200,NA,,FALSE
+ACC-FIGPMKSR,Maple Labs,maple-labs.com,Healthcare,201-500,NA,,FALSE
+ACC-27UJB7BH,Northstar Foods,northstar-foods-1.com,Software,5001+,EMEA,,FALSE
+ACC-63USBKMG,PrimeGate Studios,primegate-studios.com,Education,1001-5000,NA,,FALSE
+ACC-YQSB0NY7,BlueRiver Materials,blueriver-materials-3.com,Gaming,51-200,EMEA,2026-01-16,FALSE
+ACC-XT4QHLHY,Maple Labs,maple-labs-1.com,Software,5001+,NA,,FALSE
+ACC-13M2C57D,Redwood Pharma,redwood-pharma-2.com,Finance,51-200,EMEA,,FALSE
+ACC-FAYIYM5P,Summit Studios,summit-studios-2.com,Software,501-1000,EMEA,,FALSE
+ACC-J0780B7L,PrimeGate Consulting,primegate-consulting.com,Manufacturing,201-500,NA,2026-05-07,FALSE
+ACC-GOC4BDBO,Aurora Biotech,aurora-biotech-1.com,Healthcare,51-200,EMEA,2026-05-08,FALSE
+ACC-0NQ15FNJ,Maple Mining,maple-mining.com,Media,1001-5000,NA,2026-01-12,FALSE
+ACC-35ACOD1R,GreenLeaf Logistics,greenleaf-logistics-1.com,Healthcare,501-1000,NA,,TRUE
+ACC-1Z7ZU00H,Orion Analytics,orion-analytics-1.com,Finance,201-500,NA,,FALSE
+ACC-H4K3BSU7,Aurora Insurance,aurora-insurance.com,Finance,1-50,NA,2026-03-02,FALSE
+ACC-YYF4EVBE,Everest Aerospace,everest-aerospace-1.com,Healthcare,51-200,EMEA,2025-12-21,FALSE
+ACC-CRU91B2E,GreenLeaf AI,greenleaf-ai.com,Gaming,51-200,APJ,2026-05-09,FALSE
+ACC-F2UPAMHI,Vertex Hotels,vertex-hotels.com,Telecom,501-1000,APJ,,FALSE
+ACC-8E6BMWGS,Zenith Logistics,zenith-logistics-1.com,Telecom,1-50,LATAM,,FALSE
+ACC-EBCWOKCF,TrueNorth Aerospace,truenorth-aerospace-1.com,Education,501-1000,EMEA,2026-06-28,FALSE
+ACC-3K3J8P8T,Crescent Materials,crescent-materials-1.com,Retail,501-1000,EMEA,,FALSE
+ACC-1SWFBQA1,Hyperion Energy,hyperion-energy.com,Gaming,5001+,NA,,FALSE
+ACC-2Q6Y8SBC,PrimeGate Mining,primegate-mining.com,Education,501-1000,EMEA,,FALSE
+ACC-KTDV6G14,BlueRiver Holdings,blueriver-holdings.com,Healthcare,51-200,NA,,TRUE
+ACC-1VVXZ92O,Redwood Materials,redwood-materials.com,Energy,51-200,NA,,FALSE
+ACC-MY1OH38X,TrueNorth Industries,truenorth-industries-3.com,Finance,1-50,EMEA,,FALSE
+ACC-LADCU0CZ,Maple AI,maple-ai.com,Retail,51-200,NA,2026-05-01,FALSE
+ACC-8G57FP83,Silverline Holdings,silverline-holdings.com,Energy,501-1000,EMEA,,FALSE
+ACC-MG2I2GYW,Onyx Energy,onyx-energy-2.com,Energy,501-1000,NA,2026-09-21,FALSE
+ACC-VMVACGHM,Oakridge Bank,oakridge-bank.com,Retail,51-200,EMEA,2025-12-22,FALSE
+ACC-BOWGLKC3,Ironclad Studios,ironclad-studios-1.com,Manufacturing,501-1000,NA,2027-03-09,FALSE
+ACC-Z9T4492B,Maple Ventures,maple-ventures.com,Telecom,1001-5000,NA,2026-01-18,FALSE
+ACC-K1AA8JZC,Sapphire Partners,sapphire-partners.com,Education,1001-5000,EMEA,,FALSE
+ACC-QBMOUNQH,Oakridge Insurance,oakridge-insurance-1.com,Energy,201-500,LATAM,,FALSE
+ACC-WON8WRP1,Crescent Bank,crescent-bank.com,Gaming,5001+,NA,,FALSE
+ACC-7LEL3L0R,Ironclad Systems,ironclad-systems-3.com,Finance,51-200,EMEA,2027-04-08,FALSE
+ACC-DGH9EOB9,Maple Analytics,maple-analytics-1.com,Education,1001-5000,EMEA,,FALSE
+ACC-W5ZMLXKL,Maple Consulting,maple-consulting.com,Software,201-500,NA,,FALSE
+ACC-5ZRW7JAA,Onyx Partners,onyx-partners-2.com,Media,5001+,EMEA,,FALSE
+ACC-0OWNDHMN,GreenLeaf Systems,greenleaf-systems-1.com,Retail,201-500,APJ,2026-12-19,FALSE
+ACC-41GWYEEY,Horizon Analytics,horizon-analytics-1.com,Finance,1001-5000,NA,,FALSE
+ACC-Y28QCM6T,Horizon Consulting,horizon-consulting-2.com,Energy,51-200,NA,,FALSE
+ACC-M6F1KCER,PrimeGate Analytics,primegate-analytics.com,Education,1001-5000,NA,,FALSE
+ACC-I1XCWCPP,Zenith Ventures,zenith-ventures.com,Media,1-50,APJ,2026-12-29,FALSE
+ACC-XT8ZM4F1,Orion Holdings,orion-holdings.com,Gaming,51-200,NA,,FALSE
+ACC-TN78MZ1I,Vertex Hotels,vertex-hotels-1.com,Software,1-50,EMEA,2026-02-09,FALSE
+ACC-YOP9UP23,BlueRiver Motors,blueriver-motors.com,Media,51-200,EMEA,2026-01-17,FALSE
+ACC-55XBU4OC,Redwood Industries,redwood-industries.com,Software,201-500,EMEA,2026-10-05,FALSE
+ACC-0EUMGGTD,ClearView Ventures,clearview-ventures-3.com,Media,501-1000,NA,2026-10-05,FALSE
+ACC-UE3Q9COV,Horizon Holdings,horizon-holdings-1.com,Media,1-50,EMEA,2026-11-17,FALSE
+ACC-9NA4N74P,Aurora Retail,aurora-retail.com,Manufacturing,201-500,NA,,FALSE
+ACC-2CPA026F,Summit Pharma,summit-pharma-2.com,Gaming,201-500,NA,2026-04-19,TRUE
+ACC-JEVEFPUL,Onyx Foods,onyx-foods.com,Telecom,201-500,NA,2026-07-19,FALSE
+ACC-HUE2LTB1,Silverline Capital,silverline-capital.com,Software,501-1000,NA,2027-03-26,TRUE
+ACC-E5J4SI2B,GreenLeaf Foods,greenleaf-foods.com,Education,201-500,APJ,,TRUE
+ACC-AEP4MC2R,Onyx Retail,onyx-retail-2.com,Telecom,1-50,APJ,,FALSE
+ACC-4W8B46ZT,Ironclad Analytics,ironclad-analytics.com,Retail,501-1000,EMEA,2026-06-10,FALSE
+ACC-ITSPUA6R,Everest Motors,everest-motors.com,Education,201-500,NA,,FALSE
+ACC-25F0FHD6,Vertex Analytics,vertex-analytics-1.com,Energy,501-1000,NA,2027-04-05,FALSE
+ACC-5QJ0LVSL,Ironclad Energy,ironclad-energy-1.com,Energy,51-200,APJ,,FALSE
+ACC-6722C926,Sequoia Systems,sequoia-systems.com,Software,201-500,NA,2026-05-30,FALSE
+ACC-MLVMZEH1,Sequoia Foods,sequoia-foods-2.com,Finance,201-500,NA,,FALSE
+ACC-2VCXULWL,Zenith Hotels,zenith-hotels.com,Energy,51-200,NA,,FALSE
+ACC-Q0S0BPEA,Everest Bank,everest-bank-2.com,Retail,201-500,NA,,FALSE
+ACC-8112O8L7,Zenith Motors,zenith-motors-1.com,Software,51-200,NA,2026-06-15,FALSE
+ACC-VPEACCMM,Hyperion Retail,hyperion-retail.com,Telecom,201-500,NA,,FALSE
+ACC-XKSN7EWF,Horizon Systems,horizon-systems.com,Retail,1-50,APJ,,FALSE
+ACC-0ASJ3VAU,Orion Aerospace,orion-aerospace-1.com,Software,5001+,NA,2027-02-10,FALSE
+ACC-4KGG5J0F,Orion Ventures,orion-ventures-1.com,Manufacturing,51-200,EMEA,2027-02-22,FALSE
+ACC-RYK5ACEF,Aurora Consulting,aurora-consulting.com,Manufacturing,1001-5000,APJ,2025-12-17,FALSE
+ACC-9CWZRK2B,Oakridge Foods,oakridge-foods.com,Healthcare,501-1000,NA,2026-09-01,FALSE
+ACC-52W4H8SY,Hyperion Studios,hyperion-studios-2.com,Telecom,51-200,NA,2026-03-28,FALSE
+ACC-I5HPGMHV,Everest Energy,everest-energy.com,Media,501-1000,NA,,TRUE
+ACC-F8IULGL9,Ironclad Mining,ironclad-mining.com,Media,1-50,NA,2026-04-18,FALSE
+ACC-H92KC98K,Maple Industries,maple-industries.com,Finance,501-1000,NA,2026-10-13,FALSE
+ACC-IQVUQZKX,Vertex Materials,vertex-materials.com,Retail,1-50,NA,,FALSE
+ACC-3UUK9O0H,Ironclad Retail,ironclad-retail.com,Gaming,501-1000,APJ,2026-07-11,FALSE
+ACC-HO202V21,Orion AI,orion-ai.com,Energy,51-200,NA,,FALSE
+ACC-BMAZ5ZMQ,Zenith Ventures,zenith-ventures-1.com,Finance,5001+,EMEA,2027-04-09,FALSE
+ACC-BOOK5E7F,Redwood Ventures,redwood-ventures.com,Software,501-1000,EMEA,,FALSE
+ACC-1THB9J0Y,Lighthouse Ventures,lighthouse-ventures-1.com,Gaming,1001-5000,EMEA,2025-12-01,FALSE
+ACC-XLLTH2P5,Maple Systems,maple-systems-1.com,Manufacturing,1-50,APJ,2026-10-23,FALSE
+ACC-AR4MZNYG,PrimeGate Studios,primegate-studios-1.com,Finance,201-500,LATAM,,FALSE
+ACC-J995QPHL,Horizon Capital,horizon-capital.com,Finance,51-200,NA,,FALSE
+ACC-LML9QB5D,Onyx Logistics,onyx-logistics.com,Telecom,201-500,NA,2026-05-21,TRUE
+ACC-7KSBKSUE,Sequoia Logistics,sequoia-logistics-2.com,Telecom,201-500,NA,2026-08-18,FALSE
+ACC-4OCUNSM3,Redwood Partners,redwood-partners.com,Healthcare,51-200,APJ,2026-04-28,FALSE
+ACC-GI907KOC,Lighthouse Biotech,lighthouse-biotech.com,Finance,501-1000,APJ,2027-04-08,TRUE
+ACC-RCOJRSWT,Maple AI,maple-ai-1.com,Software,501-1000,NA,,FALSE
+ACC-6UPGR8F0,Onyx Retail,onyx-retail-3.com,Energy,1001-5000,NA,,FALSE
+ACC-Y6KH1Q65,BlueRiver Holdings,blueriver-holdings-1.com,Retail,5001+,NA,,FALSE
+ACC-ZML4N5HL,Summit Aerospace,summit-aerospace.com,Education,1001-5000,EMEA,2026-11-14,FALSE
+ACC-4PT2WI89,Everest Partners,everest-partners.com,Telecom,1001-5000,LATAM,,FALSE
+ACC-962HJYAY,Maple Partners,maple-partners-1.com,Finance,201-500,NA,,FALSE
+ACC-9HUPPQIK,GreenLeaf Analytics,greenleaf-analytics-1.com,Energy,201-500,NA,2026-07-09,FALSE
+ACC-KOXPKK50,Redwood Labs,redwood-labs-2.com,Gaming,51-200,NA,,TRUE
+ACC-U8EBKN47,Lighthouse Capital,lighthouse-capital-2.com,Software,1001-5000,NA,2027-04-14,FALSE
+ACC-FXSFFB63,Orion Pharma,orion-pharma.com,Manufacturing,201-500,NA,,TRUE
+ACC-E9FQKTF5,Lighthouse Systems,lighthouse-systems-1.com,Gaming,51-200,NA,2027-02-04,FALSE
+ACC-A3Y143FM,Oakridge Biotech,oakridge-biotech.com,Finance,51-200,NA,,FALSE
+ACC-CZZ2C8CU,Northstar Mining,northstar-mining-1.com,Software,201-500,LATAM,,FALSE
+ACC-SIV1H6BP,Hyperion Mining,hyperion-mining.com,Healthcare,201-500,EMEA,,FALSE
+ACC-2I1QXF32,Orion Hotels,orion-hotels-1.com,Software,51-200,NA,2026-05-15,FALSE
+ACC-41S23LV2,Orion Retail,orion-retail.com,Education,51-200,LATAM,2026-10-28,FALSE
+ACC-3IL6XPWK,Oakridge AI,oakridge-ai-1.com,Energy,201-500,NA,2026-08-04,FALSE
+ACC-OU4QRZJ1,Silverline Hotels,silverline-hotels.com,Media,51-200,APJ,,FALSE
+ACC-6RR1EI5E,Lighthouse Holdings,lighthouse-holdings-1.com,Retail,51-200,APJ,,FALSE
+ACC-82BQ5H7T,Northstar Studios,northstar-studios-2.com,Telecom,501-1000,EMEA,2025-12-14,FALSE
+ACC-4B3XODOK,Northstar Bank,northstar-bank-1.com,Healthcare,501-1000,NA,,TRUE
+ACC-84LTNWKI,PrimeGate AI,primegate-ai.com,Retail,51-200,NA,,FALSE
+ACC-RF1VJB2P,Vertex Energy,vertex-energy.com,Gaming,51-200,APJ,2026-06-24,TRUE
+ACC-EC3HEJJH,Redwood Insurance,redwood-insurance.com,Education,501-1000,NA,,TRUE
+ACC-5YMZXLM5,Silverline Retail,silverline-retail.com,Manufacturing,1-50,APJ,,FALSE
+ACC-DVGDXBLZ,Oakridge Energy,oakridge-energy.com,Media,1001-5000,NA,2026-12-07,FALSE
+ACC-SSQRWO2R,Maple Logistics,maple-logistics-1.com,Energy,1001-5000,LATAM,,FALSE
+ACC-09ZXS0BV,Horizon Systems,horizon-systems-1.com,Telecom,51-200,EMEA,,FALSE
+ACC-5WYIQ8YH,BlueRiver Materials,blueriver-materials-4.com,Energy,51-200,NA,2026-01-15,FALSE
+ACC-SWS3SEKY,Zenith Industries,zenith-industries-1.com,Software,501-1000,NA,2026-07-22,FALSE
+ACC-O6V2RIJG,Northstar Telecom,northstar-telecom-3.com,Manufacturing,5001+,NA,2027-03-30,FALSE
+ACC-ES90J5O8,ClearView Analytics,clearview-analytics-1.com,Media,51-200,APJ,2026-10-23,FALSE
+ACC-UUJQTMAY,Ironclad Ventures,ironclad-ventures-1.com,Software,51-200,NA,2026-06-01,FALSE
+ACC-7EYHADL0,Crescent Capital,crescent-capital.com,Software,51-200,EMEA,2026-06-25,FALSE
+ACC-MOZLS4AD,Oakridge Biotech,oakridge-biotech-1.com,Energy,51-200,NA,2026-06-22,FALSE
+ACC-HFXMGGLM,Orion Materials,orion-materials.com,Education,1001-5000,APJ,,FALSE
+ACC-4AOW35Y7,Onyx Industries,onyx-industries-3.com,Telecom,1-50,APJ,,FALSE
+ACC-II87ZGYN,Crescent Biotech,crescent-biotech.com,Education,1001-5000,NA,,FALSE
+ACC-ABM1WHUI,Everest Energy,everest-energy-1.com,Finance,51-200,APJ,,TRUE
+ACC-2X21D97M,Zenith Mining,zenith-mining-1.com,Media,1-50,NA,2026-05-27,FALSE
+ACC-6210KQKM,Orion Holdings,orion-holdings-1.com,Gaming,1001-5000,NA,,FALSE
+ACC-DO8XD7N2,Hyperion Analytics,hyperion-analytics-1.com,Healthcare,1001-5000,NA,,FALSE
+ACC-KL8NUTZP,Horizon Energy,horizon-energy-1.com,Retail,201-500,NA,2026-06-20,FALSE
+ACC-KBK3I03J,Orion Consulting,orion-consulting-3.com,Gaming,51-200,EMEA,,FALSE
+ACC-U5YH7JEV,Quantum Insurance,quantum-insurance.com,Software,5001+,NA,2026-02-15,FALSE
+ACC-BCPNCXKQ,BlueRiver Studios,blueriver-studios.com,Retail,201-500,EMEA,,FALSE
+ACC-N8HYYS7F,Sapphire Holdings,sapphire-holdings-1.com,Gaming,201-500,NA,2026-08-03,FALSE
+ACC-X5S3S9PJ,Maple Pharma,maple-pharma.com,Media,201-500,NA,,FALSE
+ACC-21AVFGVR,Summit Bank,summit-bank.com,Energy,1001-5000,NA,2026-10-21,FALSE
+ACC-PT2EVMKZ,Northstar Systems,northstar-systems.com,Gaming,201-500,LATAM,2026-12-30,FALSE
+ACC-1NY5169E,Hyperion Pharma,hyperion-pharma-1.com,Software,201-500,EMEA,2026-02-21,FALSE
+ACC-4AYX2PZ3,ClearView Foods,clearview-foods-1.com,Software,201-500,NA,2026-06-08,FALSE
+ACC-VG3KGO6P,Vertex Energy,vertex-energy-1.com,Education,1001-5000,NA,,FALSE
+ACC-V22BZ8JD,ClearView Hotels,clearview-hotels-2.com,Healthcare,51-200,NA,,FALSE
+ACC-8AZIFL9I,Sequoia Energy,sequoia-energy-1.com,Healthcare,51-200,NA,2026-02-21,FALSE
+ACC-1P0RIFUV,Lighthouse Ventures,lighthouse-ventures-2.com,Healthcare,201-500,LATAM,,FALSE
+ACC-IABPND9S,Maple Labs,maple-labs-2.com,Media,51-200,NA,,FALSE
+ACC-PUWTIQ9I,Onyx Industries,onyx-industries-4.com,Energy,1-50,EMEA,2026-03-14,FALSE
+ACC-7BNHKGKB,Maple Capital,maple-capital-2.com,Energy,501-1000,NA,2027-03-24,FALSE
+ACC-KBA6IRRK,GreenLeaf Foods,greenleaf-foods-1.com,Software,51-200,NA,2026-10-23,FALSE
+ACC-T4CX8UML,PrimeGate Systems,primegate-systems.com,Software,51-200,EMEA,2027-03-11,FALSE
+ACC-CNUPDM9B,Sapphire Analytics,sapphire-analytics-1.com,Retail,201-500,NA,2026-01-19,FALSE
+ACC-ELMPK8KX,Aurora Ventures,aurora-ventures-2.com,Gaming,1-50,NA,,FALSE
+ACC-ZVI2NTHZ,Sapphire Mining,sapphire-mining.com,Telecom,501-1000,NA,2026-03-15,TRUE
+ACC-HRYA3BCU,Sequoia Partners,sequoia-partners.com,Telecom,501-1000,NA,,FALSE
+ACC-2O9Q3FB5,Vertex Aerospace,vertex-aerospace.com,Manufacturing,201-500,EMEA,,FALSE
+ACC-DCY04PD5,Horizon Partners,horizon-partners-2.com,Manufacturing,1-50,NA,2026-08-06,FALSE
+ACC-XLWWQ1HP,Hyperion Analytics,hyperion-analytics-2.com,Education,51-200,APJ,2027-01-06,FALSE
+ACC-BR8PNZJA,ClearView Holdings,clearview-holdings.com,Gaming,201-500,LATAM,2026-03-20,FALSE
+ACC-JU0V3SZJ,PrimeGate Hotels,primegate-hotels.com,Energy,201-500,NA,,TRUE
+ACC-HE1V1OTX,Quantum Energy,quantum-energy-1.com,Gaming,5001+,NA,,FALSE
+ACC-F51DQ4GG,Everest Bank,everest-bank-3.com,Education,1001-5000,NA,,FALSE
+ACC-M8SOSMAK,Vertex Capital,vertex-capital-1.com,Finance,1-50,NA,2027-02-19,FALSE
+ACC-RLQF0EZ2,Maple Bank,maple-bank.com,Gaming,1001-5000,EMEA,2025-12-18,FALSE
+ACC-RBBEG365,Silverline Telecom,silverline-telecom-1.com,Finance,51-200,APJ,,TRUE
+ACC-58W8VWNU,Lighthouse Studios,lighthouse-studios.com,Manufacturing,5001+,NA,,FALSE
+ACC-G68CJFO5,Quantum AI,quantum-ai.com,Education,201-500,NA,2026-08-30,FALSE
+ACC-EB22JDQP,Oakridge Partners,oakridge-partners.com,Media,501-1000,NA,2026-11-14,FALSE
+ACC-1KR9BICC,GreenLeaf Holdings,greenleaf-holdings.com,Education,1-50,NA,,FALSE
+ACC-IZXDH9RX,ClearView Holdings,clearview-holdings-1.com,Retail,5001+,APJ,,FALSE
+ACC-B2VQFA0B,Redwood Pharma,redwood-pharma-3.com,Software,1-50,NA,,FALSE
+ACC-37HNFKIW,Silverline Foods,silverline-foods-1.com,Manufacturing,1-50,NA,,FALSE
+ACC-8Y8PNNMC,Horizon Bank,horizon-bank-1.com,Manufacturing,501-1000,NA,2026-07-31,FALSE
+ACC-5XM1Y2NM,BlueRiver Pharma,blueriver-pharma-1.com,Finance,51-200,NA,2025-11-27,FALSE
+ACC-MA98SM6K,Sequoia Logistics,sequoia-logistics-3.com,Gaming,51-200,NA,,TRUE
+ACC-SJ6KQ7XP,BlueRiver Industries,blueriver-industries.com,Retail,201-500,LATAM,2026-10-15,FALSE
+ACC-XCWHSZMY,Hyperion Biotech,hyperion-biotech.com,Software,501-1000,APJ,,FALSE
+ACC-V62W6Z10,Silverline Telecom,silverline-telecom-2.com,Education,201-500,NA,,FALSE
+ACC-JK7BM1LA,Ironclad Holdings,ironclad-holdings.com,Telecom,51-200,NA,,FALSE
+ACC-H10QKNOQ,Hyperion Labs,hyperion-labs-1.com,Retail,201-500,NA,2026-06-28,FALSE
+ACC-U41PG1LF,Silverline AI,silverline-ai-1.com,Telecom,201-500,APJ,2026-10-01,FALSE
+ACC-PES64A93,Summit Bank,summit-bank-1.com,Healthcare,51-200,NA,,TRUE
+ACC-JCQOC74J,Aurora Bank,aurora-bank-1.com,Telecom,51-200,NA,2025-12-31,FALSE
+ACC-0RY7ERLT,Sapphire Foods,sapphire-foods-3.com,Retail,201-500,NA,,FALSE
+ACC-J4HDY4R3,Oakridge Industries,oakridge-industries.com,Education,1001-5000,EMEA,,FALSE
+ACC-2N5AZPG1,Northstar Hotels,northstar-hotels-1.com,Telecom,1-50,LATAM,2026-06-23,FALSE
+ACC-Y15MMVGK,GreenLeaf Aerospace,greenleaf-aerospace-1.com,Telecom,201-500,NA,,FALSE
+ACC-0HR4JQ7E,Ironclad Capital,ironclad-capital-1.com,Gaming,201-500,APJ,,FALSE
+ACC-Z216EXBW,Vertex Materials,vertex-materials-1.com,Energy,51-200,NA,2027-02-05,FALSE
+ACC-RFA6K0TN,GreenLeaf Consulting,greenleaf-consulting-1.com,Energy,201-500,EMEA,,FALSE
+ACC-0B32MJVC,Quantum AI,quantum-ai-1.com,Finance,501-1000,NA,2026-09-03,FALSE
+ACC-C7YDYGRC,Crescent Aerospace,crescent-aerospace-1.com,Media,501-1000,EMEA,2026-10-28,FALSE
+ACC-QY9K1OL8,TrueNorth Bank,truenorth-bank.com,Manufacturing,501-1000,APJ,2026-10-03,FALSE
+ACC-DQ7DMF1M,PrimeGate Mining,primegate-mining-1.com,Media,1001-5000,NA,,FALSE
+ACC-5S7HRCAW,Summit Energy,summit-energy.com,Telecom,51-200,NA,2026-06-13,FALSE
+ACC-FZBJOZT3,Onyx Ventures,onyx-ventures-1.com,Energy,501-1000,APJ,2026-06-26,FALSE
+ACC-W7WZ3011,GreenLeaf Ventures,greenleaf-ventures-1.com,Healthcare,501-1000,EMEA,2026-07-22,TRUE
+ACC-XM17KNC2,Aurora Studios,aurora-studios-2.com,Manufacturing,51-200,APJ,,FALSE
+ACC-YJM17LOX,Crescent Energy,crescent-energy.com,Retail,1001-5000,NA,,TRUE
+ACC-4AMNFEOC,Oakridge Holdings,oakridge-holdings.com,Finance,51-200,EMEA,,TRUE
+ACC-2N3NSSWG,ClearView Energy,clearview-energy-1.com,Retail,51-200,NA,2026-01-03,FALSE
+ACC-KEH1OFMY,Ironclad Capital,ironclad-capital-2.com,Energy,5001+,NA,2026-07-01,FALSE
+ACC-PGPURINI,Horizon Consulting,horizon-consulting-3.com,Retail,5001+,NA,,FALSE
+ACC-NRDXZCPY,Oakridge Bank,oakridge-bank-1.com,Media,5001+,EMEA,2026-08-01,FALSE
+ACC-C60WXD3W,Orion AI,orion-ai-1.com,Finance,1-50,NA,,FALSE
+ACC-ROKZOI46,Oakridge Retail,oakridge-retail.com,Education,1001-5000,NA,2026-04-20,FALSE
+ACC-GBA1P9E9,ClearView Aerospace,clearview-aerospace-2.com,Energy,1-50,NA,2026-08-01,FALSE
+ACC-FH6ICN1F,Horizon Biotech,horizon-biotech-1.com,Retail,201-500,EMEA,,FALSE
+ACC-GFWAEV6D,ClearView Energy,clearview-energy-2.com,Finance,51-200,EMEA,2027-04-02,TRUE
+ACC-Z8TAEC9L,Summit Energy,summit-energy-1.com,Education,501-1000,NA,,FALSE
+ACC-65D98UC3,Sequoia Foods,sequoia-foods-3.com,Media,201-500,NA,2026-10-06,FALSE
+ACC-HODO0G0O,ClearView Analytics,clearview-analytics-2.com,Retail,5001+,NA,,FALSE
+ACC-U5CGIPQK,ClearView Ventures,clearview-ventures-4.com,Finance,201-500,NA,,FALSE
+ACC-KXMG32BV,Horizon Motors,horizon-motors.com,Gaming,51-200,EMEA,2027-02-25,FALSE
+ACC-QV7YGQJG,BlueRiver Capital,blueriver-capital-3.com,Retail,1001-5000,NA,,FALSE
+ACC-IGKYB2DN,Sequoia Bank,sequoia-bank-1.com,Telecom,501-1000,NA,,FALSE
+ACC-EM3R9QKG,Hyperion Aerospace,hyperion-aerospace-1.com,Energy,501-1000,NA,2026-05-31,FALSE
+ACC-V83SJJG2,Crescent Ventures,crescent-ventures.com,Software,1001-5000,EMEA,2026-02-12,FALSE
+ACC-88E8C5TN,Northstar Insurance,northstar-insurance.com,Media,201-500,APJ,2026-12-28,FALSE
+ACC-ERAL8UC2,BlueRiver Materials,blueriver-materials-5.com,Media,501-1000,NA,2026-08-26,FALSE
+ACC-B25K2880,Ironclad Materials,ironclad-materials-1.com,Finance,5001+,NA,,FALSE
+ACC-6G3KQRRJ,Ironclad Materials,ironclad-materials-2.com,Software,5001+,NA,2027-04-11,FALSE
+ACC-ZBJ9WF60,TrueNorth Labs,truenorth-labs.com,Finance,1001-5000,APJ,,FALSE
+ACC-0CZ998G7,Crescent Capital,crescent-capital-1.com,Energy,201-500,APJ,,FALSE
+ACC-X6HXYR6C,Hyperion Analytics,hyperion-analytics-3.com,Finance,501-1000,NA,,FALSE
+ACC-N49ZBXTN,Crescent Foods,crescent-foods.com,Media,5001+,EMEA,2027-02-23,FALSE
+ACC-D3SNF1MA,GreenLeaf Studios,greenleaf-studios.com,Education,51-200,EMEA,,FALSE
+ACC-5Q5A09SH,Quantum Retail,quantum-retail-1.com,Gaming,201-500,NA,2026-05-20,FALSE
+ACC-VDRNZDU8,Summit Studios,summit-studios-3.com,Telecom,1001-5000,NA,2026-12-30,TRUE
+ACC-M2QSBP2P,Zenith Consulting,zenith-consulting-1.com,Finance,501-1000,EMEA,,FALSE
+ACC-C5IDC20P,Redwood Ventures,redwood-ventures-1.com,Healthcare,201-500,EMEA,,FALSE
+ACC-3RU4JO4W,Hyperion Hotels,hyperion-hotels-2.com,Media,5001+,NA,,FALSE
+ACC-X3VEKT8O,ClearView Motors,clearview-motors-1.com,Retail,1001-5000,NA,,FALSE
+ACC-NBDR23WH,ClearView Studios,clearview-studios.com,Software,1001-5000,EMEA,2025-12-13,FALSE
+ACC-W5YJ6J1G,GreenLeaf Partners,greenleaf-partners-1.com,Gaming,1001-5000,NA,2026-12-19,FALSE
+ACC-3UBZ6C0A,Orion Insurance,orion-insurance.com,Media,1-50,NA,,FALSE
+ACC-Z0IPRFQQ,TrueNorth Capital,truenorth-capital-1.com,Finance,201-500,NA,,FALSE
+ACC-1GAR5D8R,Lighthouse Hotels,lighthouse-hotels-1.com,Finance,201-500,NA,,FALSE
+ACC-TQD6117W,GreenLeaf AI,greenleaf-ai-1.com,Healthcare,51-200,NA,2027-01-20,FALSE
+ACC-CHSM3KMO,Crescent Hotels,crescent-hotels.com,Finance,51-200,NA,,FALSE
+ACC-5XELP38N,Sapphire Consulting,sapphire-consulting.com,Energy,1001-5000,NA,2026-09-17,FALSE
+ACC-GHA0PODZ,Maple Telecom,maple-telecom-2.com,Education,201-500,NA,2026-11-29,FALSE
+ACC-MHY6RMRO,Sapphire Bank,sapphire-bank-2.com,Energy,51-200,NA,2026-11-20,FALSE
+ACC-ZVWWJNDB,GreenLeaf Mining,greenleaf-mining.com,Manufacturing,201-500,NA,,FALSE
+ACC-7S6YKLAL,Horizon Partners,horizon-partners-3.com,Media,1001-5000,LATAM,2027-03-13,FALSE
+ACC-8UF5V24N,ClearView Retail,clearview-retail.com,Software,501-1000,EMEA,2026-10-17,FALSE
+ACC-5PACHWY0,Summit Analytics,summit-analytics.com,Finance,1001-5000,NA,,FALSE
+ACC-YA1ITOIK,GreenLeaf Telecom,greenleaf-telecom.com,Energy,1-50,NA,,FALSE
+ACC-8DJFLI4U,BlueRiver Insurance,blueriver-insurance-1.com,Education,51-200,NA,2027-03-11,FALSE
+ACC-XFMKJKCH,Oakridge Mining,oakridge-mining.com,Energy,201-500,NA,2026-12-19,FALSE
+ACC-G8WSVAD6,Quantum Retail,quantum-retail-2.com,Retail,5001+,NA,2026-11-26,FALSE
+ACC-XZD227SC,Sequoia Motors,sequoia-motors-1.com,Healthcare,201-500,NA,,FALSE
+ACC-IF5T6ZP2,Aurora Industries,aurora-industries.com,Gaming,201-500,EMEA,2026-10-31,FALSE
+ACC-92T9X0HE,Everest Logistics,everest-logistics-1.com,Gaming,1001-5000,EMEA,,FALSE
+ACC-TWZ9KF91,Summit Energy,summit-energy-2.com,Retail,201-500,NA,,FALSE
+ACC-9ZUJZEF0,Horizon Labs,horizon-labs-3.com,Media,1001-5000,NA,2026-09-18,FALSE
+ACC-9JY8ZDOS,Vertex Foods,vertex-foods-4.com,Telecom,51-200,EMEA,2025-12-03,FALSE
+ACC-9TVU7IHU,TrueNorth Energy,truenorth-energy-2.com,Software,201-500,EMEA,,FALSE
+ACC-KP515N1C,Onyx Bank,onyx-bank.com,Finance,501-1000,NA,,FALSE
+ACC-PLN5Q99W,Ironclad Holdings,ironclad-holdings-1.com,Manufacturing,201-500,EMEA,2026-08-19,FALSE
+ACC-3H9TTP5C,Onyx AI,onyx-ai-1.com,Software,1001-5000,LATAM,,FALSE
+ACC-5S9ZORNK,ClearView Retail,clearview-retail-1.com,Gaming,5001+,NA,,FALSE
+ACC-PXCDIWOA,Northstar Systems,northstar-systems-1.com,Healthcare,501-1000,APJ,,FALSE
+ACC-68IPVDJM,BlueRiver Consulting,blueriver-consulting-1.com,Finance,51-200,NA,2026-09-24,FALSE
+ACC-6CT9ORYX,Sapphire Biotech,sapphire-biotech-3.com,Telecom,201-500,NA,2026-04-14,FALSE
+ACC-EWF0DJJ3,Sapphire Analytics,sapphire-analytics-2.com,Healthcare,1-50,NA,,FALSE
+ACC-NMQOFUOM,BlueRiver Analytics,blueriver-analytics-2.com,Energy,5001+,NA,2026-01-07,FALSE
+ACC-ACJF3OUU,Ironclad Insurance,ironclad-insurance.com,Telecom,201-500,NA,,FALSE
+ACC-ZJOJB1AP,BlueRiver Studios,blueriver-studios-1.com,Finance,1001-5000,NA,2025-11-24,FALSE
+ACC-8TU8IQCE,Aurora Ventures,aurora-ventures-3.com,Retail,5001+,EMEA,2026-06-27,FALSE
+ACC-VF457VSW,GreenLeaf Aerospace,greenleaf-aerospace-2.com,Education,1-50,NA,2026-06-19,FALSE
+ACC-C39MHIX9,Quantum Systems,quantum-systems-1.com,Energy,501-1000,NA,,FALSE
+ACC-0P0Q6WVC,Everest Analytics,everest-analytics-1.com,Software,1001-5000,NA,2026-08-12,FALSE
+ACC-B4W2433P,Sequoia Industries,sequoia-industries.com,Gaming,1001-5000,EMEA,2026-02-07,FALSE
+ACC-3G27PTZZ,Onyx Mining,onyx-mining.com,Retail,201-500,NA,,FALSE
+ACC-SNODE32M,ClearView Systems,clearview-systems-1.com,Energy,1-50,NA,,FALSE
+ACC-NZBETL6O,PrimeGate Motors,primegate-motors.com,Media,51-200,NA,,FALSE
+ACC-JZFO23ER,TrueNorth Foods,truenorth-foods-2.com,Telecom,5001+,NA,2026-08-17,FALSE
+ACC-6G5M0O1Y,GreenLeaf Motors,greenleaf-motors-1.com,Finance,51-200,NA,2026-01-14,TRUE
+ACC-LUS8TW6Z,Everest Energy,everest-energy-2.com,Manufacturing,201-500,LATAM,2025-12-25,FALSE
+ACC-9UDIH75I,BlueRiver Consulting,blueriver-consulting-2.com,Telecom,1001-5000,EMEA,2025-11-24,FALSE
+ACC-EQXEZ6XI,Oakridge Motors,oakridge-motors.com,Education,1-50,EMEA,2026-06-14,FALSE
+ACC-9IMGPMNV,Hyperion Labs,hyperion-labs-2.com,Retail,501-1000,NA,,FALSE
+ACC-16DV2LI8,ClearView Mining,clearview-mining-1.com,Finance,201-500,NA,2026-03-01,FALSE
+ACC-D280MLGU,Lighthouse Motors,lighthouse-motors-1.com,Energy,201-500,NA,2027-04-06,FALSE
+ACC-R393416N,TrueNorth Materials,truenorth-materials-1.com,Energy,201-500,LATAM,2025-12-31,FALSE
+ACC-0Y8GINUD,TrueNorth AI,truenorth-ai-1.com,Manufacturing,1-50,EMEA,,FALSE
+ACC-S0FPS5P2,TrueNorth Energy,truenorth-energy-3.com,Retail,201-500,NA,2026-08-19,FALSE
+ACC-9OO5KPM3,GreenLeaf Hotels,greenleaf-hotels.com,Manufacturing,51-200,NA,,FALSE
+ACC-GLBS5QA0,Oakridge Hotels,oakridge-hotels-1.com,Healthcare,201-500,EMEA,2027-02-02,FALSE
+ACC-50Y75N3I,Everest Logistics,everest-logistics-2.com,Software,51-200,NA,,FALSE
+ACC-YE76UAZH,Horizon Insurance,horizon-insurance-1.com,Finance,201-500,APJ,,FALSE
+ACC-31QLN7VR,Everest Mining,everest-mining.com,Media,201-500,NA,2026-11-06,FALSE
+ACC-A2AV9JQ8,Silverline Insurance,silverline-insurance-1.com,Software,1-50,NA,2026-04-27,TRUE
+ACC-HN097ALB,Lighthouse Industries,lighthouse-industries.com,Finance,201-500,NA,2026-11-09,FALSE
+ACC-NPMMM9IW,Sequoia Studios,sequoia-studios.com,Telecom,201-500,APJ,,FALSE
+ACC-S6G2JVJU,ClearView Motors,clearview-motors-2.com,Finance,201-500,NA,,FALSE
+ACC-4KUK84UR,Sequoia Retail,sequoia-retail-1.com,Finance,51-200,EMEA,,FALSE
+ACC-IL3U89HP,Silverline Analytics,silverline-analytics.com,Healthcare,1-50,NA,,FALSE
+ACC-G7818ZSR,BlueRiver Aerospace,blueriver-aerospace-1.com,Telecom,501-1000,EMEA,2026-01-16,FALSE
+ACC-7BPQL8RN,Vertex Ventures,vertex-ventures.com,Healthcare,5001+,NA,,FALSE
+ACC-CGQ0O76N,Maple Mining,maple-mining-1.com,Finance,501-1000,APJ,,FALSE
+ACC-OA9SGV7Z,Lighthouse Analytics,lighthouse-analytics.com,Software,51-200,NA,2026-05-11,FALSE
+ACC-7QWOQGBC,Redwood Aerospace,redwood-aerospace.com,Telecom,1-50,NA,,FALSE
+ACC-LVANCZPW,Vertex Hotels,vertex-hotels-2.com,Manufacturing,51-200,APJ,2026-04-03,FALSE
+ACC-O6D8OPG8,Onyx Insurance,onyx-insurance-1.com,Healthcare,51-200,EMEA,,FALSE
+ACC-PN78QFH3,Zenith Aerospace,zenith-aerospace.com,Finance,1001-5000,APJ,2026-11-19,FALSE
+ACC-0VE09U1B,BlueRiver Biotech,blueriver-biotech-2.com,Gaming,1001-5000,EMEA,,FALSE
+ACC-XJXOBEPG,Maple Motors,maple-motors.com,Media,5001+,NA,,FALSE
+ACC-LZVUR4HX,Ironclad Energy,ironclad-energy-2.com,Education,5001+,NA,2025-12-20,FALSE
+ACC-4B4CDZZL,Lighthouse Capital,lighthouse-capital-3.com,Healthcare,201-500,NA,,TRUE
+ACC-SD8NYMGC,Sapphire Labs,sapphire-labs-2.com,Energy,1001-5000,EMEA,,TRUE
+ACC-VLQCDHTR,Horizon Retail,horizon-retail-2.com,Energy,201-500,APJ,2026-12-11,FALSE
+ACC-BXLTO3N4,Crescent Materials,crescent-materials-2.com,Education,1001-5000,NA,2027-03-11,FALSE
+ACC-ZRIHZGAU,Ironclad Logistics,ironclad-logistics.com,Energy,201-500,LATAM,,FALSE
+ACC-FWM1FT2J,Horizon Partners,horizon-partners-4.com,Energy,51-200,EMEA,2026-01-27,TRUE
+ACC-8LXGFF95,ClearView AI,clearview-ai-3.com,Gaming,1001-5000,NA,,FALSE
+ACC-VSF3W0AA,Horizon Industries,horizon-industries-1.com,Telecom,51-200,APJ,2026-08-12,FALSE
+ACC-4EWTOUUJ,Oakridge Hotels,oakridge-hotels-2.com,Telecom,501-1000,EMEA,2026-06-18,TRUE
+ACC-BMK7ZPQC,Aurora Motors,aurora-motors.com,Healthcare,501-1000,NA,2026-02-24,FALSE
+ACC-FA8TOXF3,Vertex Analytics,vertex-analytics-2.com,Software,5001+,NA,,FALSE
+ACC-GP9D884T,Sapphire AI,sapphire-ai.com,Healthcare,1-50,APJ,,TRUE
+ACC-MY40D2ZJ,Aurora Pharma,aurora-pharma-1.com,Telecom,51-200,NA,2026-10-06,FALSE
+ACC-OJAEP0DH,Orion Consulting,orion-consulting-4.com,Gaming,51-200,NA,2026-11-02,FALSE
+ACC-CD1TONL5,Silverline Mining,silverline-mining-1.com,Media,201-500,NA,2027-04-04,TRUE
+ACC-3UBJELG9,TrueNorth Studios,truenorth-studios.com,Energy,51-200,EMEA,2025-12-12,FALSE
+ACC-2C3RR3ZT,Summit Retail,summit-retail-4.com,Media,1-50,NA,2026-05-23,TRUE
+ACC-VGUFG1PC,Silverline Biotech,silverline-biotech-2.com,Software,201-500,EMEA,2026-07-14,FALSE
+ACC-OJ7EGS6V,Sapphire Logistics,sapphire-logistics-1.com,Manufacturing,201-500,APJ,,FALSE
+ACC-1TWUMJ63,Horizon Insurance,horizon-insurance-2.com,Gaming,501-1000,NA,2026-07-09,FALSE
+ACC-AQXD6B7U,ClearView Analytics,clearview-analytics-3.com,Telecom,1-50,APJ,,TRUE
+ACC-VY0G0WW1,GreenLeaf Motors,greenleaf-motors-2.com,Gaming,51-200,NA,,FALSE
+ACC-0BIVZDZG,Oakridge Labs,oakridge-labs.com,Software,501-1000,NA,,FALSE
+ACC-TSBRKJPW,Northstar Studios,northstar-studios-3.com,Finance,5001+,NA,,FALSE
+ACC-NYQGX05I,Zenith Logistics,zenith-logistics-2.com,Retail,501-1000,APJ,2027-04-04,FALSE
+ACC-KJ3AF3S8,Redwood Biotech,redwood-biotech-1.com,Software,201-500,EMEA,2026-09-02,FALSE
+ACC-SUU2DQCQ,ClearView Foods,clearview-foods-2.com,Gaming,201-500,APJ,2026-07-31,FALSE
+ACC-GMQL12NB,PrimeGate Aerospace,primegate-aerospace.com,Finance,201-500,NA,,FALSE
+ACC-W6IOXQXY,Northstar Insurance,northstar-insurance-1.com,Manufacturing,51-200,APJ,2026-07-22,FALSE
+ACC-5S83WXNC,Summit Ventures,summit-ventures-1.com,Energy,51-200,EMEA,2026-02-10,FALSE
+ACC-3TC815C9,GreenLeaf Foods,greenleaf-foods-2.com,Telecom,1001-5000,APJ,2027-03-27,FALSE
+ACC-5ATLX7YL,Ironclad Ventures,ironclad-ventures-2.com,Gaming,51-200,NA,,FALSE
+ACC-LPI8X6RM,Ironclad Retail,ironclad-retail-1.com,Education,501-1000,APJ,2026-01-30,FALSE
+ACC-EPMYL8K4,TrueNorth Capital,truenorth-capital-2.com,Telecom,1-50,NA,2026-11-10,FALSE
+ACC-IVX7FJL4,Sequoia Partners,sequoia-partners-1.com,Gaming,201-500,NA,,FALSE
+ACC-6OIM0FG3,Ironclad Motors,ironclad-motors-2.com,Gaming,201-500,NA,,FALSE
+ACC-BQ4I3R6C,Hyperion Hotels,hyperion-hotels-3.com,Healthcare,501-1000,NA,2026-04-13,FALSE
+ACC-D8Z7XYJ6,BlueRiver Retail,blueriver-retail.com,Retail,51-200,EMEA,,FALSE
+ACC-YOKOI042,Zenith Biotech,zenith-biotech-1.com,Energy,1-50,NA,2026-10-18,FALSE
+ACC-VUMSPZPV,ClearView AI,clearview-ai-4.com,Finance,51-200,NA,2026-05-06,FALSE
+ACC-178U8LEC,Horizon Materials,horizon-materials-2.com,Media,5001+,EMEA,2025-12-29,TRUE
+ACC-YQ6N45M3,Crescent AI,crescent-ai-1.com,Software,201-500,NA,2027-01-31,FALSE
+ACC-PNV0CQPR,Ironclad Logistics,ironclad-logistics-1.com,Media,1001-5000,APJ,,FALSE
+ACC-GO4DBGXZ,Redwood Energy,redwood-energy-1.com,Retail,1001-5000,NA,2026-09-01,FALSE
+ACC-8COEBVZU,Onyx Consulting,onyx-consulting.com,Media,1-50,EMEA,,FALSE
+ACC-7SEE6Z0R,Sapphire Pharma,sapphire-pharma.com,Telecom,1001-5000,NA,2026-11-22,TRUE
+ACC-611AO5I5,Hyperion Foods,hyperion-foods-1.com,Media,501-1000,NA,2026-07-01,FALSE
+ACC-U7CBQSMU,Silverline Retail,silverline-retail-1.com,Telecom,201-500,NA,2027-02-15,FALSE
+ACC-BOA3K9V1,GreenLeaf Studios,greenleaf-studios-1.com,Finance,501-1000,EMEA,2026-08-20,FALSE
+ACC-9J2T0YOY,ClearView Telecom,clearview-telecom-1.com,Telecom,51-200,NA,2026-06-01,TRUE
+ACC-1L57AIW8,ClearView Pharma,clearview-pharma.com,Finance,1-50,NA,,FALSE
+ACC-G33TPIXD,Horizon Motors,horizon-motors-1.com,Retail,51-200,APJ,2026-01-30,FALSE
+ACC-ASBSYZKK,Aurora Logistics,aurora-logistics-1.com,Media,501-1000,NA,2027-02-04,FALSE
+ACC-0C9Y7JQQ,Oakridge Labs,oakridge-labs-1.com,Education,201-500,NA,2026-01-11,FALSE
+ACC-XG99I544,Orion Energy,orion-energy-1.com,Manufacturing,51-200,NA,2026-11-12,FALSE
+ACC-4A7Q42LR,Horizon Telecom,horizon-telecom-2.com,Manufacturing,201-500,NA,,FALSE
+ACC-RYJAGKRT,Hyperion Aerospace,hyperion-aerospace-2.com,Healthcare,51-200,NA,,FALSE
+ACC-0HOCSHAX,Sequoia Holdings,sequoia-holdings.com,Finance,5001+,NA,,FALSE
+ACC-FEKV8H8L,GreenLeaf Insurance,greenleaf-insurance.com,Manufacturing,201-500,EMEA,,FALSE
+ACC-3KDSUJE1,Vertex Pharma,vertex-pharma.com,Finance,1001-5000,NA,2027-04-06,FALSE
+ACC-32K99TDC,Everest Energy,everest-energy-3.com,Healthcare,201-500,LATAM,,FALSE
+ACC-D8Q3ECAC,Ironclad Materials,ironclad-materials-3.com,Finance,1001-5000,NA,2026-01-10,TRUE
+ACC-R0NVQA76,Redwood Logistics,redwood-logistics.com,Healthcare,501-1000,APJ,2026-07-01,FALSE
+ACC-9ENY5JOB,Horizon Logistics,horizon-logistics-1.com,Retail,201-500,EMEA,,FALSE
+ACC-C0AA3MS1,Ironclad Mining,ironclad-mining-1.com,Retail,51-200,EMEA,,FALSE
+ACC-QCONCCDF,Orion Consulting,orion-consulting-5.com,Media,201-500,NA,2026-11-11,TRUE
+ACC-I985R7WO,TrueNorth Logistics,truenorth-logistics.com,Manufacturing,1001-5000,LATAM,,FALSE
+ACC-4BUV701X,Onyx Labs,onyx-labs-2.com,Gaming,201-500,EMEA,2026-03-29,FALSE
+ACC-ZHJK2H0R,Quantum Foods,quantum-foods.com,Education,1001-5000,NA,,TRUE
+ACC-MGL99HVB,PrimeGate Aerospace,primegate-aerospace-1.com,Software,501-1000,APJ,,FALSE
+ACC-HFOT5YBM,Northstar Systems,northstar-systems-2.com,Education,51-200,NA,,FALSE
+ACC-G8W26H4H,Northstar Retail,northstar-retail-1.com,Education,51-200,LATAM,2027-02-21,FALSE
+ACC-W56KJMHT,Zenith Systems,zenith-systems.com,Education,1001-5000,APJ,,FALSE
+ACC-KQAN4DAW,Orion Studios,orion-studios-2.com,Retail,1-50,APJ,,TRUE
+ACC-IKGXQNVK,Crescent Systems,crescent-systems.com,Energy,1001-5000,NA,,FALSE
+ACC-2VN10QK3,Sequoia Ventures,sequoia-ventures-1.com,Manufacturing,201-500,EMEA,2026-04-26,FALSE
+ACC-RDT0R95B,Redwood Labs,redwood-labs-3.com,Education,201-500,NA,,FALSE
+ACC-CN3KYOT6,ClearView Energy,clearview-energy-3.com,Healthcare,501-1000,APJ,2026-06-23,FALSE
+ACC-K2NAP5KF,Onyx Ventures,onyx-ventures-2.com,Media,201-500,NA,,FALSE
+ACC-42F17XJY,Aurora Industries,aurora-industries-1.com,Media,1-50,EMEA,,FALSE
+ACC-N87QX6AG,Zenith Hotels,zenith-hotels-1.com,Manufacturing,1001-5000,APJ,2026-06-11,FALSE
+ACC-WWK1XJ1O,Northstar Hotels,northstar-hotels-2.com,Media,51-200,LATAM,,FALSE
+ACC-3AS1V3D1,Maple Energy,maple-energy-1.com,Retail,1001-5000,NA,,FALSE
+ACC-CMAMZBDB,Summit AI,summit-ai-3.com,Retail,201-500,NA,,FALSE
+ACC-5SM6PGK1,Maple Labs,maple-labs-3.com,Media,201-500,NA,,FALSE
+ACC-SC91OBNZ,Hyperion Holdings,hyperion-holdings.com,Media,5001+,NA,,FALSE
+ACC-M190UXU5,Horizon Aerospace,horizon-aerospace-1.com,Energy,1001-5000,EMEA,,FALSE
+ACC-1MEBVSBI,BlueRiver AI,blueriver-ai-1.com,Education,51-200,EMEA,,FALSE
+ACC-1QT0RZOJ,Ironclad Systems,ironclad-systems-4.com,Education,1-50,NA,2026-04-20,FALSE
+ACC-6X3VC3A9,Everest Studios,everest-studios.com,Gaming,201-500,APJ,2026-06-19,FALSE
+ACC-8J2DLN3W,Silverline Aerospace,silverline-aerospace-1.com,Software,201-500,APJ,2026-02-23,TRUE
+ACC-QZVDOMGY,Aurora Pharma,aurora-pharma-2.com,Manufacturing,501-1000,NA,2027-02-28,TRUE
+ACC-VXISV22L,Summit Partners,summit-partners-1.com,Software,501-1000,NA,,FALSE
+ACC-XD9ECA26,Sapphire Partners,sapphire-partners-1.com,Manufacturing,1001-5000,NA,,FALSE
+ACC-XCUHCVAI,Maple Telecom,maple-telecom-3.com,Retail,201-500,NA,2026-12-21,FALSE
+ACC-XMLOC6FQ,GreenLeaf Pharma,greenleaf-pharma.com,Finance,201-500,NA,2026-11-22,FALSE
+ACC-9NBJXWKW,Summit AI,summit-ai-4.com,Telecom,51-200,APJ,,FALSE
+ACC-85TP85J3,Zenith Foods,zenith-foods-1.com,Software,51-200,LATAM,2027-03-18,FALSE
+ACC-0AFKSC15,Zenith AI,zenith-ai.com,Telecom,1001-5000,NA,2026-01-31,FALSE
+ACC-8RVRY1CJ,Summit Pharma,summit-pharma-3.com,Retail,501-1000,APJ,2026-10-19,FALSE
+ACC-AJCAPR4O,Quantum Foods,quantum-foods-1.com,Energy,1001-5000,LATAM,2026-09-09,TRUE
+ACC-MQ3189P8,Zenith Hotels,zenith-hotels-2.com,Media,501-1000,EMEA,2026-05-08,FALSE
+ACC-WN0FFQPA,Sapphire Energy,sapphire-energy-1.com,Finance,5001+,EMEA,,FALSE
+ACC-3MI1XN40,Maple Holdings,maple-holdings-1.com,Gaming,201-500,NA,2026-04-09,FALSE
+ACC-9C5A95YV,Redwood Partners,redwood-partners-1.com,Software,201-500,APJ,,FALSE
+ACC-8FQLLA4Y,Sapphire Motors,sapphire-motors.com,Healthcare,201-500,APJ,2026-11-29,FALSE
+ACC-5VLWUI22,TrueNorth Studios,truenorth-studios-1.com,Education,1-50,EMEA,,FALSE
+ACC-CG8QSAFJ,Vertex Analytics,vertex-analytics-3.com,Telecom,501-1000,NA,2026-06-12,FALSE
+ACC-CMQCP972,Zenith Energy,zenith-energy.com,Gaming,1001-5000,NA,2026-12-01,FALSE
+ACC-5GKVWZ8C,PrimeGate Labs,primegate-labs.com,Retail,1001-5000,NA,2027-01-31,FALSE
+ACC-ME67LOPV,Hyperion Analytics,hyperion-analytics-4.com,Telecom,201-500,EMEA,,FALSE
+ACC-368NKF7B,Zenith Ventures,zenith-ventures-2.com,Finance,1001-5000,EMEA,2026-01-01,FALSE
+ACC-SWWXJQL7,Ironclad Systems,ironclad-systems-5.com,Software,1-50,EMEA,2026-09-17,FALSE
+ACC-Y77GC42M,Summit Aerospace,summit-aerospace-1.com,Telecom,5001+,EMEA,,FALSE
+ACC-MOBE606W,Everest Foods,everest-foods.com,Healthcare,201-500,NA,,FALSE

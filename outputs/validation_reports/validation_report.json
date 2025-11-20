@@ -1,0 +1,115 @@
+{
+  "validation_date": "2025-11-12 20:04:06",
+  "layer1_rules": {
+    "layer": "Layer 1: Universal Rules",
+    "precision": 0.054187192118226604,
+    "recall": 1.0,
+    "accuracy": 0.054187192118226604,
+    "f1_score": 0.102803738317757,
+    "coverage": 0.4043824701195219,
+    "n_matches": 203,
+    "confusion_matrix": [
+      [
+        0,
+        192
+      ],
+      [
+        0,
+        11
+      ]
+    ],
+    "per_rule_performance": {
+      "Pattern_8": {
+        "precision": 0.0,
+        "matches": 140,
+        "wins": 0,
+        "predicted_wins": 140
+      },
+      "Pattern_17": {
+        "precision": 0.1746031746031746,
+        "matches": 63,
+        "wins": 11,
+        "predicted_wins": 63
+      }
+    },
+    "meets_target": false
+  },
+  "layer2_patterns": {
+    "layer": "Layer 2: Pattern Discovery",
+    "precision": 0.7741935483870968,
+    "recall": 1.0,
+    "accuracy": 0.7741935483870968,
+    "f1_score": 0.8727272727272727,
+    "coverage": 0.12350597609561753,
+    "n_matches": 62,
+    "confusion_matrix": [
+      [
+        0,
+        14
+      ],
+      [
+        0,
+        48
+      ]
+    ],
+    "per_pattern_performance": {
+      "SINGLE_000": {
+        "precision": 0.7741935483870968,
+        "matches": 62,
+        "wins": 48
+      }
+    },
+    "meets_target": true
+  },
+  "layer3_ml": {
+    "layer": "Layer 3: ML Ensemble",
+    "precision": 0.9130434782608695,
+    "recall": 0.5384615384615384,
+    "accuracy": 0.8804780876494024,
+    "f1_score": 0.6774193548387096,
+    "auc": 0.9579531579531579,
+    "n_predictions": 502,
+    "confusion_matrix": [
+      [
+        379,
+        6
+      ],
+      [
+        54,
+        63
+      ]
+    ],
+    "meets_target": true
+  },
+  "overall_system": {
+    "layer": "Overall System",
+    "precision": 0.22846441947565543,
+    "recall": 0.5213675213675214,
+    "accuracy": 0.47808764940239046,
+    "f1_score": 0.3177083333333333,
+    "avg_confidence": 0.5469196729649389,
+    "n_predictions": 502,
+    "confusion_matrix": [
+      [
+        179,
+        206
+      ],
+      [
+        56,
+        61
+      ]
+    ],
+    "source_breakdown": {
+      "LOW_CONFIDENCE": 235,
+      "RULE": 203,
+      "PATTERN": 62,
+      "ML": 2
+    }
+  },
+  "summary": {
+    "layer1_meets_target": false,
+    "layer2_meets_target": true,
+    "layer3_meets_target": true,
+    "all_targets_met": false
+  }
+}
