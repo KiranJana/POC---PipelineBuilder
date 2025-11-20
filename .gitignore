@@ -63,8 +63,8 @@ Thumbs.db
 *.log
 logs/
 
-# Output directories (uncomment if you want to ignore outputs)
-# outputs/
+# Output directories (generated models, patterns, recommendations)
+outputs/
 
 # Database
 *.db
