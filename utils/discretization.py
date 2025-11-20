@@ -70,12 +70,12 @@ def discretize_features(df):
     df_discrete['C_Level_Engaged'] = (df['has_c_level'] == 1).astype(int)
     df_discrete['Decision_Maker_Engaged'] = (df['has_decision_maker'] == 1).astype(int)
     # Handle case where has_executive_involvement might not exist (when executive_count is 0 for all records)
-    df_discrete['Exec_Involved'] = int(df.get('has_executive_involvement', 0) == 1)
+    df_discrete['Exec_Involved'] = (df.get('has_executive_involvement', 0) == 1).astype(int)
 
     # ===================================================================
     # BUYING COMMITTEE
     # ===================================================================
-    df_discrete['Multi_Threaded'] = int(df.get('is_multi_threaded', 0) == 1)
+    df_discrete['Multi_Threaded'] = (df.get('is_multi_threaded', 0) == 1).astype(int)
 
     # ===================================================================
     # PRODUCT INTEREST

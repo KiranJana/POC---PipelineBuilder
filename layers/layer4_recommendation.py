@@ -135,7 +135,7 @@ class RecommendationEngine:
         # Normalize to 0-1 scale (since weights sum to 1.0)
         ensemble_score = min(1.0, max(0.0, ensemble_score))
 
-        print(f"[Layer 4] Ensemble prioritization: Rule={rule_conf:.1%}, Pattern={pattern_conf:.1%}, ML={ml_conf:.1%} → Score={ensemble_score:.1%}")
+        print(f"[Layer 4] Ensemble prioritization: Rule={rule_conf:.1%}, Pattern={pattern_conf:.1%}, ML={ml_conf:.1%} -> Score={ensemble_score:.1%}")
         
         # Collect all recommended actions
         recommended_actions = []

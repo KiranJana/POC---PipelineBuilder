@@ -142,7 +142,7 @@ def detect_feature_drift(df_current, drift_baseline_path='outputs/model_training
     drift_results['drift_detected'] = len(significant_drifts) > 0
 
     if drift_results['drift_detected']:
-        print(f"\n[DRIFT] ⚠️  DRIFT DETECTED in {len(significant_drifts)} features!")
+        print(f"\n[DRIFT] [WARNING] DRIFT DETECTED in {len(significant_drifts)} features!")
         print("[DRIFT] Top drifting features:")
 
         # Sort by most significant drift (lowest p-value)
@@ -453,7 +453,7 @@ def main():
         summary += f"  • {source}: {count} ({count/len(recommendations):.1%})\n"
     
     summary += f"""
-📁 Results Saved:
+[RESULTS SAVED]
   ├── outputs/recommendations/scoring_recommendations.json
   └── outputs/recommendations/scoring_explanations.json
 

@@ -2,11 +2,14 @@
 
 import pandas as pd
 import numpy as np
+
+# Initialize pandarallel availability
+PANDARALLEL_AVAILABLE = False
 try:
     from pandarallel import pandarallel
     PANDARALLEL_AVAILABLE = True
 except ImportError:
-    PANDARALLEL_AVAILABLE = False
+    pass
 
 from features.signal_extractors import (
     extract_activity_features,
@@ -40,10 +43,16 @@ def extract_opportunity_features(opp_row, data_dict):
     df_emails = data_dict['emails']
     df_map = data_dict['map']
 
-    # Calculate deal duration
+    # 1. DEFINE EVALUATION DATE FIRST (Critical for Leakage Prevention)
+    # For training, this defaults to close_date.
+    # For snapshots, you can modify this line to use a specific snapshot date.
     create_date = opp['create_date']
     close_date = opp['close_date'] if pd.notna(opp['close_date']) else pd.Timestamp.now()
-    deal_duration_days = (close_date - create_date).days
+
+    # Use this variable to control Time-Travel
+    evaluation_date = close_date
+
+    deal_duration_days = (evaluation_date - create_date).days
 
     opp_features = {
         'opportunity_id': opp['opportunity_id'],
@@ -52,6 +61,8 @@ def extract_opportunity_features(opp_row, data_dict):
         'is_won': opp['is_won'],
         'deal_duration_days': deal_duration_days
     }
+
+    # 2. PASS EVALUATION_DATE TO ALL EXTRACTORS
 
     # Activity features
     activity_feats = extract_activity_features(opp, df_activities, evaluation_date=evaluation_date)
@@ -69,12 +80,11 @@ def extract_opportunity_features(opp_row, data_dict):
     map_feats = extract_map_features(opp, df_map, df_accounts, evaluation_date=evaluation_date)
     opp_features.update(map_feats)
 
-    # Contact features
+    # Contact features (Contacts are usually static/current state, so no date needed unless you have creation dates)
     contact_feats = extract_contact_features(opp, df_contacts)
     opp_features.update(contact_feats)
 
-    # Historical features - use evaluation_date to prevent leakage
-    evaluation_date = opp['close_date'] if pd.notna(opp['close_date']) else pd.Timestamp.now()
+    # Historical features
     historical_feats = extract_historical_features(opp, df_opp, evaluation_date=evaluation_date)
     opp_features.update(historical_feats)
 
@@ -162,7 +172,9 @@ def engineer_all_features(data_dict):
     # Extract features for each opportunity using parallel processing
     print(f"[OK] Extracting features for {len(df_opp)} opportunities...")
 
-    # Initialize pandarallel if available
+    all_features = []  # Initialize here
+
+    # Try parallel processing first
     if PANDARALLEL_AVAILABLE:
         try:
             pandarallel.initialize(progress_bar=True, verbose=0)
@@ -176,9 +188,10 @@ def engineer_all_features(data_dict):
 
         except Exception as e:
             print(f"[WARNING] Pandarallel failed ({e}), falling back to sequential processing")
-            PANDARALLEL_AVAILABLE = False
+            all_features = []  # Reset for sequential processing
 
-    if not PANDARALLEL_AVAILABLE:
+    # Sequential processing (fallback or primary)
+    if not PANDARALLEL_AVAILABLE or not all_features:
         print(f"[OK] Using sequential processing")
         all_features = []
 

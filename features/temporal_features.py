@@ -199,11 +199,16 @@ def calculate_temporal_features(opp, df_activities, df_intent, df_accounts, eval
         days_since_last_act = (eval_date - last_act_date).days
 
         # Is the deal "ghosting" us?
-        last_inbound = opp_activities[opp_activities['direction'] == 'Inbound']['activity_dt'].max()
-        if pd.notna(last_inbound):
-            days_since_inbound = (eval_date - last_inbound).days
+        # Check if direction column exists (may not be present in all datasets)
+        if 'direction' in opp_activities.columns:
+            last_inbound = opp_activities[opp_activities['direction'] == 'Inbound']['activity_dt'].max()
+            if pd.notna(last_inbound):
+                days_since_inbound = (eval_date - last_inbound).days
+            else:
+                days_since_inbound = 999
         else:
-            days_since_inbound = 999
+            # If no direction column, assume all activities are inbound
+            days_since_inbound = days_since_last_act
     else:
         days_since_last_act = (eval_date - create_date).days
         days_since_inbound = 999

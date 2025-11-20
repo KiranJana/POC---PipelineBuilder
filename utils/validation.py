@@ -89,9 +89,9 @@ def validate_layer1_rules(df_features, df_rule_results):
     overall_passed = pos_passed and neg_passed
 
     print(f"\n[Layer 1] OVERALL ASSESSMENT:")
-    print(f"  Positive Rules: {'✅ PASS' if pos_passed else '❌ FAIL'}")
-    print(f"  Negative Rules: {'✅ PASS' if neg_passed else '❌ FAIL'}")
-    print(f"  Overall: {'✅ PASS' if overall_passed else '❌ FAIL'}")
+    print(f"  Positive Rules: {'[PASS]' if pos_passed else '[FAIL]'}")
+    print(f"  Negative Rules: {'[PASS]' if neg_passed else '[FAIL]'}")
+    print(f"  Overall: {'[PASS]' if overall_passed else '[FAIL]'}")
     print(f"  Coverage: {coverage:.1%} ({len(rule_matched)}/{len(df_eval)} opportunities)")
 
     # Overall metrics (for backward compatibility - simplified)
