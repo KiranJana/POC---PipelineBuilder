@@ -6,6 +6,7 @@ Target: >=70% precision for discovered patterns
 
 import pandas as pd
 import numpy as np
+from scipy import stats
 from mlxtend.frequent_patterns import fpgrowth, association_rules
 import json
 
@@ -28,13 +29,16 @@ class PatternDiscoveryEngine:
     MIN_SINGLE_FEATURE_SUPPORT = 15      # Minimum deals for single feature analysis
     MIN_WIN_RATE_SINGLE = 0.75           # Minimum win rate for strong single features
     MIN_LIFT_SINGLE = 2.0                # Minimum lift for strong single features
+    MAX_PVALUE_SINGLE = 0.05             # Maximum p-value for statistical significance
     MIN_COMBO_SUPPORT = 10               # Minimum deals for feature combinations
     MIN_WIN_RATE_COMBO = 0.80            # Minimum win rate for combinations
     MIN_LIFT_COMBO = 2.5                 # Minimum lift for combinations
+    MAX_PVALUE_COMBO = 0.05              # Maximum p-value for statistical significance
     MIN_SYNERGY_BOOST = 0.10             # Minimum synergy improvement
     MIN_TRIPLE_SUPPORT = 8               # Minimum deals for triple combinations
     MIN_WIN_RATE_TRIPLE = 0.85           # Minimum win rate for triples
     MIN_LIFT_TRIPLE = 3.0                # Minimum lift for triples
+    MAX_PVALUE_TRIPLE = 0.05             # Maximum p-value for statistical significance
     
     def __init__(self, min_support=None, min_confidence=None, min_lift=1.2):
         """
@@ -64,6 +68,40 @@ class PatternDiscoveryEngine:
     def _calculate_lift(self, win_rate, baseline_win_rate):
         """Calculate lift (improvement over baseline win rate)"""
         return win_rate / baseline_win_rate if baseline_win_rate > 0 else 1.0
+
+    def _calculate_fisher_pvalue(self, wins_with_pattern, total_with_pattern, total_wins, total_deals):
+        """
+        Calculate Fisher's Exact Test p-value for pattern significance
+
+        Args:
+            wins_with_pattern: Number of wins with this pattern
+            total_with_pattern: Total deals with this pattern
+            total_wins: Total wins in dataset
+            total_deals: Total deals in dataset
+
+        Returns:
+            p-value from Fisher's Exact Test (two-sided)
+        """
+        # Create contingency table:
+        # [[wins_with_pattern, losses_with_pattern],
+        #  [wins_without_pattern, losses_without_pattern]]
+        losses_with_pattern = total_with_pattern - wins_with_pattern
+        wins_without_pattern = total_wins - wins_with_pattern
+        losses_without_pattern = (total_deals - total_with_pattern) - wins_without_pattern
+
+        # Ensure non-negative counts (shouldn't happen but safety check)
+        contingency_table = [
+            [max(0, wins_with_pattern), max(0, losses_with_pattern)],
+            [max(0, wins_without_pattern), max(0, losses_without_pattern)]
+        ]
+
+        try:
+            # Use Fisher's exact test (two-sided)
+            odds_ratio, p_value = stats.fisher_exact(contingency_table, alternative='two-sided')
+            return p_value
+        except ValueError:
+            # Fallback if contingency table is invalid
+            return 1.0
     
     # Removed: discretize_features method - now using shared utils.discretization.discretize_features
     # This ensures 100% consistency between training and inference
@@ -134,14 +172,17 @@ class PatternDiscoveryEngine:
                 if feature_total >= self.MIN_SINGLE_FEATURE_SUPPORT:
                     win_rate = feature_present['Won'].mean()
                     lift = self._calculate_lift(win_rate, baseline_win_rate)
+                    p_value = self._calculate_fisher_pvalue(feature_wins, feature_total, len(df_won), len(df_discrete))
 
-                    # Strict criteria: high win rate, significant lift, reasonable sample size
-                    if (win_rate >= self.MIN_WIN_RATE_SINGLE and lift >= self.MIN_LIFT_SINGLE and feature_total >= 20):
+                    # Strict criteria: high win rate, significant lift, statistical significance, reasonable sample size
+                    if (win_rate >= self.MIN_WIN_RATE_SINGLE and lift >= self.MIN_LIFT_SINGLE and
+                        p_value <= self.MAX_PVALUE_SINGLE and feature_total >= 20):
                         strong_features[feature] = {
                             'win_rate': win_rate,
                             'support': feature_total,
                             'wins': int(feature_wins),
-                            'lift': lift
+                            'lift': lift,
+                            'p_value': p_value
                         }
 
             print(f"[Layer 2] Found {len(strong_features)} strong individual features")
@@ -164,10 +205,14 @@ class PatternDiscoveryEngine:
                     f1_rate = strong_features[feature1]['win_rate']
                     f2_rate = strong_features[feature2]['win_rate']
 
+                    # Calculate statistical significance
+                    combo_pvalue = self._calculate_fisher_pvalue(combo_wins, len(both_present), len(df_won), len(df_discrete))
+
                     # Synergy criteria: combination wins at least 10% more than better individual feature
                     synergy_boost = combo_win_rate - max(f1_rate, f2_rate)
 
-                    if (combo_win_rate >= self.MIN_WIN_RATE_COMBO and combo_lift >= self.MIN_LIFT_COMBO and synergy_boost >= self.MIN_SYNERGY_BOOST):
+                    if (combo_win_rate >= self.MIN_WIN_RATE_COMBO and combo_lift >= self.MIN_LIFT_COMBO and
+                        synergy_boost >= self.MIN_SYNERGY_BOOST and combo_pvalue <= self.MAX_PVALUE_COMBO):
                         combination_patterns.append({
                             'pattern': f"{feature1} + {feature2}",
                             'antecedents': [feature1, feature2],
@@ -176,7 +221,8 @@ class PatternDiscoveryEngine:
                             'lift': float(combo_lift),
                             'wins': int(combo_wins),
                             'losses': int(len(both_present) - combo_wins),
-                            'synergy_boost': synergy_boost
+                            'synergy_boost': synergy_boost,
+                            'p_value': combo_pvalue
                         })
 
             # Try triples for even stronger patterns (but harder to interpret)
@@ -191,8 +237,10 @@ class PatternDiscoveryEngine:
                         triple_win_rate = all_present['Won'].mean()
                         triple_wins = all_present['Won'].sum()
                         triple_lift = self._calculate_lift(triple_win_rate, baseline_win_rate)
+                        triple_pvalue = self._calculate_fisher_pvalue(triple_wins, len(all_present), len(df_won), len(df_discrete))
 
-                        if triple_win_rate >= self.MIN_WIN_RATE_TRIPLE and triple_lift >= self.MIN_LIFT_TRIPLE:
+                        if (triple_win_rate >= self.MIN_WIN_RATE_TRIPLE and triple_lift >= self.MIN_LIFT_TRIPLE and
+                            triple_pvalue <= self.MAX_PVALUE_TRIPLE):
                             combination_patterns.append({
                                 'pattern': f"{feature1} + {feature2} + {feature3}",
                                 'antecedents': [feature1, feature2, feature3],
@@ -201,7 +249,8 @@ class PatternDiscoveryEngine:
                                 'lift': float(triple_lift),
                                 'wins': int(triple_wins),
                                 'losses': int(len(all_present) - triple_wins),
-                                'synergy_boost': 0.15  # Assume higher synergy for triples
+                                'synergy_boost': 0.15,  # Assume higher synergy for triples
+                                'p_value': triple_pvalue
                             })
 
             # 3. Create final patterns list - prioritize combinations over singles
@@ -338,17 +387,22 @@ class PatternDiscoveryEngine:
 
                         if len(matched_deals) >= 15:  # Higher threshold for FP-Growth patterns
                             win_rate = matched_deals['Won'].mean()
+                            wins_count = matched_deals['Won'].sum()
+                            p_value = self._calculate_fisher_pvalue(wins_count, len(matched_deals), len(df_won), len(df_discrete))
 
-                            patterns.append({
-                                'pattern_id': f'APR_{idx:03d}',
-                                'pattern': pattern_desc,
-                                'antecedents': antecedents,
-                                'confidence': float(win_rate),
-                                'support': int(len(matched_deals)),
-                                'lift': float(rule['lift']),
-                                'wins': int(matched_deals['Won'].sum()),
-                                'losses': int((~matched_deals['Won'].astype(bool)).sum())
-                            })
+                            # Filter by statistical significance (same threshold as statistical method)
+                            if p_value <= self.MAX_PVALUE_COMBO:
+                                patterns.append({
+                                    'pattern_id': f'APR_{idx:03d}',
+                                    'pattern': pattern_desc,
+                                    'antecedents': antecedents,
+                                    'confidence': float(win_rate),
+                                    'support': int(len(matched_deals)),
+                                    'lift': float(rule['lift']),
+                                    'wins': int(wins_count),
+                                    'losses': int(len(matched_deals) - wins_count),
+                                    'p_value': p_value
+                                })
 
                     # Sort by confidence and return top patterns
                     patterns = sorted(patterns, key=lambda x: x['confidence'], reverse=True)[:15]

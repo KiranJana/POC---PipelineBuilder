@@ -29,7 +29,7 @@ class MLEnsemble:
         
         print("[Layer 3] ML Ensemble initialized")
     
-    def prepare_training_data(self, df_features, df_rule_results, df_pattern_results, train_on_all_data=False):
+    def prepare_training_data(self, df_features, df_rule_results, df_pattern_results, train_on_all_data=True):
         """
         Prepare training data - option to train on all data for maximum accuracy
         or only "messy middle" for consistency with rules
@@ -45,26 +45,23 @@ class MLEnsemble:
         df_merged['rule_matched'] = df_merged['rule_matched'].fillna(False)
         df_merged['pattern_matched'] = df_merged['pattern_matched'].fillna(False)
 
-        if train_on_all_data:
             # STRATEGY: Train on ALL data for robustness, apply only to messy middle
             # Rationale: In production, we may encounter patterns not seen during training.
             # By training on all data (including rule/pattern-covered cases), the ML model
             # learns the full landscape. However, during inference (Layer 4), the model
             # is ONLY applied to opportunities that don't match rules or patterns.
             # This ensures: (1) Rules/patterns take priority, (2) ML is robust when applied
-            df_training = df_merged.copy()
-            print(f"[Layer 3] Training ML on ALL {len(df_training)} opportunities")
-            print(f"[Layer 3] Strategy: Learn full landscape, apply only to messy middle in Layer 4")
-            print(f"[Layer 3] Rule-covered: {df_merged['rule_matched'].sum()}, Pattern-covered: {df_merged['pattern_matched'].sum()}")
-        else:
-            # Alternative approach: only train on messy middle
-            messy_mask = (~df_merged['rule_matched']) & (~df_merged['pattern_matched'])
-            df_training = df_merged[messy_mask].copy()
+        df_training = df_merged.copy()
+        
+        print(f"[Layer 3] Training ML on ALL {len(df_training)} opportunities")
+        print(f"[Layer 3] Strategy: Learn full landscape, apply only to messy middle in Layer 4")
+        print(f"[Layer 3] Rule-covered: {df_merged['rule_matched'].sum()}, Pattern-covered: {df_merged['pattern_matched'].sum()}")
 
-            print(f"[Layer 3] Total opportunities: {len(df_features)}")
-            print(f"[Layer 3] Handled by rules: {df_merged['rule_matched'].sum()}")
-            print(f"[Layer 3] Handled by patterns: {df_merged['pattern_matched'].sum()}")
-            print(f"[Layer 3] Training ML on messy middle only: {len(df_training)} ({len(df_training)/len(df_features):.1%})")
+
+        print(f"[Layer 3] Total opportunities: {len(df_features)}")
+        print(f"[Layer 3] Handled by rules: {df_merged['rule_matched'].sum()}")
+        print(f"[Layer 3] Handled by patterns: {df_merged['pattern_matched'].sum()}")
+        print(f"[Layer 3] Training ML on messy middle only: {len(df_training)} ({len(df_training)/len(df_features):.1%})")
 
         if len(df_training) < 30:
             print("[Layer 3] WARNING: Insufficient data for ML training (need at least 30 samples)")

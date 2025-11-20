@@ -20,52 +20,9 @@ class RecommendationEngine:
         self.rules_engine = rules_engine
         self.pattern_engine = pattern_engine
         self.ml_ensemble = ml_ensemble
-        
-        # Ensemble weights
-        self.weights = {
-            'rule': 0.5,
-            'pattern': 0.3,
-            'ml': 0.2
-        }
-        
+
         print("[Layer 4] Recommendation Engine initialized")
-        print(f"  Ensemble weights: Rules={self.weights['rule']}, Patterns={self.weights['pattern']}, ML={self.weights['ml']}")
 
-        # Mapping from discovered patterns to action mappings
-        self.pattern_to_action_map = {
-            'Expansion': 'Pattern_2',  # Create Expansion Opportunity
-            'is_expansion': 'Pattern_2',
-            'Competitor_Research': 'Pattern_3',  # Competitive Comparison
-            'had_competitor_intent': 'Pattern_3',
-            'is_renewal': 'Pattern_4',  # Renewal QBR
-            'Renewal': 'Pattern_4',
-            'has_executive_involvement': 'Pattern_5',  # Exec Sponsor Engagement
-            'Exec_Involved': 'Pattern_5',
-            'is_new_logo': 'Pattern_1',  # High-Priority Opportunity
-            'New_Logo': 'Pattern_1',
-            'Intent_High': 'Pattern_1',
-            'Activity_High': 'Pattern_1',
-            'C_Level_Engaged': 'Pattern_5',
-            'Decision_Maker_Engaged': 'Pattern_5',
-            'Multi_Threaded': 'Pattern_1',
-            'Engagement_Increasing': 'Pattern_1',
-            'Engagement_Decreasing': 'Pattern_6',  # At-Risk Renewal
-            'Pricing_Interest': 'Pattern_1',
-            'Demo_Requested': 'Pattern_1'
-        }
-
-    def _get_pattern_action_mapping(self, pattern_name):
-        """Map discovered pattern to action mapping key"""
-        # Direct mapping
-        if pattern_name in self.pattern_to_action_map:
-            return self.pattern_to_action_map[pattern_name]
-
-        # Partial match
-        for pattern_key, action_key in self.pattern_to_action_map.items():
-            if pattern_key.lower() in pattern_name.lower():
-                return action_key
-
-        return None
 
     def generate_recommendation(self, opp_features, df_historical=None, feature_cols=None, similarity_cache=None):
         """
@@ -123,14 +80,8 @@ class RecommendationEngine:
             # Use pattern-based recommendation as primary
             primary_source = 'PATTERN'
             confidence = pattern_result['confidence']
-            pattern_action_key = self._get_pattern_action_mapping(pattern_result['pattern'])
-            if pattern_action_key and pattern_action_key in PATTERN_ACTIONS:
-                pattern_action = PATTERN_ACTIONS[pattern_action_key]
-                recommendation_type = pattern_action['action']
-                priority_actions = pattern_action['priority_actions']
-            else:
-                recommendation_type = 'Create Opportunity'  # Default for patterns
-                priority_actions = []
+            recommendation_type = 'Create Opportunity'  # Default for patterns
+            priority_actions = []
             predicted_outcome = 1  # Patterns predict wins
 
         elif ml_applied:
