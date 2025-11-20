@@ -1,17 +1,17 @@
 {
-  "validation_date": "2025-11-12 20:04:06",
+  "validation_date": "2025-11-19 20:29:33",
   "layer1_rules": {
     "layer": "Layer 1: Universal Rules",
-    "precision": 0.054187192118226604,
+    "precision": 0.05,
     "recall": 1.0,
-    "accuracy": 0.054187192118226604,
-    "f1_score": 0.102803738317757,
-    "coverage": 0.4043824701195219,
-    "n_matches": 203,
+    "accuracy": 0.05,
+    "f1_score": 0.09523809523809523,
+    "coverage": 0.43824701195219123,
+    "n_matches": 220,
     "confusion_matrix": [
       [
         0,
-        192
+        209
       ],
       [
         0,
@@ -21,15 +21,15 @@
     "per_rule_performance": {
       "Pattern_8": {
         "precision": 0.0,
-        "matches": 140,
+        "matches": 173,
         "wins": 0,
-        "predicted_wins": 140
+        "predicted_wins": 173
       },
       "Pattern_17": {
-        "precision": 0.1746031746031746,
-        "matches": 63,
+        "precision": 0.23404255319148937,
+        "matches": 47,
         "wins": 11,
-        "predicted_wins": 63
+        "predicted_wins": 47
       }
     },
     "meets_target": false
@@ -63,47 +63,46 @@
   },
   "layer3_ml": {
     "layer": "Layer 3: ML Ensemble",
-    "precision": 0.9130434782608695,
-    "recall": 0.5384615384615384,
-    "accuracy": 0.8804780876494024,
-    "f1_score": 0.6774193548387096,
-    "auc": 0.9579531579531579,
+    "precision": 0.9074074074074074,
+    "recall": 0.4188034188034188,
+    "accuracy": 0.8545816733067729,
+    "f1_score": 0.5730994152046783,
+    "auc": 0.9298479298479299,
     "n_predictions": 502,
     "confusion_matrix": [
       [
-        379,
-        6
+        380,
+        5
       ],
       [
-        54,
-        63
+        68,
+        49
       ]
     ],
     "meets_target": true
   },
   "overall_system": {
     "layer": "Overall System",
-    "precision": 0.22846441947565543,
-    "recall": 0.5213675213675214,
-    "accuracy": 0.47808764940239046,
-    "f1_score": 0.3177083333333333,
-    "avg_confidence": 0.5469196729649389,
+    "precision": 0.20921985815602837,
+    "recall": 0.5042735042735043,
+    "accuracy": 0.4402390438247012,
+    "f1_score": 0.2957393483709273,
+    "avg_confidence": 0.578509351054712,
     "n_predictions": 502,
     "confusion_matrix": [
       [
-        179,
-        206
+        162,
+        223
       ],
       [
-        56,
-        61
+        58,
+        59
       ]
     ],
     "source_breakdown": {
-      "LOW_CONFIDENCE": 235,
-      "RULE": 203,
-      "PATTERN": 62,
-      "ML": 2
+      "LOW_CONFIDENCE": 220,
+      "RULE": 220,
+      "PATTERN": 62
     }
   },
   "summary": {

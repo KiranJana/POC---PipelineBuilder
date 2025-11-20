@@ -6,8 +6,7 @@ Target: >=70% precision for discovered patterns
 
 import pandas as pd
 import numpy as np
-from mlxtend.frequent_patterns import apriori, association_rules
-from mlxtend.preprocessing import TransactionEncoder
+from mlxtend.frequent_patterns import fpgrowth, association_rules
 import json
 
 # Import shared discretization logic for consistency
@@ -24,6 +23,18 @@ class PatternDiscoveryEngine:
     Layer 2: Pattern Discovery
     Uses association rule mining to discover winning signal combinations
     """
+
+    # Statistical pattern discovery thresholds
+    MIN_SINGLE_FEATURE_SUPPORT = 15      # Minimum deals for single feature analysis
+    MIN_WIN_RATE_SINGLE = 0.75           # Minimum win rate for strong single features
+    MIN_LIFT_SINGLE = 2.0                # Minimum lift for strong single features
+    MIN_COMBO_SUPPORT = 10               # Minimum deals for feature combinations
+    MIN_WIN_RATE_COMBO = 0.80            # Minimum win rate for combinations
+    MIN_LIFT_COMBO = 2.5                 # Minimum lift for combinations
+    MIN_SYNERGY_BOOST = 0.10             # Minimum synergy improvement
+    MIN_TRIPLE_SUPPORT = 8               # Minimum deals for triple combinations
+    MIN_WIN_RATE_TRIPLE = 0.85           # Minimum win rate for triples
+    MIN_LIFT_TRIPLE = 3.0                # Minimum lift for triples
     
     def __init__(self, min_support=None, min_confidence=None, min_lift=1.2):
         """
@@ -49,6 +60,10 @@ class PatternDiscoveryEngine:
         # Adaptive algorithm selection based on data scale
         self.adaptive_mode = True
         self.dataset_size = None  # Will be set during mining
+
+    def _calculate_lift(self, win_rate, baseline_win_rate):
+        """Calculate lift (improvement over baseline win rate)"""
+        return win_rate / baseline_win_rate if baseline_win_rate > 0 else 1.0
     
     # Removed: discretize_features method - now using shared utils.discretization.discretize_features
     # This ensures 100% consistency between training and inference
@@ -69,8 +84,8 @@ class PatternDiscoveryEngine:
                 print(f"[Layer 2] Dataset size: {dataset_size} (< 1000) -> Using statistical analysis")
                 return self._mine_patterns_statistical(df_features)
             else:
-                print(f"[Layer 2] Dataset size: {dataset_size} (>= 1000) -> Using Apriori analysis")
-                return self._mine_patterns_apriori(df_features)
+                print(f"[Layer 2] Dataset size: {dataset_size} (>= 1000) -> Using FP-Growth analysis")
+                return self._mine_patterns_fpgrowth(df_features)
         else:
             # Legacy behavior - use statistical
             return self._mine_patterns_statistical(df_features)
@@ -116,12 +131,12 @@ class PatternDiscoveryEngine:
                 feature_wins = feature_present['Won'].sum()
                 feature_total = len(feature_present)
 
-                if feature_total >= 15:  # Higher minimum support
+                if feature_total >= self.MIN_SINGLE_FEATURE_SUPPORT:
                     win_rate = feature_present['Won'].mean()
-                    lift = win_rate / baseline_win_rate if baseline_win_rate > 0 else 1.0
+                    lift = self._calculate_lift(win_rate, baseline_win_rate)
 
                     # Strict criteria: high win rate, significant lift, reasonable sample size
-                    if (win_rate >= 0.75 and lift >= 2.0 and feature_total >= 20):
+                    if (win_rate >= self.MIN_WIN_RATE_SINGLE and lift >= self.MIN_LIFT_SINGLE and feature_total >= 20):
                         strong_features[feature] = {
                             'win_rate': win_rate,
                             'support': feature_total,
@@ -140,10 +155,10 @@ class PatternDiscoveryEngine:
                 feature1, feature2 = combo
                 both_present = df_discrete[(df_discrete[feature1] == 1) & (df_discrete[feature2] == 1)]
 
-                if len(both_present) >= 10:  # Minimum 10 deals for combination
+                if len(both_present) >= self.MIN_COMBO_SUPPORT:
                     combo_win_rate = both_present['Won'].mean()
                     combo_wins = both_present['Won'].sum()
-                    combo_lift = combo_win_rate / baseline_win_rate if baseline_win_rate > 0 else 1.0
+                    combo_lift = self._calculate_lift(combo_win_rate, baseline_win_rate)
 
                     # Check for synergy: combination should outperform both individual features
                     f1_rate = strong_features[feature1]['win_rate']
@@ -152,7 +167,7 @@ class PatternDiscoveryEngine:
                     # Synergy criteria: combination wins at least 10% more than better individual feature
                     synergy_boost = combo_win_rate - max(f1_rate, f2_rate)
 
-                    if (combo_win_rate >= 0.80 and combo_lift >= 2.5 and synergy_boost >= 0.10):
+                    if (combo_win_rate >= self.MIN_WIN_RATE_COMBO and combo_lift >= self.MIN_LIFT_COMBO and synergy_boost >= self.MIN_SYNERGY_BOOST):
                         combination_patterns.append({
                             'pattern': f"{feature1} + {feature2}",
                             'antecedents': [feature1, feature2],
@@ -172,12 +187,12 @@ class PatternDiscoveryEngine:
                                             (df_discrete[feature2] == 1) &
                                             (df_discrete[feature3] == 1)]
 
-                    if len(all_present) >= 8:  # Even higher threshold for triples
+                    if len(all_present) >= self.MIN_TRIPLE_SUPPORT:
                         triple_win_rate = all_present['Won'].mean()
                         triple_wins = all_present['Won'].sum()
-                        triple_lift = triple_win_rate / baseline_win_rate if baseline_win_rate > 0 else 1.0
+                        triple_lift = self._calculate_lift(triple_win_rate, baseline_win_rate)
 
-                        if triple_win_rate >= 0.85 and triple_lift >= 3.0:
+                        if triple_win_rate >= self.MIN_WIN_RATE_TRIPLE and triple_lift >= self.MIN_LIFT_TRIPLE:
                             combination_patterns.append({
                                 'pattern': f"{feature1} + {feature2} + {feature3}",
                                 'antecedents': [feature1, feature2, feature3],
@@ -257,9 +272,9 @@ class PatternDiscoveryEngine:
             traceback.print_exc()
             return []
 
-    def _mine_patterns_apriori(self, df_features):
-        """Apriori pattern discovery for larger datasets"""
-        print(f"[Layer 2] Using Apriori pattern discovery (comprehensive)...")
+    def _mine_patterns_fpgrowth(self, df_features):
+        """FP-Growth pattern discovery for larger datasets"""
+        print(f"[Layer 2] Using FP-Growth pattern discovery (comprehensive)...")
 
         # Discretize features using shared function
         df_discrete = discretize_features(df_features)
@@ -274,22 +289,30 @@ class PatternDiscoveryEngine:
         df_won = df_discrete[df_discrete['Won'] == 1]
 
         if len(df_won) < 20:
-            print("[Layer 2] WARNING: Insufficient won deals for Apriori, switching to statistical")
+            print("[Layer 2] WARNING: Insufficient won deals for FP-Growth, switching to statistical")
             return self._mine_patterns_statistical(df_features)
 
-        # Create one-hot encoded DataFrame for Apriori
+        # Create one-hot encoded DataFrame for FP-Growth (using sparse format for memory efficiency)
         df_encoded = df_won[feature_cols].copy()
         df_encoded = df_encoded.astype(bool)
+        # Convert to sparse format to reduce memory usage (only stores True values)
+        df_encoded = df_encoded.astype(pd.SparseDtype("bool", False))
 
-        print(f"[Layer 2] Running Apriori on {len(df_encoded)} won deals with {len(feature_cols)} features...")
+        # Pre-filter columns: remove features with support < min_support (they can't contribute to patterns)
+        feature_supports = df_encoded.sum() / len(df_encoded)  # Calculate support for each feature
+        filtered_cols = feature_supports[feature_supports >= self.min_support].index.tolist()
+        df_encoded = df_encoded[filtered_cols]
+
+        print(f"[Layer 2] Pre-filtered {len(feature_cols) - len(filtered_cols)} rare features (< {self.min_support:.1%} support)")
+        print(f"[Layer 2] Running FP-Growth on {len(df_encoded)} won deals with {len(filtered_cols)} features...")
 
         try:
-            # Mine frequent itemsets with safety limits
-            frequent_itemsets = apriori(df_encoded, min_support=self.min_support, use_colnames=True, max_len=3)
+            # Mine frequent itemsets with safety limits (using FP-Growth for better memory efficiency)
+            frequent_itemsets = fpgrowth(df_encoded, min_support=self.min_support, use_colnames=True, max_len=3)
 
             if len(frequent_itemsets) == 0:
                 print("[Layer 2] No frequent itemsets found, lowering min_support")
-                frequent_itemsets = apriori(df_encoded, min_support=self.min_support/2, use_colnames=True, max_len=3)
+                frequent_itemsets = fpgrowth(df_encoded, min_support=self.min_support/2, use_colnames=True, max_len=3)
 
             print(f"[Layer 2] Found {len(frequent_itemsets)} frequent itemsets")
 
@@ -313,7 +336,7 @@ class PatternDiscoveryEngine:
                         mask = df_discrete[antecedents].all(axis=1)
                         matched_deals = df_discrete[mask]
 
-                        if len(matched_deals) >= 15:  # Higher threshold for Apriori patterns
+                        if len(matched_deals) >= 15:  # Higher threshold for FP-Growth patterns
                             win_rate = matched_deals['Won'].mean()
 
                             patterns.append({
@@ -330,7 +353,7 @@ class PatternDiscoveryEngine:
                     # Sort by confidence and return top patterns
                     patterns = sorted(patterns, key=lambda x: x['confidence'], reverse=True)[:15]
 
-                    print(f"\n[Layer 2] Discovered {len(patterns)} high-quality patterns using Apriori")
+                    print(f"\n[Layer 2] Discovered {len(patterns)} high-quality patterns using FP-Growth")
                     print(f"[Layer 2] Top 5 patterns by confidence:")
                     for i, pattern in enumerate(patterns[:5], 1):
                         print(f"  {i}. {pattern['pattern']}: {pattern['confidence']:.1%} win rate ({pattern['support']} deals)")
@@ -344,7 +367,7 @@ class PatternDiscoveryEngine:
                 return []
 
         except Exception as e:
-            print(f"[Layer 2] Apriori failed ({e}), falling back to statistical analysis")
+            print(f"[Layer 2] FP-Growth failed ({e}), falling back to statistical analysis")
             return self._mine_patterns_statistical(df_features)
 
     def check_pattern_match(self, opp_features, pattern):

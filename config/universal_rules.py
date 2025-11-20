@@ -459,12 +459,16 @@ def pattern_16_new_opp_pricing(opp_features):
 
 def pattern_17_new_opp_surge_14days(opp_features):
     """
-    Pattern #17: New Opp + Surge + 14 Days
+    Pattern #17: New Opp + Strong Surge + 14 Days
     Action: High-Surge New Opportunity
+    Strengthened criteria: Requires >=2 surge signals OR surge + email activity
     """
+    total_surge = opp_features.get('high_surge_count_during', 0) + opp_features.get('medium_surge_count_during', 0)
+    has_email_activity = opp_features.get('email_count_during', 0) >= 1
+
     conditions = [
         opp_features.get('is_new_logo', 0) == 1,
-        opp_features.get('high_surge_count_during', 0) + opp_features.get('medium_surge_count_during', 0) >= 1,
+        (total_surge >= 2) or (total_surge >= 1 and has_email_activity),  # Strengthened criteria
         opp_features.get('deal_duration_days', 0) <= 14
     ]
     
@@ -473,11 +477,13 @@ def pattern_17_new_opp_surge_14days(opp_features):
             'matched': True,
             'rule_id': 'Pattern_17',
             'rule_name': 'High-Surge Quick Strike',
-            'confidence': 0.88,
+            'confidence': 0.92,  # Increased confidence due to stronger criteria
             'signals': {
                 'is_new_logo': True,
                 'surge_signals': int(opp_features.get('high_surge_count_during', 0) + opp_features.get('medium_surge_count_during', 0)),
-                'days_in_cycle': int(opp_features.get('deal_duration_days', 0))
+                'email_activity': int(opp_features.get('email_count_during', 0)),
+                'days_in_cycle': int(opp_features.get('deal_duration_days', 0)),
+                'criteria_met': 'strong_surge' if total_surge >= 2 else 'surge_with_email'
             },
             **get_actions_for_pattern('Pattern_17')
         }

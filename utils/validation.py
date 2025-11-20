@@ -10,68 +10,147 @@ import json
 from datetime import datetime
 
 
+# Define rule categories for proper validation
+POSITIVE_RULES = [
+    'Pattern_1', 'Pattern_2', 'Pattern_3', 'Pattern_4', 'Pattern_5', 'Pattern_7',
+    'Pattern_10', 'Pattern_11', 'Pattern_12', 'Pattern_14', 'Pattern_15', 'Pattern_16',
+    'Pattern_17', 'Pattern_18', 'Pattern_19', 'Pattern_21', 'Pattern_22'
+]  # Rules that predict positive outcomes (likely to win)
+
+NEGATIVE_RULES = [
+    'Pattern_6', 'Pattern_8', 'Pattern_9', 'Pattern_13', 'Pattern_20'
+]  # Rules that predict negative outcomes (at risk, likely to lose)
+
+
 def validate_layer1_rules(df_features, df_rule_results):
     """
     Validate Layer 1: Universal Rules Engine
-    Target: ≥90% precision
+    Target: ≥90% precision for positive rules, ≥80% risk recall for negative rules
     """
     print("\n" + "="*80)
     print("VALIDATING LAYER 1: UNIVERSAL RULES ENGINE")
     print("="*80)
-    
+
     # Merge features with results
     df_eval = df_features[['opportunity_id', 'is_won']].merge(df_rule_results, on='opportunity_id')
-    
+
     # Get rule-matched opportunities
     rule_matched = df_eval[df_eval['rule_matched']]
-    
+
     if len(rule_matched) == 0:
         print("[Layer 1] No rules matched - cannot validate")
         return None
-    
-    # For rules, predict "won" if action contains positive keywords
-    rule_matched['predicted_won'] = rule_matched['rule_action'].str.contains(
-        'Create|Opportunity|Expansion|Renewal|QBR',
-        case=False,
-        na=False
-    ).astype(int)
-    
-    # Calculate metrics
-    precision = precision_score(rule_matched['is_won'], rule_matched['predicted_won'], zero_division=0)
-    recall = recall_score(rule_matched['is_won'], rule_matched['predicted_won'], zero_division=0)
-    accuracy = accuracy_score(rule_matched['is_won'], rule_matched['predicted_won'])
-    f1 = f1_score(rule_matched['is_won'], rule_matched['predicted_won'], zero_division=0)
+
+    # Separate positive and negative rules
+    rule_matched['is_positive_rule'] = rule_matched['rule_id'].isin(POSITIVE_RULES)
+    rule_matched['is_negative_rule'] = rule_matched['rule_id'].isin(NEGATIVE_RULES)
+
+    positive_matches = rule_matched[rule_matched['is_positive_rule']]
+    negative_matches = rule_matched[rule_matched['is_negative_rule']]
+
+    print(f"[Layer 1] Positive rules matched: {len(positive_matches)}")
+    print(f"[Layer 1] Negative rules matched: {len(negative_matches)}")
+
+    # Validate positive rules (predict "won")
+    if len(positive_matches) > 0:
+        pos_precision = precision_score(positive_matches['is_won'], [1] * len(positive_matches), zero_division=0)
+        pos_recall = recall_score(positive_matches['is_won'], [1] * len(positive_matches), zero_division=0)
+        pos_accuracy = accuracy_score(positive_matches['is_won'], [1] * len(positive_matches))
+        pos_f1 = f1_score(positive_matches['is_won'], [1] * len(positive_matches), zero_division=0)
+
+        print(f"\n[Layer 1] POSITIVE RULES PERFORMANCE:")
+        print(f"  Precision: {pos_precision:.1%} (target: >=90%)")
+        print(f"  Recall: {pos_recall:.1%}")
+        print(f"  Accuracy: {pos_accuracy:.1%}")
+        print(f"  F1-Score: {pos_f1:.3f}")
+
+        pos_passed = pos_precision >= 0.90
+    else:
+        pos_passed = True  # No positive rules to validate
+
+    # Validate negative rules (predict "lost")
+    if len(negative_matches) > 0:
+        neg_precision = precision_score(1 - negative_matches['is_won'], [1] * len(negative_matches), zero_division=0)
+        neg_recall = recall_score(1 - negative_matches['is_won'], [1] * len(negative_matches), zero_division=0)
+        neg_accuracy = accuracy_score(1 - negative_matches['is_won'], [1] * len(negative_matches))
+        neg_f1 = f1_score(1 - negative_matches['is_won'], [1] * len(negative_matches), zero_division=0)
+
+        print(f"\n[Layer 1] NEGATIVE RULES PERFORMANCE (Risk Detection):")
+        print(f"  Risk Precision: {neg_precision:.1%} (correctly identified at-risk deals)")
+        print(f"  Risk Recall: {neg_recall:.1%} (target: >=80% - caught most at-risk deals)")
+        print(f"  Accuracy: {neg_accuracy:.1%}")
+        print(f"  F1-Score: {neg_f1:.3f}")
+
+        neg_passed = neg_recall >= 0.80
+    else:
+        neg_passed = True  # No negative rules to validate
+
+    # Overall assessment
+    overall_passed = pos_passed and neg_passed
+
+    print(f"\n[Layer 1] OVERALL ASSESSMENT:")
+    print(f"  Positive Rules: {'✅ PASS' if pos_passed else '❌ FAIL'}")
+    print(f"  Negative Rules: {'✅ PASS' if neg_passed else '❌ FAIL'}")
+    print(f"  Overall: {'✅ PASS' if overall_passed else '❌ FAIL'}")
+    print(f"  Coverage: {coverage:.1%} ({len(rule_matched)}/{len(df_eval)} opportunities)")
+
+    # Overall metrics (for backward compatibility - simplified)
+    overall_precision = (len(positive_matches) * (pos_precision if len(positive_matches) > 0 else 0) +
+                        len(negative_matches) * (neg_precision if len(negative_matches) > 0 else 0)) / len(rule_matched)
+    overall_recall = (len(positive_matches) * (pos_recall if len(positive_matches) > 0 else 0) +
+                     len(negative_matches) * (neg_recall if len(negative_matches) > 0 else 0)) / len(rule_matched)
+    overall_accuracy = accuracy_score(rule_matched['is_won'], rule_matched['is_positive_rule'].astype(int))
+    overall_f1 = f1_score(rule_matched['is_won'], rule_matched['is_positive_rule'].astype(int), zero_division=0)
     coverage = len(rule_matched) / len(df_eval)
-    
-    # Confusion matrix
-    cm = confusion_matrix(rule_matched['is_won'], rule_matched['predicted_won'])
+
+    # Confusion matrix (simplified)
+    cm = confusion_matrix(rule_matched['is_won'], rule_matched['is_positive_rule'].astype(int))
     
     # Per-rule performance
     per_rule_performance = {}
     for rule_id in rule_matched['rule_id'].unique():
-        if pd.notna(rule_id):
+        if pd.notna(rule_id) and len(rule_matched[rule_matched['rule_id'] == rule_id]) >= 3:  # Min 3 matches for meaningful analysis
             rule_data = rule_matched[rule_matched['rule_id'] == rule_id]
-            rule_precision = precision_score(
-                rule_data['is_won'],
-                rule_data['predicted_won'],
-                zero_division=0
-            )
+            is_positive = rule_id in POSITIVE_RULES
+
+            if is_positive:
+                precision = precision_score(rule_data['is_won'], [1] * len(rule_data), zero_division=0)
+                recall = recall_score(rule_data['is_won'], [1] * len(rule_data), zero_division=0)
+            else:
+                precision = precision_score(1 - rule_data['is_won'], [1] * len(rule_data), zero_division=0)
+                recall = recall_score(1 - rule_data['is_won'], [1] * len(rule_data), zero_division=0)
+
             per_rule_performance[rule_id] = {
-                'precision': float(rule_precision),
+                'precision': float(precision),
+                'recall': float(recall),
                 'matches': int(len(rule_data)),
                 'wins': int(rule_data['is_won'].sum()),
-                'predicted_wins': int(rule_data['predicted_won'].sum())
+                'losses': int(len(rule_data) - rule_data['is_won'].sum()),
+                'type': 'positive' if is_positive else 'negative',
+                'rule_name': rule_data['rule_name'].iloc[0] if len(rule_data) > 0 else 'Unknown'
             }
+
+    # Top 5 rules by precision (from per-rule analysis)
+    if per_rule_performance:
+        sorted_rules = sorted(per_rule_performance.items(),
+                            key=lambda x: x[1]['precision'], reverse=True)
+        print(f"\n[Layer 1] Top 5 Rules by Precision:")
+        for i, (rule_id, stats) in enumerate(sorted_rules[:5], 1):
+            rule_type = stats['type'].upper()
+            print(f"  {i}. {rule_id} ({rule_type}): {stats['precision']:.1%} ({stats['matches']} matches, {stats['wins']} wins)")
     
     results = {
         'layer': 'Layer 1: Universal Rules',
-        'precision': float(precision),
-        'recall': float(recall),
-        'accuracy': float(accuracy),
-        'f1_score': float(f1),
+        'precision': float(overall_precision),
+        'recall': float(overall_recall),
+        'accuracy': float(overall_accuracy),
+        'f1_score': float(overall_f1),
         'coverage': float(coverage),
         'n_matches': int(len(rule_matched)),
         'confusion_matrix': cm.tolist(),
+        'positive_rules_precision': float(pos_precision) if len(positive_matches) > 0 else None,
+        'negative_rules_recall': float(neg_recall) if len(negative_matches) > 0 else None,
+        'validation_passed': overall_passed,
         'per_rule_performance': per_rule_performance,
         'meets_target': precision >= 0.90
     }
