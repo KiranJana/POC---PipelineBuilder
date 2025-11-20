@@ -54,19 +54,19 @@ def extract_opportunity_features(opp_row, data_dict):
     }
 
     # Activity features
-    activity_feats = extract_activity_features(opp, df_activities)
+    activity_feats = extract_activity_features(opp, df_activities, evaluation_date=evaluation_date)
     opp_features.update(activity_feats)
 
     # Intent features
-    intent_feats = extract_intent_features(opp, df_intent, df_accounts)
+    intent_feats = extract_intent_features(opp, df_intent, df_accounts, evaluation_date=evaluation_date)
     opp_features.update(intent_feats)
 
     # Email features
-    email_feats = extract_email_features(opp, df_emails, df_accounts)
+    email_feats = extract_email_features(opp, df_emails, df_accounts, evaluation_date=evaluation_date)
     opp_features.update(email_feats)
 
     # MAP features
-    map_feats = extract_map_features(opp, df_map, df_accounts)
+    map_feats = extract_map_features(opp, df_map, df_accounts, evaluation_date=evaluation_date)
     opp_features.update(map_feats)
 
     # Contact features

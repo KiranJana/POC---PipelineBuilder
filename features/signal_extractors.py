@@ -1,21 +1,24 @@
-"""Signal extraction from various data sources"""
+"""Signal extraction from various data sources - LEAKAGE FIXED"""
 
 import pandas as pd
 import numpy as np
 from config.competitor_keywords import detect_competitor_intent, get_competitor_name
 
 
-def extract_activity_features(opp, df_activities):
-    """Extract activity features for an opportunity"""
+def extract_activity_features(opp, df_activities, evaluation_date=None):
+    """Extract activity features for an opportunity up to evaluation_date"""
     opp_id = opp['opportunity_id']
     create_date = opp['create_date']
-    close_date = opp['close_date'] if pd.notna(opp['close_date']) else pd.Timestamp.now()
-    
-    # Get activities DURING the opportunity (create → close)
+
+    # FIX: Use passed evaluation_date or fallback to close_date/now
+    if evaluation_date is None:
+        evaluation_date = opp['close_date'] if pd.notna(opp['close_date']) else pd.Timestamp.now()
+
+    # Filter strictly before evaluation_date
     opp_activities = df_activities[
         (df_activities['opportunity_id'] == opp_id) &
         (df_activities['activity_dt'] >= create_date) &
-        (df_activities['activity_dt'] <= close_date)
+        (df_activities['activity_dt'] <= evaluation_date)
     ]
     
     # Count by type
@@ -28,20 +31,21 @@ def extract_activity_features(opp, df_activities):
     has_campaign = opp_activities['campaign_id'].notna().sum()
     
     # Activity velocity (activities per day)
-    duration = max((close_date - create_date).days, 1)
+    # FIX: Use evaluation_date for duration calculation
+    duration = max((evaluation_date - create_date).days, 1)
     activity_velocity = total_activity / duration
-    
+
     # Days to first activity
     if len(opp_activities) > 0:
         first_activity_date = opp_activities['activity_dt'].min()
         days_to_first_activity = (first_activity_date - create_date).days
     else:
         days_to_first_activity = duration
-    
+
     # Days since last activity
     if len(opp_activities) > 0:
         last_activity_date = opp_activities['activity_dt'].max()
-        days_since_last_activity = (close_date - last_activity_date).days
+        days_since_last_activity = (evaluation_date - last_activity_date).days
     else:
         days_since_last_activity = duration
     
@@ -57,26 +61,28 @@ def extract_activity_features(opp, df_activities):
     }
 
 
-def extract_intent_features(opp, df_intent, df_accounts):
-    """Extract intent signal features for an opportunity"""
+def extract_intent_features(opp, df_intent, df_accounts, evaluation_date=None):
+    """Extract intent signal features for an opportunity up to evaluation_date"""
     opp_id = opp['opportunity_id']
     account_id = opp['account_id']
     create_date = opp['create_date']
-    close_date = opp['close_date'] if pd.notna(opp['close_date']) else pd.Timestamp.now()
-    
+
+    if evaluation_date is None:
+        evaluation_date = opp['close_date'] if pd.notna(opp['close_date']) else pd.Timestamp.now()
+
     # Get account domain
     account_domain = df_accounts[df_accounts['account_id'] == account_id]['domain'].values
     if len(account_domain) == 0:
         domain = None
     else:
         domain = account_domain[0]
-    
-    # Get intent signals DURING opportunity
+
+    # Get intent signals DURING opportunity window
     if pd.notna(domain):
         opp_intent = df_intent[
             (df_intent['company_domain'] == domain) &
             (df_intent['signal_dt'] >= create_date) &
-            (df_intent['signal_dt'] <= close_date)
+            (df_intent['signal_dt'] <= evaluation_date)
         ]
     else:
         opp_intent = pd.DataFrame()
@@ -112,26 +118,28 @@ def extract_intent_features(opp, df_intent, df_accounts):
     }
 
 
-def extract_email_features(opp, df_emails, df_accounts):
-    """Extract email engagement features for an opportunity"""
+def extract_email_features(opp, df_emails, df_accounts, evaluation_date=None):
+    """Extract email features up to evaluation_date"""
     opp_id = opp['opportunity_id']
     account_id = opp['account_id']
     create_date = opp['create_date']
-    close_date = opp['close_date'] if pd.notna(opp['close_date']) else pd.Timestamp.now()
-    
+
+    if evaluation_date is None:
+        evaluation_date = opp['close_date'] if pd.notna(opp['close_date']) else pd.Timestamp.now()
+
     # Get account domain
     account_domain = df_accounts[df_accounts['account_id'] == account_id]['domain'].values
     if len(account_domain) == 0:
         domain = None
     else:
         domain = account_domain[0]
-    
-    # Get emails DURING opportunity
+
+    # Get emails DURING window
     if pd.notna(domain):
         opp_emails = df_emails[
             (df_emails['to_domain'] == domain) &
             (df_emails['sent_dt'] >= create_date) &
-            (df_emails['sent_dt'] <= close_date)
+            (df_emails['sent_dt'] <= evaluation_date)
         ]
     else:
         opp_emails = pd.DataFrame()
@@ -167,26 +175,28 @@ def extract_email_features(opp, df_emails, df_accounts):
     }
 
 
-def extract_map_features(opp, df_map, df_accounts):
-    """Extract MAP (marketing) engagement features for an opportunity"""
+def extract_map_features(opp, df_map, df_accounts, evaluation_date=None):
+    """Extract MAP features up to evaluation_date"""
     opp_id = opp['opportunity_id']
     account_id = opp['account_id']
     create_date = opp['create_date']
-    close_date = opp['close_date'] if pd.notna(opp['close_date']) else pd.Timestamp.now()
-    
+
+    if evaluation_date is None:
+        evaluation_date = opp['close_date'] if pd.notna(opp['close_date']) else pd.Timestamp.now()
+
     # Get account domain
     account_domain = df_accounts[df_accounts['account_id'] == account_id]['domain'].values
     if len(account_domain) == 0:
         domain = None
     else:
         domain = account_domain[0]
-    
-    # Get MAP events DURING opportunity
+
+    # Get MAP events DURING window
     if pd.notna(domain):
         opp_map = df_map[
             (df_map['visitor_domain'] == domain) &
             (df_map['event_dt'] >= create_date) &
-            (df_map['event_dt'] <= close_date)
+            (df_map['event_dt'] <= evaluation_date)
         ]
     else:
         opp_map = pd.DataFrame()
