@@ -81,7 +81,7 @@ def calculate_persona_risk(buying_committee_analysis):
         return 'LOW'
 
 
-def get_persona_recommendations(buying_committee_analysis):
+def get_persona_recommendations(buying_committee_analysis, deal_stage=None):
     """Get diverse recommendations for engaging missing personas"""
     missing = buying_committee_analysis['missing_personas']
     recommendations = []
@@ -162,8 +162,8 @@ def get_persona_recommendations(buying_committee_analysis):
         ]
         recommendations.append(decision_maker_actions[0])  # Always add decision maker identification
 
-    # Champion development strategies
-    if not buying_committee_analysis['has_champion']:
+    # Champion development strategies (only for advanced stages where it's critical)
+    if not buying_committee_analysis['has_champion'] and deal_stage in ['Proposal', 'Negotiation']:
         champion_actions = [
             {
                 'action': 'Identify and nurture internal advocate or power user',

@@ -214,13 +214,13 @@ def pattern_7_expansion_demo_pricing(opp_features):
 
 def pattern_8_new_opp_stalled(opp_features):
     """
-    Pattern #8: New Opp + Stalled + Reminder + 14+ Days
+    Pattern #8: New Opp + Stalled + Reminder + 30+ Days
     Action: Re-engage Stalled Opportunity
     """
     conditions = [
         opp_features.get('is_new_logo', 0) == 1,
         opp_features.get('is_stalled', 0) == 1,
-        opp_features.get('days_since_last_activity', 0) >= 14
+        opp_features.get('days_since_last_activity', 0) >= 30
     ]
     
     if all(conditions):

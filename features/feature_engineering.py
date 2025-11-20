@@ -59,7 +59,8 @@ def extract_opportunity_features(opp_row, data_dict):
         'account_id': opp['account_id'],
         'amount': opp['amount'],
         'is_won': opp['is_won'],
-        'deal_duration_days': deal_duration_days
+        'deal_duration_days': deal_duration_days,
+        'final_stage': opp['final_stage']
     }
 
     # 2. PASS EVALUATION_DATE TO ALL EXTRACTORS

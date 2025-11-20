@@ -167,7 +167,7 @@ LLM_RATE_LIMIT_DELAY = 6.0          # Seconds between requests
 # ===================================================================
 # RECOMMENDATION THRESHOLDS
 # ===================================================================
-RECOMMENDATION_MIN_ML_CONFIDENCE = 0.6  # Minimum ML confidence for recommendations
+RECOMMENDATION_MIN_ML_CONFIDENCE = 0.3  # Minimum ML confidence for recommendations (lowered to allow Watch category)
 ENSEMBLE_RULE_WEIGHT = 0.5              # Weight for rule confidence in ensemble score
 ENSEMBLE_PATTERN_WEIGHT = 0.3           # Weight for pattern confidence in ensemble score
 ENSEMBLE_ML_WEIGHT = 0.2                # Weight for ML confidence in ensemble score

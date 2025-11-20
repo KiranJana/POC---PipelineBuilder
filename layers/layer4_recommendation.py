@@ -60,7 +60,8 @@ class RecommendationEngine:
         if not handled_by_rules and not handled_by_patterns and self.ml_ensemble.calibrated_model is not None:
             X_single = pd.DataFrame([{col: opp_features.get(col, 0) for col in self.ml_ensemble.feature_cols}])
             ml_proba = self.ml_ensemble.predict_proba(X_single)[0, 1]
-            ml_prediction = int(ml_proba > 0.5)
+            # Lower threshold for "Watch" category: 0.35 instead of 0.5
+            ml_prediction = 2 if ml_proba > 0.5 else 1 if ml_proba > 0.35 else 0  # 2=Create, 1=Watch, 0=Monitor
             ml_explanation = self.ml_ensemble.explain_prediction(X_single)
             ml_applied = True
         else:
@@ -92,8 +93,15 @@ class RecommendationEngine:
             # Use ML prediction (now applied to all opportunities)
             primary_source = 'ML'
             confidence = ml_proba
-            recommendation_type = 'Create Opportunity' if ml_prediction == 1 else 'Monitor and Nurture'
-            predicted_outcome = ml_prediction
+            if ml_prediction == 2:  # High confidence (>0.5)
+                recommendation_type = 'Create Opportunity'
+                predicted_outcome = 1
+            elif ml_prediction == 1:  # Watch zone (0.35-0.5)
+                recommendation_type = 'Watch - Potential Opportunity'
+                predicted_outcome = 1  # Still predict win, but with lower confidence
+            else:  # Low confidence (<0.35)
+                recommendation_type = 'Monitor and Nurture'
+                predicted_outcome = 0
             priority_actions = []
 
         else:
@@ -157,7 +165,8 @@ class RecommendationEngine:
                 'has_decision_maker': opp_features.get('has_decision_maker', 0),
                 'has_champion': opp_features.get('has_champion', 0)
             }
-            persona_actions = get_persona_recommendations(committee_analysis)
+            deal_stage = opp_features.get('final_stage')
+            persona_actions = get_persona_recommendations(committee_analysis, deal_stage)
             recommended_actions.extend(persona_actions)
         
         # Sort and prioritize actions
@@ -254,7 +263,9 @@ class RecommendationEngine:
             key_signals.append(f"Pattern: {pattern_result['pattern']}")
         
         if ml_proba > 0.5:
-            why_confident.append(f"ML model predicts {ml_proba:.0%} probability")
+            why_confident.append(f"ML model predicts {ml_proba:.0%} probability - High confidence win")
+        elif ml_proba > 0.35:
+            why_confident.append(f"ML model predicts {ml_proba:.0%} probability - Potential opportunity worth watching")
         
         # Similar deals context
         if similar_deals:
