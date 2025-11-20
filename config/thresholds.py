@@ -101,6 +101,21 @@ PATTERN_MAX_RULES_ML = 10           # Max patterns for ML mode
 
 PATTERN_SAMPLE_SIZE_THRESHOLD = 1000  # Use Apriori if >= 1000 deals
 
+# Statistical pattern discovery thresholds
+PATTERN_MIN_SINGLE_FEATURE_SUPPORT = 15      # Minimum deals for single feature analysis
+PATTERN_MIN_WIN_RATE_SINGLE = 0.75           # Minimum win rate for strong single features
+PATTERN_MIN_LIFT_SINGLE = 2.0                # Minimum lift for strong single features
+PATTERN_MAX_PVALUE_SINGLE = 0.05             # Maximum p-value for statistical significance
+PATTERN_MIN_COMBO_SUPPORT = 10               # Minimum deals for feature combinations
+PATTERN_MIN_WIN_RATE_COMBO = 0.80            # Minimum win rate for combinations
+PATTERN_MIN_LIFT_COMBO = 2.5                 # Minimum lift for combinations
+PATTERN_MAX_PVALUE_COMBO = 0.05              # Maximum p-value for statistical significance
+PATTERN_MIN_SYNERGY_BOOST = 0.10             # Minimum synergy improvement
+PATTERN_MIN_TRIPLE_SUPPORT = 8               # Minimum deals for triple combinations
+PATTERN_MIN_WIN_RATE_TRIPLE = 0.85           # Minimum win rate for triples
+PATTERN_MIN_LIFT_TRIPLE = 3.0                # Minimum lift for triples
+PATTERN_MAX_PVALUE_TRIPLE = 0.05             # Maximum p-value for statistical significance
+
 # ===================================================================
 # VELOCITY THRESHOLDS
 # ===================================================================
@@ -148,6 +163,14 @@ SIMILARITY_TOP_K = 3                # Return top 3 similar deals
 # ===================================================================
 LLM_RATE_LIMIT_REQUESTS_PER_MINUTE = 10
 LLM_RATE_LIMIT_DELAY = 6.0          # Seconds between requests
+
+# ===================================================================
+# RECOMMENDATION THRESHOLDS
+# ===================================================================
+RECOMMENDATION_MIN_ML_CONFIDENCE = 0.6  # Minimum ML confidence for recommendations
+ENSEMBLE_RULE_WEIGHT = 0.5              # Weight for rule confidence in ensemble score
+ENSEMBLE_PATTERN_WEIGHT = 0.3           # Weight for pattern confidence in ensemble score
+ENSEMBLE_ML_WEIGHT = 0.2                # Weight for ML confidence in ensemble score
 
 # ===================================================================
 # VALIDATION THRESHOLDS

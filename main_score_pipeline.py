@@ -14,6 +14,9 @@ sys.path.insert(0, project_root)
 import pandas as pd
 import numpy as np
 import warnings
+import json
+import os
+from scipy import stats
 warnings.filterwarnings('ignore')
 
 # Import utilities
@@ -33,6 +36,145 @@ from layers.layer3_ml_ensemble import create_ml_ensemble
 from layers.layer4_recommendation import create_recommendation_engine
 from layers.layer5_llm_explainer import create_llm_explainer
 from config.llm_config import get_llm_config
+
+
+def detect_feature_drift(df_current, drift_baseline_path='outputs/model_training_data_engineered.csv', alert_threshold=0.05):
+    """
+    Detect feature drift by comparing current data distributions to training baseline
+
+    Args:
+        df_current: Current scoring data (DataFrame)
+        drift_baseline_path: Path to baseline training data
+        alert_threshold: Statistical significance threshold for drift alerts
+
+    Returns:
+        Dict with drift analysis results
+    """
+    print("\n" + "="*80)
+    print("FEATURE DRIFT DETECTION")
+    print("="*80)
+
+    drift_results = {
+        'drift_detected': False,
+        'significant_drifts': [],
+        'drift_summary': {},
+        'recommendations': []
+    }
+
+    # Load baseline training data
+    try:
+        df_baseline = pd.read_csv(drift_baseline_path)
+        print(f"[DRIFT] Loaded baseline data: {len(df_baseline)} training samples")
+    except FileNotFoundError:
+        print(f"[DRIFT] WARNING: Baseline data not found at {drift_baseline_path}")
+        print("[DRIFT] Skipping drift detection")
+        return drift_results
+
+    # Get numeric features (exclude IDs and targets)
+    exclude_cols = ['opportunity_id', 'account_id', 'is_won']
+    numeric_cols = [col for col in df_current.columns
+                   if col not in exclude_cols and df_current[col].dtype in ['int64', 'float64', 'int32', 'float32']]
+
+    print(f"[DRIFT] Analyzing {len(numeric_cols)} numeric features for drift")
+
+    significant_drifts = []
+
+    for col in numeric_cols:
+        if col not in df_baseline.columns:
+            print(f"[DRIFT] WARNING: Feature '{col}' not found in baseline data")
+            continue
+
+        # Get non-null values for both datasets
+        baseline_vals = df_baseline[col].dropna()
+        current_vals = df_current[col].dropna()
+
+        if len(baseline_vals) < 10 or len(current_vals) < 10:
+            continue  # Skip features with insufficient data
+
+        try:
+            # Statistical tests for distribution differences
+            # 1. Kolmogorov-Smirnov test (compares distributions)
+            ks_stat, ks_pvalue = stats.ks_2samp(baseline_vals, current_vals)
+
+            # 2. Mann-Whitney U test (compares medians)
+            mw_stat, mw_pvalue = stats.mannwhitneyu(baseline_vals, current_vals, alternative='two-sided')
+
+            # 3. Compare basic statistics
+            baseline_mean = baseline_vals.mean()
+            current_mean = current_vals.mean()
+            baseline_std = baseline_vals.std()
+            current_std = current_vals.std()
+
+            mean_diff_pct = abs(current_mean - baseline_mean) / (abs(baseline_mean) + 1e-10)
+            std_diff_pct = abs(current_std - baseline_std) / (abs(baseline_std) + 1e-10)
+
+            # Check for significant drift
+            is_significant = (
+                ks_pvalue < alert_threshold or  # Distribution changed
+                mw_pvalue < alert_threshold or  # Median changed
+                mean_diff_pct > 0.25 or         # Mean changed by >25%
+                std_diff_pct > 0.25            # Std changed by >25%
+            )
+
+            if is_significant:
+                drift_info = {
+                    'feature': col,
+                    'drift_type': 'distribution' if ks_pvalue < alert_threshold else 'statistic',
+                    'ks_pvalue': float(ks_pvalue),
+                    'mw_pvalue': float(mw_pvalue),
+                    'baseline_mean': float(baseline_mean),
+                    'current_mean': float(current_mean),
+                    'mean_diff_pct': float(mean_diff_pct),
+                    'baseline_std': float(baseline_std),
+                    'current_std': float(current_std),
+                    'std_diff_pct': float(std_diff_pct),
+                    'baseline_samples': len(baseline_vals),
+                    'current_samples': len(current_vals)
+                }
+                significant_drifts.append(drift_info)
+
+        except Exception as e:
+            print(f"[DRIFT] Error analyzing feature '{col}': {e}")
+            continue
+
+    # Summarize results
+    drift_results['significant_drifts'] = significant_drifts
+    drift_results['drift_detected'] = len(significant_drifts) > 0
+
+    if drift_results['drift_detected']:
+        print(f"\n[DRIFT] ⚠️  DRIFT DETECTED in {len(significant_drifts)} features!")
+        print("[DRIFT] Top drifting features:")
+
+        # Sort by most significant drift (lowest p-value)
+        sorted_drifts = sorted(significant_drifts, key=lambda x: min(x['ks_pvalue'], x['mw_pvalue']))
+
+        for i, drift in enumerate(sorted_drifts[:5], 1):  # Show top 5
+            print(f"  {i}. {drift['feature']}: {drift['drift_type']} drift")
+            print(f"     KS p-value: {drift['ks_pvalue']:.4f}, Mean diff: {drift['mean_diff_pct']:.1%}")
+
+        # Generate recommendations
+        drift_results['recommendations'] = [
+            "Consider retraining model with recent data",
+            "Monitor prediction accuracy for degradation",
+            "Review data collection processes for changes",
+            f"Focus on {len(significant_drifts)} drifting features in next model iteration"
+        ]
+
+        print(f"\n[DRIFT] Recommendations:")
+        for rec in drift_results['recommendations']:
+            print(f"  • {rec}")
+
+    else:
+        print(f"\n[DRIFT] ✅ No significant drift detected in {len(numeric_cols)} features")
+        print(f"[DRIFT] All features within normal variation (p > {alert_threshold})")
+
+    # Save drift results
+    drift_output_path = 'outputs/drift_analysis.json'
+    with open(drift_output_path, 'w') as f:
+        json.dump(drift_results, f, indent=2, default=str)
+    print(f"[DRIFT] Drift analysis saved to {drift_output_path}")
+
+    return drift_results
 
 
 def load_trained_models():
@@ -90,9 +232,9 @@ def score_opportunities(df_features, rules_engine, pattern_engine, ml_ensemble, 
     )
     
     # Generate explanations for top recommendations (not just high-confidence)
-    # Sort by confidence and take top 10 for LLM explanations
-    sorted_recs = sorted(recommendations, key=lambda x: x.get('confidence', 0), reverse=True)
-    top_recommendations = sorted_recs[:10]  # Top 10 by confidence
+    # Sort by ensemble score (weighted prioritization) and take top 10 for LLM explanations
+    sorted_recs = sorted(recommendations, key=lambda x: x.get('ensemble_score', x.get('confidence', 0)), reverse=True)
+    top_recommendations = sorted_recs[:10]  # Top 10 by ensemble score
 
     if top_recommendations:
         # Get rate limit from LLM explainer instance
@@ -142,13 +284,14 @@ def display_top_recommendations(recommendations, top_n=10):
     print(f"TOP {top_n} RECOMMENDATIONS")
     print("="*80)
     
-    # Sort by confidence
-    sorted_recs = sorted(recommendations, key=lambda x: x.get('confidence', 0), reverse=True)
+    # Sort by ensemble score (weighted combination of all sources) for better prioritization
+    sorted_recs = sorted(recommendations, key=lambda x: x.get('ensemble_score', x.get('confidence', 0)), reverse=True)
     
     for i, rec in enumerate(sorted_recs[:top_n], 1):
         print(f"\n{i}. {rec.get('account', 'Unknown')} (ID: {rec.get('opportunity_id', 'Unknown')})")
         print(f"   Recommendation: {rec.get('recommendation_type', 'Unknown')}")
-        print(f"   Confidence: {rec.get('confidence', 0):.0%}")
+        print(f"   Primary Confidence: {rec.get('confidence', 0):.0%}")
+        print(f"   Ensemble Score: {rec.get('ensemble_score', 0):.0%} (weighted prioritization)")
         print(f"   Source: {rec.get('primary_source', 'Unknown')}")
         
         # Show key signals
@@ -228,7 +371,10 @@ def main():
     df_features = clean_and_prepare_dataset(df_features)
     
     print(f"\n[OK] Features ready: {len(df_features)} opportunities")
-    
+
+    # Check for feature drift before scoring
+    drift_results = detect_feature_drift(df_features)
+
     # Score all opportunities
     recommendations, explanations = score_opportunities(
         df_features,

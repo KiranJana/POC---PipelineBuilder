@@ -15,7 +15,14 @@ from utils.discretization import discretize_features, get_discretized_feature_na
 from config.thresholds import (
     PATTERN_MIN_SUPPORT, PATTERN_MIN_CONFIDENCE,
     PATTERN_MAX_RULES_STATISTICAL, PATTERN_MAX_RULES_ML,
-    PATTERN_SAMPLE_SIZE_THRESHOLD
+    PATTERN_SAMPLE_SIZE_THRESHOLD,
+    PATTERN_MIN_SINGLE_FEATURE_SUPPORT, PATTERN_MIN_WIN_RATE_SINGLE,
+    PATTERN_MIN_LIFT_SINGLE, PATTERN_MAX_PVALUE_SINGLE,
+    PATTERN_MIN_COMBO_SUPPORT, PATTERN_MIN_WIN_RATE_COMBO,
+    PATTERN_MIN_LIFT_COMBO, PATTERN_MAX_PVALUE_COMBO,
+    PATTERN_MIN_SYNERGY_BOOST, PATTERN_MIN_TRIPLE_SUPPORT,
+    PATTERN_MIN_WIN_RATE_TRIPLE, PATTERN_MIN_LIFT_TRIPLE,
+    PATTERN_MAX_PVALUE_TRIPLE
 )
 
 
@@ -25,20 +32,7 @@ class PatternDiscoveryEngine:
     Uses association rule mining to discover winning signal combinations
     """
 
-    # Statistical pattern discovery thresholds
-    MIN_SINGLE_FEATURE_SUPPORT = 15      # Minimum deals for single feature analysis
-    MIN_WIN_RATE_SINGLE = 0.75           # Minimum win rate for strong single features
-    MIN_LIFT_SINGLE = 2.0                # Minimum lift for strong single features
-    MAX_PVALUE_SINGLE = 0.05             # Maximum p-value for statistical significance
-    MIN_COMBO_SUPPORT = 10               # Minimum deals for feature combinations
-    MIN_WIN_RATE_COMBO = 0.80            # Minimum win rate for combinations
-    MIN_LIFT_COMBO = 2.5                 # Minimum lift for combinations
-    MAX_PVALUE_COMBO = 0.05              # Maximum p-value for statistical significance
-    MIN_SYNERGY_BOOST = 0.10             # Minimum synergy improvement
-    MIN_TRIPLE_SUPPORT = 8               # Minimum deals for triple combinations
-    MIN_WIN_RATE_TRIPLE = 0.85           # Minimum win rate for triples
-    MIN_LIFT_TRIPLE = 3.0                # Minimum lift for triples
-    MAX_PVALUE_TRIPLE = 0.05             # Maximum p-value for statistical significance
+    # Use centralized thresholds (no local definitions needed)
     
     def __init__(self, min_support=None, min_confidence=None, min_lift=1.2):
         """
@@ -169,14 +163,14 @@ class PatternDiscoveryEngine:
                 feature_wins = feature_present['Won'].sum()
                 feature_total = len(feature_present)
 
-                if feature_total >= self.MIN_SINGLE_FEATURE_SUPPORT:
+                if feature_total >= PATTERN_MIN_SINGLE_FEATURE_SUPPORT:
                     win_rate = feature_present['Won'].mean()
                     lift = self._calculate_lift(win_rate, baseline_win_rate)
                     p_value = self._calculate_fisher_pvalue(feature_wins, feature_total, len(df_won), len(df_discrete))
 
                     # Strict criteria: high win rate, significant lift, statistical significance, reasonable sample size
-                    if (win_rate >= self.MIN_WIN_RATE_SINGLE and lift >= self.MIN_LIFT_SINGLE and
-                        p_value <= self.MAX_PVALUE_SINGLE and feature_total >= 20):
+                    if (win_rate >= PATTERN_MIN_WIN_RATE_SINGLE and lift >= PATTERN_MIN_LIFT_SINGLE and
+                        p_value <= PATTERN_MAX_PVALUE_SINGLE and feature_total >= 20):
                         strong_features[feature] = {
                             'win_rate': win_rate,
                             'support': feature_total,
@@ -196,7 +190,7 @@ class PatternDiscoveryEngine:
                 feature1, feature2 = combo
                 both_present = df_discrete[(df_discrete[feature1] == 1) & (df_discrete[feature2] == 1)]
 
-                if len(both_present) >= self.MIN_COMBO_SUPPORT:
+                if len(both_present) >= PATTERN_MIN_COMBO_SUPPORT:
                     combo_win_rate = both_present['Won'].mean()
                     combo_wins = both_present['Won'].sum()
                     combo_lift = self._calculate_lift(combo_win_rate, baseline_win_rate)
@@ -211,11 +205,15 @@ class PatternDiscoveryEngine:
                     # Synergy criteria: combination wins at least 10% more than better individual feature
                     synergy_boost = combo_win_rate - max(f1_rate, f2_rate)
 
-                    if (combo_win_rate >= self.MIN_WIN_RATE_COMBO and combo_lift >= self.MIN_LIFT_COMBO and
-                        synergy_boost >= self.MIN_SYNERGY_BOOST and combo_pvalue <= self.MAX_PVALUE_COMBO):
+                    if (combo_win_rate >= PATTERN_MIN_WIN_RATE_COMBO and combo_lift >= PATTERN_MIN_LIFT_COMBO and
+                        synergy_boost >= PATTERN_MIN_SYNERGY_BOOST and combo_pvalue <= PATTERN_MAX_PVALUE_COMBO):
+                        # Normalize antecedents by sorting alphabetically to avoid duplicates
+                        antecedents = sorted([feature1, feature2])
+                        pattern_desc = ' + '.join(antecedents)
+
                         combination_patterns.append({
-                            'pattern': f"{feature1} + {feature2}",
-                            'antecedents': [feature1, feature2],
+                            'pattern': pattern_desc,
+                            'antecedents': antecedents,
                             'confidence': float(combo_win_rate),
                             'support': int(len(both_present)),
                             'lift': float(combo_lift),
@@ -233,17 +231,21 @@ class PatternDiscoveryEngine:
                                             (df_discrete[feature2] == 1) &
                                             (df_discrete[feature3] == 1)]
 
-                    if len(all_present) >= self.MIN_TRIPLE_SUPPORT:
+                    if len(all_present) >= PATTERN_MIN_TRIPLE_SUPPORT:
                         triple_win_rate = all_present['Won'].mean()
                         triple_wins = all_present['Won'].sum()
                         triple_lift = self._calculate_lift(triple_win_rate, baseline_win_rate)
                         triple_pvalue = self._calculate_fisher_pvalue(triple_wins, len(all_present), len(df_won), len(df_discrete))
 
-                        if (triple_win_rate >= self.MIN_WIN_RATE_TRIPLE and triple_lift >= self.MIN_LIFT_TRIPLE and
-                            triple_pvalue <= self.MAX_PVALUE_TRIPLE):
+                        if (triple_win_rate >= PATTERN_MIN_WIN_RATE_TRIPLE and triple_lift >= PATTERN_MIN_LIFT_TRIPLE and
+                            triple_pvalue <= PATTERN_MAX_PVALUE_TRIPLE):
+                            # Normalize antecedents by sorting alphabetically to avoid duplicates
+                            antecedents = sorted([feature1, feature2, feature3])
+                            pattern_desc = ' + '.join(antecedents)
+
                             combination_patterns.append({
-                                'pattern': f"{feature1} + {feature2} + {feature3}",
-                                'antecedents': [feature1, feature2, feature3],
+                                'pattern': pattern_desc,
+                                'antecedents': antecedents,
                                 'confidence': float(triple_win_rate),
                                 'support': int(len(all_present)),
                                 'lift': float(triple_lift),
@@ -378,7 +380,7 @@ class PatternDiscoveryEngine:
                     # Convert rules to pattern format
                     patterns = []
                     for idx, rule in rules.iterrows():
-                        antecedents = list(rule['antecedents'])
+                        antecedents = sorted(list(rule['antecedents']))  # Sort alphabetically to normalize
                         pattern_desc = ' + '.join(antecedents)
 
                         # Calculate actual performance on full dataset
@@ -391,7 +393,7 @@ class PatternDiscoveryEngine:
                             p_value = self._calculate_fisher_pvalue(wins_count, len(matched_deals), len(df_won), len(df_discrete))
 
                             # Filter by statistical significance (same threshold as statistical method)
-                            if p_value <= self.MAX_PVALUE_COMBO:
+                            if p_value <= PATTERN_MAX_PVALUE_COMBO:
                                 patterns.append({
                                     'pattern_id': f'APR_{idx:03d}',
                                     'pattern': pattern_desc,

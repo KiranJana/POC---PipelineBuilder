@@ -6,9 +6,10 @@ Handles the "messy middle" cases not covered by rules or patterns
 
 import pandas as pd
 import numpy as np
-from sklearn.model_selection import train_test_split
+from sklearn.model_selection import train_test_split, StratifiedKFold, cross_val_score, cross_val_predict
 from sklearn.calibration import CalibratedClassifierCV
 from sklearn.ensemble import RandomForestClassifier
+from sklearn.feature_selection import RFE
 from sklearn.metrics import accuracy_score, precision_score, recall_score, roc_auc_score
 import joblib
 import json
@@ -86,6 +87,41 @@ class MLEnsemble:
             print(f"[Layer 3] Removing {len(constant_features)} constant features")
             feature_cols = [col for col in feature_cols if col not in constant_features]
 
+        print(f"[Layer 3] Initial feature count: {len(feature_cols)}")
+
+        # AGGRESSIVE FEATURE SELECTION: Cut to 20-30 most important features
+        # This prevents overfitting on small datasets
+        if len(feature_cols) > 30:
+            print(f"[Layer 3] Applying feature selection (RFE) to reduce from {len(feature_cols)} to ~25 features...")
+
+            X_temp = df_training[feature_cols].fillna(0).astype(float)
+            y_temp = df_training['is_won']
+
+            # Use RFE with RandomForest for feature selection
+            # n_features_to_select=25 is aggressive but necessary for small datasets
+            rfe_selector = RFE(
+                estimator=RandomForestClassifier(n_estimators=50, random_state=42, n_jobs=-1),
+                n_features_to_select=25,  # Aggressive cut to prevent overfitting
+                step=5  # Remove 5 features at a time for efficiency
+            )
+
+            try:
+                X_selected = rfe_selector.fit_transform(X_temp, y_temp)
+                selected_features = [feature_cols[i] for i in range(len(feature_cols)) if rfe_selector.support_[i]]
+
+                print(f"[Layer 3] RFE selected {len(selected_features)} features:")
+                for i, feature in enumerate(selected_features[:10], 1):  # Show top 10
+                    print(f"  {i:2d}. {feature}")
+
+                if len(selected_features) > 10:  # Show count if more than 10
+                    print(f"     ... and {len(selected_features) - 10} more")
+
+                feature_cols = selected_features
+
+            except Exception as e:
+                print(f"[Layer 3] RFE failed ({e}), using all features")
+                # Continue with all features if RFE fails
+
         self.feature_cols = feature_cols
 
         X = df_training[feature_cols].fillna(0).astype(float)
@@ -97,21 +133,33 @@ class MLEnsemble:
 
         return X, y, df_training
     
-    def train(self, X, y, test_size=0.2, random_state=42):
+    def train(self, X, y, test_size=0.2, random_state=42, use_kfold_cv=True, cv_folds=5):
         """
-        Train LGBM model with calibration
+        Train RandomForest model with calibration and robust evaluation
+
+        Args:
+            X, y: Training data
+            test_size: For backward compatibility single split (if use_kfold_cv=False)
+            random_state: Random seed
+            use_kfold_cv: Whether to use stratified k-fold CV instead of single split
+            cv_folds: Number of CV folds (default 5)
         """
         print(f"\n[Layer 3] Training RandomForest model...")
-        
-        # Split data
-        X_train, X_test, y_train, y_test = train_test_split(
-            X, y, test_size=test_size, random_state=random_state, stratify=y
-        )
-        
-        print(f"[Layer 3] Train set: {len(X_train)} samples")
-        print(f"[Layer 3] Test set: {len(X_test)} samples")
-        
-        # Train base RandomForest model (robust for small datasets, less prone to overfitting)
+
+        if use_kfold_cv:
+            print(f"[Layer 3] Using {cv_folds}-fold stratified cross-validation for robust evaluation")
+            return self._train_with_kfold_cv(X, y, cv_folds, random_state)
+        else:
+            print(f"[Layer 3] Using single train/test split (test_size={test_size})")
+            return self._train_with_single_split(X, y, test_size, random_state)
+
+    def _train_with_kfold_cv(self, X, y, cv_folds=5, random_state=42):
+        """Train with stratified k-fold cross-validation for robust evaluation"""
+
+        # Initialize stratified k-fold
+        skf = StratifiedKFold(n_splits=cv_folds, shuffle=True, random_state=random_state)
+
+        # Train base RandomForest model
         self.model = RandomForestClassifier(
             n_estimators=100,
             max_depth=5,  # Conservative depth to prevent overfitting
@@ -121,44 +169,156 @@ class MLEnsemble:
             random_state=random_state,
             n_jobs=-1  # Use all available cores
         )
-        
+
+        # Cross-validation scores
+        cv_accuracy_scores = []
+        cv_precision_scores = []
+        cv_recall_scores = []
+        cv_auc_scores = []
+
+        print(f"[Layer 3] Running {cv_folds}-fold cross-validation...")
+
+        fold_results = []
+        for fold, (train_idx, val_idx) in enumerate(skf.split(X, y), 1):
+            X_train_fold, X_val_fold = X.iloc[train_idx], X.iloc[val_idx]
+            y_train_fold, y_val_fold = y.iloc[train_idx], y.iloc[val_idx]
+
+            # Train on this fold
+            self.model.fit(X_train_fold, y_train_fold)
+
+            # Calibrate on this fold
+            calibrated_model_fold = CalibratedClassifierCV(
+                self.model, method='sigmoid', cv=3
+            )
+            calibrated_model_fold.fit(X_train_fold, y_train_fold)
+
+            # Evaluate on validation fold
+            y_pred_val = calibrated_model_fold.predict(X_val_fold)
+            y_proba_val = calibrated_model_fold.predict_proba(X_val_fold)[:, 1]
+
+            fold_accuracy = accuracy_score(y_val_fold, y_pred_val)
+            fold_precision = precision_score(y_val_fold, y_pred_val, zero_division=0)
+            fold_recall = recall_score(y_val_fold, y_pred_val, zero_division=0)
+            fold_auc = roc_auc_score(y_val_fold, y_proba_val)
+
+            cv_accuracy_scores.append(fold_accuracy)
+            cv_precision_scores.append(fold_precision)
+            cv_recall_scores.append(fold_recall)
+            cv_auc_scores.append(fold_auc)
+
+            fold_results.append({
+                'fold': fold,
+                'accuracy': fold_accuracy,
+                'precision': fold_precision,
+                'recall': fold_recall,
+                'auc': fold_auc
+            })
+
+            print(f"  Fold {fold}: Acc={fold_accuracy:.1%}, Prec={fold_precision:.1%}, Rec={fold_recall:.1%}, AUC={fold_auc:.3f}")
+
+        # Calculate CV statistics
+        cv_stats = {
+            'cv_mean_accuracy': np.mean(cv_accuracy_scores),
+            'cv_std_accuracy': np.std(cv_accuracy_scores),
+            'cv_mean_precision': np.mean(cv_precision_scores),
+            'cv_std_precision': np.std(cv_precision_scores),
+            'cv_mean_recall': np.mean(cv_recall_scores),
+            'cv_std_recall': np.std(cv_recall_scores),
+            'cv_mean_auc': np.mean(cv_auc_scores),
+            'cv_std_auc': np.std(cv_auc_scores),
+        }
+
+        print(f"\n[Layer 3] Cross-Validation Results (Mean ± Std):")
+        print(f"  Accuracy: {cv_stats['cv_mean_accuracy']:.1%} ± {cv_stats['cv_std_accuracy']:.1%}")
+        print(f"  Precision: {cv_stats['cv_mean_precision']:.1%} ± {cv_stats['cv_std_precision']:.1%}")
+        print(f"  Recall: {cv_stats['cv_mean_recall']:.1%} ± {cv_stats['cv_std_recall']:.1%}")
+        print(f"  ROC-AUC: {cv_stats['cv_mean_auc']:.3f} ± {cv_stats['cv_std_auc']:.3f}")
+
+        # Train final model on ALL data for deployment
+        print(f"\n[Layer 3] Training final model on all {len(X)} samples...")
+        self.model.fit(X, y)
+
+        # Calibrate final model
+        print("[Layer 3] Calibrating final model...")
+        self.calibrated_model = CalibratedClassifierCV(
+            self.model, method='sigmoid', cv=3
+        )
+        self.calibrated_model.fit(X, y)
+
+        # Performance assessment
+        mean_accuracy = cv_stats['cv_mean_accuracy']
+        if mean_accuracy >= 0.60 and mean_accuracy <= 0.85:
+            print(f"[Layer 3] [OK] Performance in realistic range (60-85%)")
+        elif mean_accuracy > 0.85:
+            print(f"[Layer 3] [WARN] Performance high - may indicate remaining leakage")
+        else:
+            print(f"[Layer 3] [WARN] Performance below target - check feature quality")
+
+        # Feature importance from final model
+        self.feature_importance = pd.DataFrame({
+            'feature': self.feature_cols,
+            'importance': self.model.feature_importances_
+        }).sort_values('importance', ascending=False)
+
+        print(f"\n[Layer 3] Top 10 Features (from final model):")
+        for idx, row in enumerate(self.feature_importance.head(10).itertuples(), 1):
+            print(f"  {idx:2d}. {row.feature:40s} {row.importance:6.1f}")
+
+        print(f"\n[Layer 3] Using feature importance for explanations (SHAP disabled for POC)")
+
+        return cv_stats
+
+    def _train_with_single_split(self, X, y, test_size=0.2, random_state=42):
+        """Legacy training method with single train/test split"""
+        print(f"[Layer 3] Using single train/test split for backward compatibility...")
+
+        # Split data
+        X_train, X_test, y_train, y_test = train_test_split(
+            X, y, test_size=test_size, random_state=random_state, stratify=y
+        )
+
+        print(f"[Layer 3] Train set: {len(X_train)} samples")
+        print(f"[Layer 3] Test set: {len(X_test)} samples")
+
+        # Train base RandomForest model
+        self.model = RandomForestClassifier(
+            n_estimators=100,
+            max_depth=5,  # Conservative depth to prevent overfitting
+            min_samples_split=20,  # Higher min samples for robustness
+            min_samples_leaf=10,   # Higher min leaf size
+            max_features='sqrt',   # Feature subset selection
+            random_state=random_state,
+            n_jobs=-1  # Use all available cores
+        )
+
         print("[Layer 3] Training base model...")
         self.model.fit(X_train, y_train)
-        
+
         # Calibrate model
         print("[Layer 3] Calibrating confidence scores...")
         self.calibrated_model = CalibratedClassifierCV(
-            self.model,
-            method='sigmoid',
-            cv=3
+            self.model, method='sigmoid', cv=3
         )
         self.calibrated_model.fit(X_train, y_train)
-        
+
         # Evaluate
         y_pred_train = self.calibrated_model.predict(X_train)
         y_pred_test = self.calibrated_model.predict(X_test)
         y_proba_test = self.calibrated_model.predict_proba(X_test)[:, 1]
-        
+
         train_acc = accuracy_score(y_train, y_pred_train)
         test_acc = accuracy_score(y_test, y_pred_test)
         test_precision = precision_score(y_test, y_pred_test, zero_division=0)
         test_recall = recall_score(y_test, y_pred_test, zero_division=0)
         test_auc = roc_auc_score(y_test, y_proba_test)
-        
+
         print(f"\n[Layer 3] Model Performance:")
         print(f"  Training Accuracy: {train_acc:.1%}")
         print(f"  Test Accuracy: {test_acc:.1%}")
         print(f"  Test Precision: {test_precision:.1%}")
         print(f"  Test Recall: {test_recall:.1%}")
         print(f"  Test ROC-AUC: {test_auc:.3f}")
-        
-        if test_acc >= 0.60 and test_acc <= 0.85:
-            print(f"[Layer 3] [OK] Performance in realistic range (60-85%)")
-        elif test_acc > 0.85:
-            print(f"[Layer 3] [WARN] Performance high - may indicate remaining leakage")
-        else:
-            print(f"[Layer 3] [WARN] Performance below target - check feature quality")
-        
+
         # Feature importance
         self.feature_importance = pd.DataFrame({
             'feature': self.feature_cols,
@@ -169,8 +329,6 @@ class MLEnsemble:
         for idx, row in enumerate(self.feature_importance.head(10).itertuples(), 1):
             print(f"  {idx:2d}. {row.feature:40s} {row.importance:6.1f}")
 
-        print(f"\n[Layer 3] Using feature importance for explanations (SHAP disabled for POC)")
-        
         return {
             'train_accuracy': train_acc,
             'test_accuracy': test_acc,

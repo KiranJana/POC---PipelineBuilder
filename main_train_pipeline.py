@@ -141,12 +141,13 @@ def main():
     X, y, df_messy = ml_ensemble.prepare_training_data(df_features, df_rule_results, df_pattern_results, train_on_all_data=True)
     
     if X is not None and len(X) >= 30:
-        # Train model
-        ml_performance = ml_ensemble.train(X, y)
-        
+        # Train model with k-fold CV for robust evaluation
+        print("[Layer 3] Using stratified 5-fold cross-validation for robust evaluation")
+        ml_performance = ml_ensemble.train(X, y, use_kfold_cv=True, cv_folds=5)
+
         # Save model
         ml_ensemble.save_model()
-        
+
         # Apply to all messy middle cases
         df_ml_results = ml_ensemble.apply_ml_batch(df_messy)
     else:
@@ -292,8 +293,8 @@ def main():
   Matches: {df_pattern_results['pattern_matched'].sum()} ({df_pattern_results['pattern_matched'].sum()/len(df_features):.1%})
   Precision: {layer2_results['precision']:.1%} {'[PASS]' if layer2_results['meets_target'] else '[FAIL]'} (target: >=70%)
 
-[OK] Layer 3 (ML): {'Trained' if X is not None and len(X) >= 30 else 'Skipped (insufficient data)'}
-  {f"Accuracy: {layer3_results['accuracy']:.1%} {'[PASS]' if layer3_results['meets_target'] else '[FAIL]'} (target: >=60%)" if layer3_results else "N/A"}
+[OK] Layer 3 (ML): {'Trained with 5-fold CV' if X is not None and len(X) >= 30 else 'Skipped (insufficient data)'}
+  {f"CV Accuracy: {layer3_results['accuracy']:.1%} {'[PASS]' if layer3_results['meets_target'] else '[FAIL]'} (target: >=60%)" if layer3_results else "N/A"}
 
 [OK] Layer 4 (Recommendations): {len(recommendations)} generated
   Average confidence: {overall_results['avg_confidence']:.1%}

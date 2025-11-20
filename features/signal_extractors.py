@@ -285,16 +285,28 @@ def extract_contact_features(opp, df_contacts):
     }
 
 
-def extract_historical_features(opp, df_opp):
-    """Extract historical customer features (no leakage)"""
+def extract_historical_features(opp, df_opp, evaluation_date=None):
+    """
+    Extract historical customer features (no leakage)
+
+    Args:
+        opp: opportunity row
+        df_opp: all opportunities dataframe
+        evaluation_date: point-in-time for evaluation (defaults to create_date for backward compatibility)
+    """
     opp_id = opp['opportunity_id']
     account_id = opp['account_id']
     create_date = opp['create_date']
-    
-    # Get ALL PREVIOUS opportunities for this account (closed BEFORE this opp was created)
+
+    # Use evaluation_date if provided, otherwise use create_date
+    # This prevents using future information about deal outcomes
+    eval_date = evaluation_date if evaluation_date is not None else create_date
+
+    # Get ALL PREVIOUS opportunities for this account (closed BEFORE evaluation date)
+    # This ensures we only use information available at the time of evaluation
     previous_opps = df_opp[
         (df_opp['account_id'] == account_id) &
-        (df_opp['close_date'] < create_date) &
+        (df_opp['close_date'] < eval_date) &
         (df_opp['opportunity_id'] != opp_id)
     ]
     

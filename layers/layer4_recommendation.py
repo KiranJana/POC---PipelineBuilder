@@ -8,6 +8,10 @@ import numpy as np
 from utils.similarity_search import find_similar_deals, get_similar_deal_statistics, SimilaritySearchCache
 from features.buying_committee import get_persona_recommendations, calculate_persona_risk
 from config.action_mappings import PATTERN_ACTIONS
+from config.thresholds import (
+    RECOMMENDATION_MIN_ML_CONFIDENCE,
+    ENSEMBLE_RULE_WEIGHT, ENSEMBLE_PATTERN_WEIGHT, ENSEMBLE_ML_WEIGHT
+)
 
 
 class RecommendationEngine:
@@ -65,7 +69,7 @@ class RecommendationEngine:
             ml_explanation = []
             ml_applied = False
 
-        # DETERMINE RECOMMENDATION BASED ON ENSEMBLE HIERARCHY
+        # DETERMINE RECOMMENDATION BASED ON ENSEMBLE HIERARCHY (WATERFALL)
         # Priority: Rules > Patterns > ML, but ML provides additional insights
 
         if handled_by_rules:
@@ -101,9 +105,7 @@ class RecommendationEngine:
             priority_actions = []
 
         # Apply confidence threshold for ML recommendations only
-        MIN_CONFIDENCE_THRESHOLD = 0.6  # Only recommend ML predictions if confidence > 60%
-
-        if primary_source == 'ML' and confidence < MIN_CONFIDENCE_THRESHOLD:
+        if primary_source == 'ML' and confidence < RECOMMENDATION_MIN_ML_CONFIDENCE:
             # Low confidence ML prediction - downgrade to monitoring
             primary_source = 'LOW_CONFIDENCE'
             recommendation_type = 'Insufficient Signals - Monitor Only'
@@ -114,6 +116,26 @@ class RecommendationEngine:
                 'impact': 'Monitor',
                 'priority': 10
             }]
+
+        # CALCULATE ENSEMBLE SCORE FOR PRIORITIZATION (WEIGHTED COMBINATION)
+        # Use weighted ensemble for ranking/prioritization while keeping waterfall for decisions
+
+        # Get confidence scores from each layer (normalized 0-1)
+        rule_conf = rule_result['confidence'] if handled_by_rules else 0.0
+        pattern_conf = pattern_result['confidence'] if handled_by_patterns else 0.0
+        ml_conf = ml_proba if ml_applied else 0.5  # Default to neutral for ML
+
+        # Calculate weighted ensemble score for prioritization
+        ensemble_score = (
+            ENSEMBLE_RULE_WEIGHT * rule_conf +
+            ENSEMBLE_PATTERN_WEIGHT * pattern_conf +
+            ENSEMBLE_ML_WEIGHT * ml_conf
+        )
+
+        # Normalize to 0-1 scale (since weights sum to 1.0)
+        ensemble_score = min(1.0, max(0.0, ensemble_score))
+
+        print(f"[Layer 4] Ensemble prioritization: Rule={rule_conf:.1%}, Pattern={pattern_conf:.1%}, ML={ml_conf:.1%} → Score={ensemble_score:.1%}")
         
         # Collect all recommended actions
         recommended_actions = []
@@ -173,6 +195,7 @@ class RecommendationEngine:
             'predicted_outcome': predicted_outcome,
             'confidence': float(confidence),
             'confidence_calibrated': True,
+            'ensemble_score': float(ensemble_score),  # Weighted score for prioritization
             'primary_source': primary_source,
             
             # Layer results
