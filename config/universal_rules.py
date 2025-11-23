@@ -82,6 +82,7 @@ def pattern_3_high_intent_competitor(opp_features):
     ]
     
     if all(conditions):
+        competitor_name = opp_features.get('competitor_name', 'competitor')
         return {
             'matched': True,
             'rule_id': 'Pattern_3',
@@ -90,9 +91,32 @@ def pattern_3_high_intent_competitor(opp_features):
             'signals': {
                 'intent_score': float(opp_features.get('max_intent_score_during', 0)),
                 'competitor_research': True,
+                'competitor_name': competitor_name,
                 'page_views': int(opp_features.get('total_marketing_events_during', 0))
             },
-            **get_actions_for_pattern('Pattern_3')
+            'actions': [
+                {
+                    'action': f'Send competitive battlecard vs {competitor_name}',
+                    'priority': 1,
+                    'urgency': 'HIGH',
+                    'reason': f'Customer researching {competitor_name} - provide specific competitive advantages',
+                    'impact': '+25% win rate'
+                },
+                {
+                    'action': f'Schedule competitive positioning demo vs {competitor_name}',
+                    'priority': 2,
+                    'urgency': 'HIGH',
+                    'reason': f'Demonstrate specific advantages over {competitor_name}',
+                    'impact': '+20% win rate'
+                },
+                {
+                    'action': f'Share customer success stories vs {competitor_name}',
+                    'priority': 3,
+                    'urgency': 'MEDIUM',
+                    'reason': f'Provide social proof of wins against {competitor_name}',
+                    'impact': '+15% win rate'
+                }
+            ]
         }
     return {'matched': False}
 
@@ -220,7 +244,7 @@ def pattern_8_new_opp_stalled(opp_features):
     conditions = [
         opp_features.get('is_new_logo', 0) == 1,
         opp_features.get('is_stalled', 0) == 1,
-        opp_features.get('days_since_last_activity', 0) >= 30
+        opp_features.get('days_since_last_activity', 0) >= 60  # Increased to 60 days for more aggressive filtering
     ]
     
     if all(conditions):
@@ -517,30 +541,86 @@ def pattern_18_expansion_competitor(opp_features):
     return {'matched': False}
 
 
-def pattern_19_new_opp_integration_or_pricing(opp_features):
+def pattern_19a_new_opp_integration(opp_features):
     """
-    Pattern #19: New Opp + Integration Page OR Pricing Page + 60+ Days
-    Action: Integration or Pricing Interest
+    Pattern #19a: New Opp + Integration Page + 60+ Days
+    Action: Integration Interest - Specific API Docs
     """
     conditions = [
         opp_features.get('is_new_logo', 0) == 1,
-        (opp_features.get('integration_page_visits', 0) >= 1 or opp_features.get('pricing_page_visits', 0) >= 1),
+        opp_features.get('integration_page_visits', 0) >= 1,
         opp_features.get('deal_duration_days', 0) >= 60
     ]
-    
+
     if all(conditions):
         return {
             'matched': True,
-            'rule_id': 'Pattern_19',
-            'rule_name': 'Long Cycle + Integration/Pricing',
-            'confidence': 0.81,
+            'rule_id': 'Pattern_19a',
+            'rule_name': 'Long Cycle + Integration Interest',
+            'confidence': 0.82,
             'signals': {
                 'is_new_logo': True,
                 'integration_visits': int(opp_features.get('integration_page_visits', 0)),
+                'days_in_cycle': int(opp_features.get('deal_duration_days', 0))
+            },
+            'actions': [
+                {
+                    'action': 'Send API documentation and integration guides',
+                    'priority': 1,
+                    'urgency': 'HIGH',
+                    'reason': 'Customer showing specific integration interest - provide technical details',
+                    'impact': '+25% win rate'
+                },
+                {
+                    'action': 'Schedule technical integration demo',
+                    'priority': 2,
+                    'urgency': 'HIGH',
+                    'reason': 'Demonstrate how our solution integrates with their tech stack',
+                    'impact': '+20% win rate'
+                }
+            ]
+        }
+    return {'matched': False}
+
+
+def pattern_19b_new_opp_pricing(opp_features):
+    """
+    Pattern #19b: New Opp + Pricing Page + 60+ Days
+    Action: Pricing Interest - Specific Pricing Guide
+    """
+    conditions = [
+        opp_features.get('is_new_logo', 0) == 1,
+        opp_features.get('pricing_page_visits', 0) >= 1,
+        opp_features.get('deal_duration_days', 0) >= 60
+    ]
+
+    if all(conditions):
+        return {
+            'matched': True,
+            'rule_id': 'Pattern_19b',
+            'rule_name': 'Long Cycle + Pricing Interest',
+            'confidence': 0.83,
+            'signals': {
+                'is_new_logo': True,
                 'pricing_visits': int(opp_features.get('pricing_page_visits', 0)),
                 'days_in_cycle': int(opp_features.get('deal_duration_days', 0))
             },
-            **get_actions_for_pattern('Pattern_19')
+            'actions': [
+                {
+                    'action': 'Send detailed pricing guide and ROI calculator',
+                    'priority': 1,
+                    'urgency': 'HIGH',
+                    'reason': 'Customer researching pricing - provide comprehensive cost-benefit analysis',
+                    'impact': '+25% win rate'
+                },
+                {
+                    'action': 'Schedule pricing discussion with value engineering',
+                    'priority': 2,
+                    'urgency': 'HIGH',
+                    'reason': 'Address specific pricing concerns and demonstrate value proposition',
+                    'impact': '+20% win rate'
+                }
+            ]
         }
     return {'matched': False}
 
@@ -650,7 +730,8 @@ ALL_RULES = [
     pattern_16_new_opp_pricing,
     pattern_17_new_opp_surge_14days,
     pattern_18_expansion_competitor,
-    pattern_19_new_opp_integration_or_pricing,
+    pattern_19a_new_opp_integration,
+    pattern_19b_new_opp_pricing,
     pattern_20_renewal_pricing_declining,
     pattern_21_new_opp_pricing_competitive,
     pattern_22_renewal_competitive

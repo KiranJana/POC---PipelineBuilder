@@ -97,6 +97,7 @@ def extract_intent_features(opp, df_intent, df_accounts, evaluation_date=None):
         
         # Check for specific competitive topics
         had_competitor_intent = int(opp_intent['keyword_topic'].apply(detect_competitor_intent).any())
+        competitor_name = opp_intent['keyword_topic'].apply(get_competitor_name).dropna().iloc[0] if had_competitor_intent else None
         had_pricing_intent = int(opp_intent['keyword_topic'].str.contains('pricing|cost', case=False, na=False).any())
     else:
         avg_intent_score = 0
@@ -105,6 +106,7 @@ def extract_intent_features(opp, df_intent, df_accounts, evaluation_date=None):
         medium_surge_count = 0
         unique_topics = 0
         had_competitor_intent = 0
+        competitor_name = None
         had_pricing_intent = 0
     
     return {
@@ -114,6 +116,7 @@ def extract_intent_features(opp, df_intent, df_accounts, evaluation_date=None):
         'medium_surge_count_during': medium_surge_count,
         'unique_intent_topics': unique_topics,
         'had_competitor_intent': had_competitor_intent,
+        'competitor_name': competitor_name,
         'had_pricing_intent': had_pricing_intent,
     }
 

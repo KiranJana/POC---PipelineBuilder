@@ -86,8 +86,8 @@ def get_persona_recommendations(buying_committee_analysis, deal_stage=None):
     missing = buying_committee_analysis['missing_personas']
     recommendations = []
 
-    # C-Level engagement strategies
-    if 'C-Level' in missing:
+    # C-Level engagement strategies (only for deals > $50K where executive involvement makes sense)
+    if 'C-Level' in missing and opp_features.get('amount', 0) > 50000:
         c_level_actions = [
             {
                 'action': 'Schedule executive briefing session with CEO/CTO/CFO',
